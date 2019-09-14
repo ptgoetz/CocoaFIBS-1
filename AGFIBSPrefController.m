@@ -58,14 +58,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	}
 	
 	NSFileManager *fileManager = [NSFileManager defaultManager];
-	
-	
-
-
-	NSLog([[fileManager directoryContentsAtPath:@"boards"] description]);
-
-
-
 }
 
 - (void)getCustomBoards
