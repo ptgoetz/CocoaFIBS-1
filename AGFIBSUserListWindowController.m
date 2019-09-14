@@ -84,7 +84,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 
 - (void)setCountOfLogedInUsers
 {
-	[totalLogedInUsers setStringValue:[NSString stringWithFormat:@"%d", [userListWindowData count]]];
+	[totalLogedInUsers setStringValue:[NSString stringWithFormat:@"%lu", (unsigned long)[userListWindowData count]]];
 	
 }
 
@@ -218,7 +218,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 		[userListWindowData sortUsingDescriptors:sortDescriptorsArray];
 	}
 	
-	NSLog([sortDescriptorsArray description]);
+        NSLog(@"%@", [sortDescriptorsArray description]);
 	NSControl *aControl = [[[tableView tableColumns] objectAtIndex:0] dataCellForRow:0];
 	[self selectRowAfterDataSourceUpdate];
 	[aControl setNeedsDisplay:YES];
@@ -445,7 +445,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 /*" Called when a menu item is selected. "*/
 {
 	NSLog(@"Menu Clicked %@", [[userListWindowData objectAtIndex:selectedRow] objectForKey:@"name"]);
-	NSLog(@"tag %d", [sender tag]);
+	NSLog(@"tag %ld", (long)[sender tag]);
 	NSString *stringToSend;
 	
 	if ([sender tag] == 0) {

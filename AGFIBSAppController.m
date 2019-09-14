@@ -871,7 +871,7 @@ AGFIBSSPrefsHaveChanged
 	else
 	{
 		// tell user to download a new version
-		int button = NSRunAlertPanel(@"A New Version is Available", [NSString stringWithFormat:@"A new version of CocoaFIBS is available (version %@). Would you like to download the new version now?", latestVersionNumber], @"Download", @"Not Now", nil);
+		int button = NSRunAlertPanel(@"A New Version is Available", @"%@", [NSString stringWithFormat:@"A new version of CocoaFIBS is available (version %@). Would you like to download the new version now?", latestVersionNumber], @"Download", @"Not Now", nil);
 		if(NSOKButton == button)
 		{
 			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/projects/cocoafibs/"]];

@@ -414,9 +414,9 @@ return temp;
 /*" Posted at the end of the NSApplication finishLaunching method to indicate that the application has completed launching and is ready to run. "*/
 {
 	NSDate *today = [NSDate date];
-	NSLog([today description]);
-	NSDate *expiresOnDate = [NSDate dateWithString:@"3018-10-01 16:08:13 -0400"]; //1000 years should do it
-	NSLog([[today laterDate:expiresOnDate] description]);
+	NSLog(@"%@", [today description]);
+	NSDate *expiresOnDate = [NSDate dateWithString:@"3018-10-01 16:08:13 -0400"]; //1000 years should do @"%@", it
+	NSLog(@"%@", [[today laterDate:expiresOnDate] description]);
 	int choice;
 	if ([[today laterDate:expiresOnDate] isEqual:today]) {
 		choice = NSRunAlertPanel(@"Beta has expired", @"The beta copy of this software has expired", @"Quit", @"", nil);

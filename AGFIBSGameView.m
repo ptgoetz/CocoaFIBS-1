@@ -531,7 +531,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	}
 	else {
 		[alert addButtonWithTitle:@"Ok"];
-		[alert addButtonWithTitle:nil];
 		[alert setMessageText:@"You are not allowed to double at this time."];
 		[alert setInformativeText:@""];
 		[alert setIcon:[NSImage imageNamed:@"double"]];

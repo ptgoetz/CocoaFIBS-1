@@ -249,7 +249,7 @@ An instance of this class creates and returns input and output streams for a soc
 		//Format a nice string to print to the terminal
 		cookieString = [[NSString alloc] initWithFormat:@"(%d)", cookie];
 		[oneStringFromArray setString:[cookieString stringByAppendingString:oneStringFromArray]];
-		NSLog(oneStringFromArray);
+		NSLog(@"%@", oneStringFromArray);
 		[cookieString release];
 	}
 }
