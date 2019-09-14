@@ -65,7 +65,6 @@ AGFIBSSPrefsHaveChanged
 	loginDone = NO;
 	notifiedOfFriendsAndGagAndBlind = NO;
 	[self setReadyToPlayStatus:YES];
-	[self checkForNewVersion];
 	firstBoardOfNewGame = YES;
 	
 	return self;
@@ -802,19 +801,7 @@ AGFIBSSPrefsHaveChanged
     return [[disconnectMenuItem retain] autorelease];
 }
 
-- (void)checkForNewVersion
-{
-	NSString *currVersionNumber = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleVersion"];
-	NSString *latestVersionNumber = currVersionNumber; //until we get updates going again.
-    // tell user to download a new version
-    int button = NSRunAlertPanel(@"A New Version is Available", @"%@", [NSString stringWithFormat:@"A new version of CocoaFIBS is available (version %@). Would you like to download the new version now?", latestVersionNumber], @"Download", @"Not Now", nil);
-    if(NSOKButton == button)
-    {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/projects/cocoafibs/"]];
-    }
-}
-
-- (AGFIBSLoginWindowController *)theLoginWindowController 
+- (AGFIBSLoginWindowController *)theLoginWindowController
 {
     return [[theLoginWindowController retain] autorelease];
 }

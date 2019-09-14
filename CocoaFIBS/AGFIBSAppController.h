@@ -88,7 +88,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (IBAction)showUserListWindow:(id)sender;
 - (IBAction)showPrefWindow:(id)sender;
 - (void)showGameWindow;
-- (void)checkForNewVersion;
 - (IBAction)showTerminalWindow:(id)sender;
 - (IBAction)sendBugReport:(id)sender;
 - (IBAction)showUserListWindow:(id)sender;
