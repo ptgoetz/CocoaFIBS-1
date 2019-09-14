@@ -425,18 +425,6 @@ return temp;
 			[NSApp terminate:self];
 		}
 	}
-	if (![self isSystemGreaterThen10_3]) {
-		choice = NSRunAlertPanel(@"You are running an older version of MacOS", @"CocoaFIBS only runs on Mac OS 10.3 and above", @"Quit", @"", nil);
-		if (choice)
-			[NSApp terminate:self];
-	}
-}
-
--(BOOL)isSystemGreaterThen10_3
-{
-  long systemVersion;
-  Gestalt( gestaltSystemVersion, &systemVersion );
-  return (systemVersion >= 0x1030);
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
