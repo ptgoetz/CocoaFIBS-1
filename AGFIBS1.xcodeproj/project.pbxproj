@@ -152,7 +152,7 @@
 		664035400683CDF100140E13 /* AGFIBSGameView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AGFIBSGameView.m; sourceTree = "<group>"; };
 		66428EA90735FFFA00E871EE /* ApplicationIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ApplicationIcon.icns; sourceTree = "<group>"; };
 		6650E3A70800EA9E00A135DB /* toolbarAutoMove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbarAutoMove.png; sourceTree = "<group>"; };
-		6652798B07ADC27E003A2578 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
+		6652798B07ADC27E003A2578 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html.documentation; path = Credits.html; sourceTree = "<group>"; };
 		665279B207ADC27E003A2578 /* LogoAppleAqua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoAppleAqua.png; sourceTree = "<group>"; };
 		665279B307ADC27E003A2578 /* LogoAppleClassic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoAppleClassic.png; sourceTree = "<group>"; };
 		665279B407ADC27E003A2578 /* LogoBot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoBot.png; sourceTree = "<group>"; };
@@ -244,7 +244,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				66AD59D507EE90F9002FDCDE /* Code for plist */,
 				66F41B1B07FA218A001F7C59 /* NetSocket.h */,
 				66F41B1A07FA218A001F7C59 /* NetSocket.m */,
 				66599D3606D2D9D0001C631F /* RoundRects.h */,
@@ -323,13 +322,12 @@
 		29B97314FDCFA39411CA2CEA /* AGFIBS1 */ = {
 			isa = PBXGroup;
 			children = (
+				D81B42E0232CC9B30030F882 /* Documentation */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				66358C330654624D004EC2BA /* notes */,
-				669019DD065DB2940010F95B /* FCM CLIP Key */,
 			);
 			name = AGFIBS1;
 			sourceTree = "<group>";
@@ -348,7 +346,6 @@
 			children = (
 				669C713B07EFF71C006CBFAD /* boards */,
 				6663F0B207AF22BB00484D84 /* sounds */,
-				6652798B07ADC27E003A2578 /* Credits.html */,
 				6652798C07ADC27E003A2578 /* images */,
 				66428EA90735FFFA00E871EE /* ApplicationIcon.icns */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -476,6 +473,17 @@
 				66AB3C3E07DFAB7D002C53FF /* URLTextViewHand.tiff */,
 			);
 			path = cursors;
+			sourceTree = "<group>";
+		};
+		D81B42E0232CC9B30030F882 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				66358C330654624D004EC2BA /* notes */,
+				669019DD065DB2940010F95B /* FCM CLIP Key */,
+				66AD59D507EE90F9002FDCDE /* Code for plist */,
+				6652798B07ADC27E003A2578 /* Credits.html */,
+			);
+			path = Documentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
