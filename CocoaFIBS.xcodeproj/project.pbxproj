@@ -241,49 +241,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				66A8C00E07CBC2610019FC59 /* AGFIBSTerminalWindowController.h */,
-				66A8C00F07CBC2610019FC59 /* AGFIBSTerminalWindowController.m */,
-				3FF65A840677EFD3008720B2 /* AGFIBSAppController.h */,
-				3FF65A850677EFD3008720B2 /* AGFIBSAppController.m */,
-				66EFC7F007A9CAC3009C2367 /* AGFIBSPrefController.h */,
-				66EFC7F107A9CAC3009C2367 /* AGFIBSPrefController.m */,
-				66212BE906E2A9E200D83A30 /* AGFIBSToolbarController.h */,
-				66212BE806E2A9E200D83A30 /* AGFIBSToolbarController.m */,
-				667C61B30665AB04007D7484 /* AGFIBSSocketStream.h */,
-				667C61B20665AB04007D7484 /* AGFIBSSocketStream.m */,
-				66B9E8760652F6470000A2F2 /* AGFIBSGameController.h */,
-				66B9E8770652F6470000A2F2 /* AGFIBSGameController.m */,
-				6611F1C9069A073A004C9789 /* AGFIBSChatController.h */,
-				6611F1C8069A073A004C9789 /* AGFIBSChatController.m */,
-				660E82520651C28A0001D3B2 /* AGFIBSGameModel.h */,
-				660E82530651C28A0001D3B2 /* AGFIBSGameModel.m */,
-				66B9E8830652FE8B0000A2F2 /* AGFIBSGameView.h */,
-				664035400683CDF100140E13 /* AGFIBSGameView.m */,
-				660E82600651C7620001D3B2 /* AGFIBSTriangle.h */,
-				660E82610651C7620001D3B2 /* AGFIBSTriangle.m */,
-				66559ABE065EB56800313A36 /* AGFIBSDice.h */,
-				66559ABF065EB56800313A36 /* AGFIBSDice.m */,
-				3FF65ABE0677F3FB008720B2 /* AGFIBSUserListWindowController.h */,
-				3FF65ABF0677F3FB008720B2 /* AGFIBSUserListWindowController.m */,
-				3FEB21C20678BF0C00603174 /* AGFIBSUserListTableView.h */,
-				3FEB21C30678BF0C00603174 /* AGFIBSUserListTableView.m */,
-				660C66C406A21DF7009AA00A /* AGFIBSLoginWindowController.h */,
-				660C66C506A21DF7009AA00A /* AGFIBSLoginWindowController.m */,
-				3FF034D1067807ED0050A548 /* AGFIBSUserCell.h */,
-				3FF034D2067807ED0050A548 /* AGFIBSUserCell.m */,
-				66B4AAE007DBAFE00005D26B /* AGFIBSKeychain.h */,
-				66B4AAE107DBAFE00005D26B /* AGFIBSKeychain.m */,
-				66F649D20721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.h */,
-				66F649D30721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.m */,
-				66BCC78D07FCDA4B00FEC743 /* AGFIBSUserDetailWindowController.h */,
-				66BCC78E07FCDA4B00FEC743 /* AGFIBSUserDetailWindowController.m */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,24 +270,14 @@
 		29B97314FDCFA39411CA2CEA /* AGFIBS1 */ = {
 			isa = PBXGroup;
 			children = (
+				D8646673232CD5C600ECB4D9 /* CocoaFIBS */,
 				D84FDD9C232CD19D008E8F46 /* Vendor */,
 				D81B42E0232CC9B30030F882 /* Documentation */,
-				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = AGFIBS1;
-			sourceTree = "<group>";
-		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				32CA4F630368D1EE00C91783 /* CocoaFIBS_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-			);
-			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
@@ -449,17 +396,6 @@
 			path = sounds;
 			sourceTree = "<group>";
 		};
-		667C61400665A79B007D7484 /* FIBS_CLIP */ = {
-			isa = PBXGroup;
-			children = (
-				667C617E0665A801007D7484 /* clip.h */,
-				667C61800665A801007D7484 /* FIBSCookieMonster.h */,
-				667C617F0665A801007D7484 /* FIBSCookieMonster.c */,
-			);
-			name = FIBS_CLIP;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		66AB3C3D07DFAB7D002C53FF /* cursors */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,9 +426,56 @@
 				66AB3C2E07DFAB56002C53FF /* URLMutableAttributedString.m */,
 				66AB3C3107DFAB56002C53FF /* URLTextView.h */,
 				66AB3C3007DFAB56002C53FF /* URLTextView.m */,
-				667C61400665A79B007D7484 /* FIBS_CLIP */,
+				667C617E0665A801007D7484 /* clip.h */,
+				667C61800665A801007D7484 /* FIBSCookieMonster.h */,
+				667C617F0665A801007D7484 /* FIBSCookieMonster.c */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		D8646673232CD5C600ECB4D9 /* CocoaFIBS */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* CocoaFIBS_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				66A8C00E07CBC2610019FC59 /* AGFIBSTerminalWindowController.h */,
+				66A8C00F07CBC2610019FC59 /* AGFIBSTerminalWindowController.m */,
+				3FF65A840677EFD3008720B2 /* AGFIBSAppController.h */,
+				3FF65A850677EFD3008720B2 /* AGFIBSAppController.m */,
+				66EFC7F007A9CAC3009C2367 /* AGFIBSPrefController.h */,
+				66EFC7F107A9CAC3009C2367 /* AGFIBSPrefController.m */,
+				66212BE906E2A9E200D83A30 /* AGFIBSToolbarController.h */,
+				66212BE806E2A9E200D83A30 /* AGFIBSToolbarController.m */,
+				667C61B30665AB04007D7484 /* AGFIBSSocketStream.h */,
+				667C61B20665AB04007D7484 /* AGFIBSSocketStream.m */,
+				66B9E8760652F6470000A2F2 /* AGFIBSGameController.h */,
+				66B9E8770652F6470000A2F2 /* AGFIBSGameController.m */,
+				6611F1C9069A073A004C9789 /* AGFIBSChatController.h */,
+				6611F1C8069A073A004C9789 /* AGFIBSChatController.m */,
+				660E82520651C28A0001D3B2 /* AGFIBSGameModel.h */,
+				660E82530651C28A0001D3B2 /* AGFIBSGameModel.m */,
+				66B9E8830652FE8B0000A2F2 /* AGFIBSGameView.h */,
+				664035400683CDF100140E13 /* AGFIBSGameView.m */,
+				660E82600651C7620001D3B2 /* AGFIBSTriangle.h */,
+				660E82610651C7620001D3B2 /* AGFIBSTriangle.m */,
+				66559ABE065EB56800313A36 /* AGFIBSDice.h */,
+				66559ABF065EB56800313A36 /* AGFIBSDice.m */,
+				3FF65ABE0677F3FB008720B2 /* AGFIBSUserListWindowController.h */,
+				3FF65ABF0677F3FB008720B2 /* AGFIBSUserListWindowController.m */,
+				3FEB21C20678BF0C00603174 /* AGFIBSUserListTableView.h */,
+				3FEB21C30678BF0C00603174 /* AGFIBSUserListTableView.m */,
+				660C66C406A21DF7009AA00A /* AGFIBSLoginWindowController.h */,
+				660C66C506A21DF7009AA00A /* AGFIBSLoginWindowController.m */,
+				3FF034D1067807ED0050A548 /* AGFIBSUserCell.h */,
+				3FF034D2067807ED0050A548 /* AGFIBSUserCell.m */,
+				66B4AAE007DBAFE00005D26B /* AGFIBSKeychain.h */,
+				66B4AAE107DBAFE00005D26B /* AGFIBSKeychain.m */,
+				66F649D20721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.h */,
+				66F649D30721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.m */,
+				66BCC78D07FCDA4B00FEC743 /* AGFIBSUserDetailWindowController.h */,
+				66BCC78E07FCDA4B00FEC743 /* AGFIBSUserDetailWindowController.m */,
+			);
+			path = CocoaFIBS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -740,7 +723,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = CocoaFIBS_Prefix.pch;
+				GCC_PREFIX_HEADER = CocoaFIBS/CocoaFIBS_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
@@ -773,7 +756,7 @@
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = CocoaFIBS_Prefix.pch;
+				GCC_PREFIX_HEADER = CocoaFIBS/CocoaFIBS_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
@@ -805,7 +788,7 @@
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = CocoaFIBS_Prefix.pch;
+				GCC_PREFIX_HEADER = CocoaFIBS/CocoaFIBS_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
