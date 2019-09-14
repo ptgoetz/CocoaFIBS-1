@@ -108,7 +108,7 @@
 		66F649D50721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F649D30721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.m */; };
 		66FB55F50720E1A4000C296D /* InviteToGameWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 66FB55F30720E1A4000C296D /* InviteToGameWindow.nib */; };
 		66FED31707C5904B00E7EDED /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 66FED31607C5904B00E7EDED /* blank.png */; };
-		8D1107280486CEB800E47090 /* AGFIBS1_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32CA4F630368D1EE00C91783 /* AGFIBS1_Prefix.pch */; };
+		8D1107280486CEB800E47090 /* CocoaFIBS_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32CA4F630368D1EE00C91783 /* CocoaFIBS_Prefix.pch */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -122,7 +122,7 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32CA4F630368D1EE00C91783 /* AGFIBS1_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGFIBS1_Prefix.pch; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* CocoaFIBS_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaFIBS_Prefix.pch; sourceTree = "<group>"; };
 		3FEB21C20678BF0C00603174 /* AGFIBSUserListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGFIBSUserListTableView.h; sourceTree = "<group>"; };
 		3FEB21C30678BF0C00603174 /* AGFIBSUserListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGFIBSUserListTableView.m; sourceTree = "<group>"; };
 		3FF034D1067807ED0050A548 /* AGFIBSUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGFIBSUserCell.h; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* AGFIBS1_Prefix.pch */,
+				32CA4F630368D1EE00C91783 /* CocoaFIBS_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -493,7 +493,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D1107280486CEB800E47090 /* AGFIBS1_Prefix.pch in Headers */,
+				8D1107280486CEB800E47090 /* CocoaFIBS_Prefix.pch in Headers */,
 				660E82540651C28A0001D3B2 /* AGFIBSGameModel.h in Headers */,
 				660E82620651C7620001D3B2 /* AGFIBSTriangle.h in Headers */,
 				66B9E8780652F6470000A2F2 /* AGFIBSGameController.h in Headers */,
@@ -551,7 +551,7 @@
 			attributes = {
 				LastUpgradeCheck = 1030;
 			};
-			buildConfigurationList = 66FE3EB60868CD4F0028593F /* Build configuration list for PBXProject "AGFIBS1" */;
+			buildConfigurationList = 66FE3EB60868CD4F0028593F /* Build configuration list for PBXProject "CocoaFIBS" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
@@ -731,7 +731,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AGFIBS1_Prefix.pch;
+				GCC_PREFIX_HEADER = CocoaFIBS_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
@@ -742,7 +742,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.AdamGerson.CocoaFIBS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevenrbaker.CocoaFIBS;
 				PRODUCT_NAME = CocoaFIBS;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -764,7 +764,7 @@
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AGFIBS1_Prefix.pch;
+				GCC_PREFIX_HEADER = CocoaFIBS_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
@@ -775,7 +775,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.AdamGerson.CocoaFIBS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevenrbaker.CocoaFIBS;
 				PRODUCT_NAME = CocoaFIBS;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -796,7 +796,7 @@
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AGFIBS1_Prefix.pch;
+				GCC_PREFIX_HEADER = CocoaFIBS_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = NO;
@@ -807,7 +807,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.AdamGerson.CocoaFIBS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevenrbaker.CocoaFIBS;
 				PRODUCT_NAME = CocoaFIBS;
 				SECTORDER_FLAGS = "";
 				WARNING_CFLAGS = (
@@ -933,7 +933,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
-		66FE3EB60868CD4F0028593F /* Build configuration list for PBXProject "AGFIBS1" */ = {
+		66FE3EB60868CD4F0028593F /* Build configuration list for PBXProject "CocoaFIBS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66FE3EB70868CD4F0028593F /* Development */,
