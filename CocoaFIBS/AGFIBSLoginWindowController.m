@@ -18,7 +18,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #import  "AGFIBSLoginWindowController.h"
-#import  "AGFIBSKeychain.h"
 #include "AGFIBSAppController.h"
 
 @implementation AGFIBSLoginWindowController
@@ -70,13 +69,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		[cancelButton setHidden:NO];
 		[connectButton setHidden:YES];
 		[[NSUserDefaults standardUserDefaults] setObject:[userNameTextField stringValue] forKey:@"username"];
-		
-		if (![AGFIBSKeychain doesAccountExistInKeychain] && [addToKeychainButton state] == NSOnState) {
-			[AGFIBSKeychain addAccountInfoToKeychain:[passwordTextField stringValue]];
-		}
-		else if (![[AGFIBSKeychain getKeychainPasswordForUsername:[userNameTextField stringValue]] isEqualToString:[passwordTextField stringValue]] && [addToKeychainButton state] == NSOnState) {
-			[AGFIBSKeychain modifyPasswordInKeychain:[passwordTextField stringValue]];
-		}
 		
 		[errorMsgTextField setStringValue:@"Connecting..."];
 		[connectionProgressIndicator startAnimation:sender];
@@ -146,19 +138,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	[alert beginSheetModalForWindow:[self loginWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
-- (IBAction)addToKeychainPrefCheckboxButtonClicked:(id)sender
-{
-	if ([addToKeychainButton state] == NSOnState) {
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"addToKeychain"];
-	}
-	else if ([addToKeychainButton state] == NSOffState) {
-		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"addToKeychain"];
-		if ([AGFIBSKeychain doesAccountExistInKeychain]) {
-			[AGFIBSKeychain deletePasswordInKeychain];
-		}
-	}
-}
-
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {
 	NSLog(@"login windowDidBecomeKey!!!!!!!");
@@ -186,19 +165,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 {
 	[userNameTextField setStringValue:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]];
 
-	if ([AGFIBSKeychain doesAccountExistInKeychain] && [[NSUserDefaults standardUserDefaults] boolForKey:@"addToKeychain"] == YES) {
-		[passwordTextField setStringValue:[AGFIBSKeychain getKeychainPasswordForUsername:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]]];
-	}
-	else {
-		[passwordTextField setStringValue:@""];
-	}
-	
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"addToKeychain"] == YES) {
-		[addToKeychainButton setState:NSOnState];
-	}
-	else if ([[NSUserDefaults standardUserDefaults] boolForKey:@"addToKeychain"] == NO) {
-		[addToKeychainButton setState:NSOffState];
-	}
+    [passwordTextField setStringValue:@""];
 }
 
 - (NSWindow *)loginWindow {

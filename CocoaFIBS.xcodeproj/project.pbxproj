@@ -90,8 +90,6 @@
 		66AD599407EE5A87002FDCDE /* Add.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 66AD599207EE5A87002FDCDE /* Add.tiff */; };
 		66AD599507EE5A87002FDCDE /* Add_Pressed.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 66AD599307EE5A87002FDCDE /* Add_Pressed.tiff */; };
 		66AD59D607EE90F9002FDCDE /* Code for plist in Resources */ = {isa = PBXBuildFile; fileRef = 66AD59D507EE90F9002FDCDE /* Code for plist */; };
-		66B4AAE207DBAFE00005D26B /* AGFIBSKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 66B4AAE007DBAFE00005D26B /* AGFIBSKeychain.h */; };
-		66B4AAE307DBAFE00005D26B /* AGFIBSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B4AAE107DBAFE00005D26B /* AGFIBSKeychain.m */; };
 		66B9E8780652F6470000A2F2 /* AGFIBSGameController.h in Headers */ = {isa = PBXBuildFile; fileRef = 66B9E8760652F6470000A2F2 /* AGFIBSGameController.h */; };
 		66B9E8790652F6470000A2F2 /* AGFIBSGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B9E8770652F6470000A2F2 /* AGFIBSGameController.m */; };
 		66B9E8850652FE8B0000A2F2 /* AGFIBSGameView.h in Headers */ = {isa = PBXBuildFile; fileRef = 66B9E8830652FE8B0000A2F2 /* AGFIBSGameView.h */; };
@@ -206,8 +204,6 @@
 		66AD599207EE5A87002FDCDE /* Add.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Add.tiff; sourceTree = "<group>"; };
 		66AD599307EE5A87002FDCDE /* Add_Pressed.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Add_Pressed.tiff; sourceTree = "<group>"; };
 		66AD59D507EE90F9002FDCDE /* Code for plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Code for plist"; sourceTree = "<group>"; };
-		66B4AAE007DBAFE00005D26B /* AGFIBSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGFIBSKeychain.h; sourceTree = "<group>"; };
-		66B4AAE107DBAFE00005D26B /* AGFIBSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGFIBSKeychain.m; sourceTree = "<group>"; };
 		66B9E8760652F6470000A2F2 /* AGFIBSGameController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AGFIBSGameController.h; sourceTree = "<group>"; };
 		66B9E8770652F6470000A2F2 /* AGFIBSGameController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AGFIBSGameController.m; sourceTree = "<group>"; };
 		66B9E8830652FE8B0000A2F2 /* AGFIBSGameView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AGFIBSGameView.h; sourceTree = "<group>"; };
@@ -468,8 +464,6 @@
 				660C66C506A21DF7009AA00A /* AGFIBSLoginWindowController.m */,
 				3FF034D1067807ED0050A548 /* AGFIBSUserCell.h */,
 				3FF034D2067807ED0050A548 /* AGFIBSUserCell.m */,
-				66B4AAE007DBAFE00005D26B /* AGFIBSKeychain.h */,
-				66B4AAE107DBAFE00005D26B /* AGFIBSKeychain.m */,
 				66F649D20721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.h */,
 				66F649D30721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.m */,
 				66BCC78D07FCDA4B00FEC743 /* AGFIBSUserDetailWindowController.h */,
@@ -505,7 +499,6 @@
 				66F649D40721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.h in Headers */,
 				66EFC7F207A9CAC3009C2367 /* AGFIBSPrefController.h in Headers */,
 				66A8C01007CBC2610019FC59 /* AGFIBSTerminalWindowController.h in Headers */,
-				66B4AAE207DBAFE00005D26B /* AGFIBSKeychain.h in Headers */,
 				66AB3C3307DFAB56002C53FF /* URLMutableAttributedString.h in Headers */,
 				66AB3C3507DFAB56002C53FF /* URLTextView.h in Headers */,
 				66F41B1D07FA218A001F7C59 /* NetSocket.h in Headers */,
@@ -649,7 +642,6 @@
 				66F649D50721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.m in Sources */,
 				66EFC7F307A9CAC3009C2367 /* AGFIBSPrefController.m in Sources */,
 				66A8C01107CBC2610019FC59 /* AGFIBSTerminalWindowController.m in Sources */,
-				66B4AAE307DBAFE00005D26B /* AGFIBSKeychain.m in Sources */,
 				66AB3C3207DFAB56002C53FF /* URLMutableAttributedString.m in Sources */,
 				66AB3C3407DFAB56002C53FF /* URLTextView.m in Sources */,
 				66F41B1C07FA218A001F7C59 /* NetSocket.m in Sources */,

@@ -19,7 +19,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #import <Cocoa/Cocoa.h>
 @class AGFIBSAppController;
-@class AGFIBSKeychain;
 
 @interface AGFIBSLoginWindowController : NSObject
 {
@@ -34,8 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	IBOutlet AGFIBSAppController *theAppController;					/*" The Application Controller "*/
 	IBOutlet NSButton *addToKeychainButton;	
 	NSTimer *loginTimeoutTimer;
-	AGFIBSKeychain *theKeychain;
-	
 }
 
 - (IBAction)connect:(id)sender;
@@ -45,7 +42,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (IBAction)newUserRegistration:(id)sender;
 - (void)setUsernameAndPasswordFields;
 - (NSWindow *)loginWindow;
-- (IBAction)addToKeychainPrefCheckboxButtonClicked:(id)sender;
 - (void)displayFailedLoginAlertySheet;
 - (IBAction)reset;
 
