@@ -34,19 +34,19 @@ Instances of this class inherit from the built in NSTableView and allow a custom
 -(void)mouseDown:(NSEvent *)theEvent 
 /*" Informs the receiver that the user has pressed the left mouse button specified by theEvent. "*/
 {
-	return [[self delegate] mouseDown:theEvent];
+	[[self delegate] mouseDown:theEvent];
 }
 
 -(void)mouseUp:(NSEvent *)theEvent 
 /*" Informs the receiver that the user has pressed the left mouse button specified by theEvent. "*/
 {
-	return [[self delegate] mouseUp:theEvent];
+	[[self delegate] mouseUp:theEvent];
 }
 
 -(void)keyDown:(NSEvent *)theEvent 
 /*"  "*/
 {
-	return [[self delegate] keyDown:theEvent];
+	[[self delegate] keyDown:theEvent];
 }
 
 
