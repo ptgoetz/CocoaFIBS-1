@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "AGFIBSGameController.h"
 #import "AGFIBSSocketStream.h"
 #include "FIBSCookieMonster.h"
-#import "AGFIBSToolBarController.h"
+#import "AGFIBSToolbarController.h"
 #include "AGFIBSGameView.h"
 #include "AGFIBSTerminalWindowController.h"
 #include "AGFIBSLoginWindowController.h"
