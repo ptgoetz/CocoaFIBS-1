@@ -244,15 +244,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				66F41B1B07FA218A001F7C59 /* NetSocket.h */,
-				66F41B1A07FA218A001F7C59 /* NetSocket.m */,
-				66599D3606D2D9D0001C631F /* RoundRects.h */,
-				66599D3706D2D9D0001C631F /* RoundRects.m */,
-				66AB3C2F07DFAB56002C53FF /* URLMutableAttributedString.h */,
-				66AB3C2E07DFAB56002C53FF /* URLMutableAttributedString.m */,
-				66AB3C3107DFAB56002C53FF /* URLTextView.h */,
-				66AB3C3007DFAB56002C53FF /* URLTextView.m */,
-				667C61400665A79B007D7484 /* FIBS_CLIP */,
 				66A8C00E07CBC2610019FC59 /* AGFIBSTerminalWindowController.h */,
 				66A8C00F07CBC2610019FC59 /* AGFIBSTerminalWindowController.m */,
 				3FF65A840677EFD3008720B2 /* AGFIBSAppController.h */,
@@ -322,6 +313,7 @@
 		29B97314FDCFA39411CA2CEA /* AGFIBS1 */ = {
 			isa = PBXGroup;
 			children = (
+				D84FDD9C232CD19D008E8F46 /* Vendor */,
 				D81B42E0232CC9B30030F882 /* Documentation */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -465,6 +457,7 @@
 				667C617F0665A801007D7484 /* FIBSCookieMonster.c */,
 			);
 			name = FIBS_CLIP;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		66AB3C3D07DFAB7D002C53FF /* cursors */ = {
@@ -484,6 +477,22 @@
 				6652798B07ADC27E003A2578 /* Credits.html */,
 			);
 			path = Documentation;
+			sourceTree = "<group>";
+		};
+		D84FDD9C232CD19D008E8F46 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				66F41B1B07FA218A001F7C59 /* NetSocket.h */,
+				66F41B1A07FA218A001F7C59 /* NetSocket.m */,
+				66599D3606D2D9D0001C631F /* RoundRects.h */,
+				66599D3706D2D9D0001C631F /* RoundRects.m */,
+				66AB3C2F07DFAB56002C53FF /* URLMutableAttributedString.h */,
+				66AB3C2E07DFAB56002C53FF /* URLMutableAttributedString.m */,
+				66AB3C3107DFAB56002C53FF /* URLTextView.h */,
+				66AB3C3007DFAB56002C53FF /* URLTextView.m */,
+				667C61400665A79B007D7484 /* FIBS_CLIP */,
+			);
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
