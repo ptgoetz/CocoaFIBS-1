@@ -37,8 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     OSErr result;
     int i = 0;
 
-	NSString *keychainItemName = [NSString stringWithString:@"FIBS Account"];
-	NSString *keychainItemKind = [NSString stringWithString:@"FIBS Username/Password"];
+	NSString *keychainItemName = @"FIBS Account";
+	NSString *keychainItemKind = @"FIBS Username/Password";
 	
 	
     // create an attribute list with just one attribute specified	
@@ -82,8 +82,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     OSStatus status = 0;
 	OSErr result;
 
-	NSString *keychainItemName = [NSString stringWithString:@"FIBS Account"];
-	NSString *keychainItemKind = [NSString stringWithString:@"FIBS Username/Password"];
+	NSString *keychainItemName = @"FIBS Account";
+	NSString *keychainItemKind = @"FIBS Username/Password";
 	
     attributes[0].tag = kSecAccountItemAttr;
     attributes[0].data = (void*)[[[NSUserDefaults standardUserDefaults] stringForKey:@"username"] cString];
@@ -124,8 +124,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     OSStatus status;
 	OSErr result;
 
-	NSString *keychainItemName = [NSString stringWithString:@"FIBS Account"];
-	NSString *keychainItemKind = [NSString stringWithString:@"FIBS Username/Password"];
+	NSString *keychainItemName = @"FIBS Account";
+	NSString *keychainItemKind = @"FIBS Username/Password";
 	
     attributes[0].tag = kSecAccountItemAttr;
     attributes[0].data = (void*)[[[NSUserDefaults standardUserDefaults] stringForKey:@"username"] cString];
@@ -161,8 +161,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     SecKeychainItemRef item;
     OSStatus status;
 
-	NSString *keychainItemName = [NSString stringWithString:@"FIBS Account"];
-	NSString *keychainItemKind = [NSString stringWithString:@"FIBS Username/Password"];
+	NSString *keychainItemName = @"FIBS Account";
+	NSString *keychainItemKind = @"FIBS Username/Password";
 	
 	
     attributes[0].tag = kSecAccountItemAttr;
@@ -195,8 +195,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     SecKeychainAttribute attributes[3];
     OSErr result;
 
-	NSString *keychainItemName = [NSString stringWithString:@"FIBS Account"];
-	NSString *keychainItemKind = [NSString stringWithString:@"FIBS Username/Password"];
+	NSString *keychainItemName = @"FIBS Account";
+	NSString *keychainItemKind = @"FIBS Username/Password";
 	
 	
     // create an attribute list with just one attribute specified	

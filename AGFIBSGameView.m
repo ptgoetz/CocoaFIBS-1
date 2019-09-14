@@ -77,9 +77,9 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 		
 		pathToBoardImages = [[[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@/", boardsFolderInBundle, prefForBoardImages]]autorelease];
 		
-		imageType =  [NSString stringWithString:@"png"];
+		imageType =  @"png";
 		
-		NSLog([NSString stringWithFormat:@"%@",pathToBoardImages]);
+		NSLog(@"%@", [NSString stringWithFormat:@"%@",pathToBoardImages]);
 		
 		boardAttributes = [[NSDictionary alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@boardAttributes.plist", pathToBoardImages]];
 		

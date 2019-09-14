@@ -37,11 +37,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	BOOL fieldsWereEmprty = NO;
 	
 	if ([[userNameTextField stringValue] length] == 0) {
-		emptyFieldMsg = [NSString stringWithString:@"Please enter a value for username"];
+		emptyFieldMsg = @"Please enter a value for username";
 		fieldsWereEmprty = YES;
 	}
 	else if ([[passwordTextField stringValue] length] == 0) {
-		emptyFieldMsg = [NSString stringWithString:@"Please enter a value for password"];
+		emptyFieldMsg = @"Please enter a value for password";
 		fieldsWereEmprty = YES;
 	}
 	
