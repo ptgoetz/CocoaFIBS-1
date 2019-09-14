@@ -56,8 +56,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	else {
 		[highlightTargetPipsPrefCheckboxButton setState:NSOnState];
 	}
-	
-	NSFileManager *fileManager = [NSFileManager defaultManager];
 }
 
 - (void)getCustomBoards
