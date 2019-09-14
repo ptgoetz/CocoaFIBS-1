@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import <Cocoa/Cocoa.h>
 @class AGFIBSAppController;
 @class AGFIBSKeychain;
@@ -38,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	AGFIBSKeychain *theKeychain;
 	
 }
-/*" Login Window Methods "*/
+
 - (IBAction)connect:(id)sender;
 - (void)loginDone;
 - (void)loginFailed;
@@ -49,4 +48,5 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (IBAction)addToKeychainPrefCheckboxButtonClicked:(id)sender;
 - (void)displayFailedLoginAlertySheet;
 - (IBAction)reset;
+
 @end

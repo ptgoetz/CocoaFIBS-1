@@ -42,6 +42,5 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)setPlayerRating:(NSString *)newPlayerRating;
 - (NSNumber *)playerExp;
 - (void)setPlayerExp:(NSNumber *)newPlayerExp;
-- (IBAction)declineMatchInvite:(id)sender;
 
 @end

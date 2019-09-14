@@ -27,40 +27,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 /*" Instances of this class act as custom drawn cells for our TableView. "*/
 
 - (id)init
-/*" Designated Initializers "*/
 {
     [super init];
     return self;
 }
 
 -(void)setObjectValue:(id)x
-/*" Sets the value of the receiver‚Äôs cell (or selected cell) to object. "*/
 {
 	userListWindowData = x;
 }
 
 - (void)setNeedsDisplay:(BOOL)yn
-/*" Marks the receiver as needing redisplay (assuming automatic display is enabled) after recalculation of its dimensions. "*/
 {
     [[self controlView] setNeedsDisplay:yn];
 }
 
 - (NSCellType)type
-/*" Returns the to the receiver this cell type "*/
 {
     return NSNullCellType;
 }
 
 - (NSImage*)imageForClientName:(NSString *)clientName
-/*" Returns an image associated with another FIBS client app "*/
 {
 	return [NSImage imageNamed:[userListWindowData objectForKey:@"clientIcon"]];
 }
 
-
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView
-/*" Draws the ‚Äúinside‚Äù of the cell. "*/
-{	
+{
 	NSColor *AGFIBSBlueColor = [NSColor colorWithCalibratedRed:(56.0/255.0) green:(117.0/255.0) blue:(215.0/255.0) alpha:1.0];
 	NSString *userName = [userListWindowData objectForKey:@"name"];
 	NSString *status = [userListWindowData objectForKey:@"ready"];
@@ -88,7 +81,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		textColor = [NSColor blackColor];
 	}
 	
-	
 	if ([status isEqualToString:@"0"]) {
 		status = @"Not Ready";
 		statusImage = [NSImage imageNamed:@"statusNotReady"];
@@ -102,9 +94,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		status = [NSString stringWithFormat:@"Playing %@",[userListWindowData objectForKey:@"opponent"]];
 		statusImage = [NSImage imageNamed:@"statusYellow"];
 	}
-	
-	//status = [userListWindowData objectForKey:@"ready"];
-	
+		
 	NSMutableAttributedString *userNameString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",userName]];
 	
 	NSMutableAttributedString *ratingAndExperienceString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Rating %@ Exp %@",[userListWindowData objectForKey:@"rating"],[[userListWindowData objectForKey:@"experience"] stringValue]]];
@@ -126,14 +116,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	[ratingAndExperienceString	addAttribute:NSForegroundColorAttributeName
 				value:textColor
 				range:NSMakeRange(0,[ratingAndExperienceString length])];
-				
-	//[ratingAndExperienceString	addAttribute:NSFontAttributeName
-			//	value:[NSFont boldSystemFontOfSize:9]
-			//	range:NSMakeRange(0,6)];
-				
-//	[ratingAndExperienceString	addAttribute:NSFontAttributeName
-			//	value:[NSFont boldSystemFontOfSize:9]
-			//	range:NSMakeRange(15,4)];
 				
 	[statusAttributedString	addAttribute:NSFontAttributeName
 				value:[NSFont systemFontOfSize:10]
@@ -157,19 +139,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	[statusImage setFlipped:YES];
 	[statusImage drawInRect:chipRect fromRect:chipRect2 operation:NSCompositeSourceOver fraction:1.0];
 	
-	//[userName drawAtPoint:cellFrame.origin withAttributes:nil];
-	
-	
-	
-	//[relationship drawAtPoint:NSMakePoint(cellFrame.origin.x+30,cellFrame.origin.y)];
-	
 	[userNameString drawAtPoint:NSMakePoint(cellFrame.origin.x+30,cellFrame.origin.y)];
 	
 	[ratingAndExperienceString drawAtPoint:NSMakePoint(cellFrame.origin.x+30,cellFrame.origin.y+20)];
-	
-	//[statusAttributedString drawAtPoint:NSMakePoint(cellFrame.origin.x+30,cellFrame.origin.y+16)];
-	
 }
 
 @end
-

@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import <Cocoa/Cocoa.h>
 
 @class AGFIBSGameModel;
@@ -86,23 +85,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	BOOL firstDragMovement;
 }
 
-/*" Designated Initializer. "*/
 - (id)initWithFrame:(NSRect)frameRect;
 
-- (void)setUpImagesAndChords;
-
-/*" Overridden Draw Methods "*/
 - (void)drawRect:(NSRect)arect;
 
-/*" Custom Draw Methods "*/
 - (void)drawBackground;
 - (void)drawModel;
 	
-/*" Game View Helper Methods "*/
-//- (void)setChords;
 -(void)sendNotificationToSendCommandToSocket:(NSString *)stringToSend;
 -(void)chipFollowsMouseWhileDragging;
-//- (void)alertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 -(AGFIBSTriangle *)determineTriangleFromPoint:(NSPoint)aPoint;
 -(BOOL)mouseDownCanMoveWindow;
 -(void)pickupChip:(NSPoint)mouseLocation;
@@ -124,19 +115,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)clearAllHighlightedTriangles;
 - (NSData *)undoData;
 
-/*" Events "*/
 - (void)mouseDown:(NSEvent *)theEvent;
 - (void)mouseDragged:(NSEvent *)theEvent;
 - (void)mouseUp:(NSEvent *)theEvent;
 
-/*" Accessors Methods"*/
 - (NSWindow *)parentWindow;
 - (void)setParentWindow:(NSWindow *)newParentWindow;
 -(AGFIBSGameModel *)theAGFIBSGameModel; 
 - (BOOL)isDragging;
 - (void)setTheAGFIBSGameModel:(AGFIBSGameModel *)newTheAGFIBSGameModel;
 
-/* move methods */
 -(void)undoMove;
 -(void)redoMove;
 

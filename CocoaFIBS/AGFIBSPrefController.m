@@ -17,9 +17,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import "AGFIBSPrefController.h"
-
 
 @implementation AGFIBSPrefController
 
@@ -31,7 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 - (void)windowDidLoad
-/*" Nib file is loaded "*/
 {
 	//Start Position
 	if ([[NSUserDefaults standardUserDefaults] integerForKey:@"startPosition"] == 2) {
@@ -60,7 +57,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (void)getCustomBoards
 {
-	//NSString *currentDirectoryPath = [[NSFileManager defaultManager]currentDirectoryPath];
 	NSString *boardsFolderInBundle = [NSString stringWithFormat:@"%@/Contents/Resources/boards", [[NSBundle mainBundle] bundlePath]];
 	contentsOfBoardsFolder = [NSMutableArray arrayWithCapacity:0];
 	[contentsOfBoardsFolder addObjectsFromArray:[[NSFileManager defaultManager] directoryContentsAtPath:boardsFolderInBundle]];
@@ -81,8 +77,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	[rightStartPositionPrefRadioButton setState:NSOffState];
 	[[NSUserDefaults standardUserDefaults] setInteger:1  forKey:@"startPosition"];
 	[self prefsHaveChanged];
-	//NSLog(@"Cherry Coke is $%d, Sir!", [[NSUserDefaults standardUserDefaults] integerForKey:@"startPosition"]);
-
 }
 
 - (IBAction)rightStartPositionPrefRadioButtonClicked:(id)sender
@@ -91,8 +85,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	[[NSUserDefaults standardUserDefaults] setInteger:2  forKey:@"startPosition"];
 	[self prefsHaveChanged];
 }
-
-
 
 - (IBAction)onSoundnPrefRadioButtonClicked:(id)sender
 {
@@ -122,7 +114,5 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	nc = [NSNotificationCenter defaultCenter];
 	[nc postNotificationName:@"AGFIBSPrefsHaveChanged" object:nil];
 }
-
-
 
 @end

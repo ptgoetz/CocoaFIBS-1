@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import <Cocoa/Cocoa.h>
 @class AGFIBSAppController;
 @class AGFIBSUserDetailWindowController;
@@ -48,21 +47,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	IBOutlet NSProgressIndicator *whoLoadingProgressIndicator;
 }
 
-/*" Designated Initializer. "*/
 - (id)init;
 
-/*" Sent Notifications "*/
 -(void)sendNotificationToSendCommandToSocket:(NSString *)stringToSend;
 
-/*" User List "*/
 -(void)removeUserFromList:(NSString *)playerToRemove;
 -(void)selectRow;
 
-/*" Sorting "*/
 - (IBAction)sort:(id)sender;
 - (void)sort;
 
-/*" Accessors Methods"*/
 - (NSString *)selectedName;
 - (void)setSelectedName:(NSString *)aName;
 - (NSPopUpButton *)gameChatTypeOfChatPopUpButton;
@@ -84,14 +78,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)reset;
 -(void)setDynamicMenuItems;
 
-
-/*" Event and Menu Handlers "*/
 -(void)mouseDown:(NSEvent *)theEvent;
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent;
 - (IBAction)menuItem:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
 
-/*" NSTableView Methods "*/
 - (NSTableView *)tableView;
 - (void)setTableView:(NSTableView *)newTableView; 
 - (int)numberOfRowsInTableView:(NSTableView *)tableView;

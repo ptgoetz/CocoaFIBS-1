@@ -17,14 +17,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import <Foundation/Foundation.h>
 
 @interface AGFIBSUserListTableView : NSTableView {
-	
 }
 
-/*" Overridden NSTableView Methods "*/
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent;
 -(void)mouseDown:(NSEvent *)theEvent;
 

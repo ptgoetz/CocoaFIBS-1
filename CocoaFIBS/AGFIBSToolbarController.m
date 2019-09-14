@@ -44,11 +44,7 @@ applicationDidResignActive
 }
 
 - (void)awakeFromNib 
-/*"Responding to being loaded from a nib file. This method creates and populates the toolbar and its items "*/
 {
-
-	//[[theAppController theLoginWindowController] setUsernameAndPasswordFields];
-		
     items=[[NSMutableDictionary alloc] init];
 	
 	//**************Toggle Ready**************
@@ -210,9 +206,6 @@ applicationDidResignActive
 	[item release];
 	//****************************
 
-
-
-	
     toolbar=[[NSToolbar alloc] initWithIdentifier:@"AGFIBSToolBar"]; // identifier has to be unique per window type
     [toolbar setDelegate:self];
     [toolbar setAllowsUserCustomization:YES];
@@ -220,7 +213,6 @@ applicationDidResignActive
     
     [window setToolbar:toolbar];
     
-	
     [window makeKeyAndOrderFront:nil];
 	[[[theAppController theLoginWindowController] loginWindow] makeKeyAndOrderFront:nil];
 }
@@ -228,20 +220,16 @@ applicationDidResignActive
 
 
 - (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag 
-/*" Returns a toolbar item of the kind identified by itemIdentifier for toolbar. "*/
 {
     return [items objectForKey:itemIdentifier];
 }
 
 - (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar*)toolbar 
-/*" Returns an array of toolbar item identifiers for toolbar, specifying the contents and the order of the items in the default toolbar configuration. "*/
 {
-   //return [[items allKeys] subarrayWithRange:NSMakeRange(0,6)];
    return [NSArray arrayWithObjects: @"toggleStatus", NSToolbarSeparatorItemIdentifier,@"Double",@"Greedy",@"Resign",@"Refresh",@"Terminal",@"publicChat",@"Players",nil];
 }
 
 - (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar*)toolbar 
-/*" Returns an array of toolbar item identifiers for toolbar, specifying the contents and the order of the items in the configuration palette. "*/
 {
 	NSMutableArray *temp = [NSMutableArray arrayWithCapacity:([items count]+7)];
 	[temp addObjectsFromArray:[NSArray arrayWithObjects: NSToolbarCustomizeToolbarItemIdentifier,NSToolbarFlexibleSpaceItemIdentifier, NSToolbarSpaceItemIdentifier, NSToolbarSeparatorItemIdentifier,nil]];
@@ -250,50 +238,42 @@ return temp;
 }
 
 - (int)count 
-/*" Returns the number of items in the toolbar. "*/
 {
     return [items count];
 }
 
 - (IBAction)customize:(id)sender 
-/*" Opens the customization palette as a sheet. "*/
 {
     [toolbar runCustomizationPalette:sender];
 }
 
 - (IBAction)showhide:(id)sender 
-/*" OToggles the visability of the toolbar "*/
 {
     [toolbar setVisible:![toolbar isVisible]];
 }
 
 - (void)undoMove 
-/*" Toggles the visability of the user list drawer "*/
 {
 	[[theAppController theGameController] undoMove:nil];
 }
 
 - (void)toggleUserListDrawer 
-/*" Toggles the visability of the user list drawer "*/
 {
 	[[theAppController theGameController] toggleUserListDrawer:nil];
 }
 
 - (void)sendToggleReady 
-/*" Sends a change of ready status to the server "*/
 {
 	[[theAppController theAGFIBSSocket] sendMessage:@"toggle ready"];
 }
 
 - (void)autoMove 
-/*"  "*/
 {
 	[[theAppController theAGFIBSSocket] sendMessage:@"toggle automove"];
 }
 
 
 - (void)toggleAway 
-/*" "*/
 {
 	NSToolbarItem *item= [items objectForKey:@"away"];
 	if (isAway) {
@@ -311,31 +291,26 @@ return temp;
 }
 
 - (void)sendToggleGreedy 
-/*" Sends a change of greedy status to the server "*/
 {
 	[[theAppController theAGFIBSSocket] sendMessage:@"toggle greedy"];
 }
 
 - (void)sendToggleDouble 
-/*" Sends a change of double status to the server "*/
 {
 	[[theAppController theAGFIBSSocket] sendMessage:@"toggle double"];
 }
 
 - (void)showTerminalWindow 
-/*"  "*/
 {
 	[theAppController showTerminalWindow:nil];
 }
 
 - (void)showPublicChatWindow
-/*"  "*/
 {
 	[theAppController showPublicChatWindow];
 }
 
 - (void)refreshBoard 
-/*" Gets a new board from the server. "*/
 {
 	[[theAppController theAGFIBSSocket] sendMessage:@"board"];
 	[[theAppController theGameController] clearSystemMsg];
@@ -343,7 +318,6 @@ return temp;
 }
 
 - (void)resign 
-/*" Calls resignWithHow:(NSString *)how "*/
 {
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	[[alert window] setAlphaValue:0.9];
@@ -357,24 +331,18 @@ return temp;
 	[alert setAlertStyle:NSWarningAlertStyle];
 	[alert beginSheetModalForWindow:window modalDelegate:self didEndSelector:@selector(resignAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];  
 }
+
 - (void)resignGammon 
-/*" Calls resignWithHow:(NSString *)how "*/
 {
 	[self resignWithHow:@"g"];
 }
+
 - (void)resignBackgammon 
-/*" Calls resignWithHow:(NSString *)how "*/
 {
 	[self resignWithHow:@"b"];
 }
 
-- (void)resignWithHow:(NSString *)how
-/* OF: this function has been missing, don't know yet what it should do */
-{
-}
-
 - (void)resignAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo
-/*" Sends a resign command to the server. Takes n = normal, g = gammon, b = backgammon as a perameter. "*/
 {
 	NSString *howToResign = @"n";
 	
@@ -396,7 +364,6 @@ return temp;
 }
 
 - (void)toggleReadyToolbarItem 
-/*" Toggle the toolbar icon for ready status "*/
 {
 	NSToolbarItem *item= [items objectForKey:@"toggleStatus"];
 	if ([theAppController readyToPlayStatus]) {
@@ -411,7 +378,6 @@ return temp;
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-/*" Posted at the end of the NSApplication finishLaunching method to indicate that the application has completed launching and is ready to run. "*/
 {
 	NSDate *today = [NSDate date];
 	NSLog(@"%@", [today description]);
@@ -428,7 +394,6 @@ return temp;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
-/*" Posted by the NSApplication terminate: method to indicate that the application will terminate. "*/
 {
 	NSLog(@"applicationWillTerminate!!!!!!!!!");
 	[[theAppController theAGFIBSSocket] sendMessage:@"exit1"];
@@ -436,22 +401,20 @@ return temp;
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification
-/*" Sent by the default notification center immediately after the application becomes active. "*/
 {
 	NSLog(@"active!!!!!!!!!");
 }
 
 - (void)applicationDidResignActive:(NSNotification *)aNotification
-/*" Sent by the default notification center immediately after the application is deactivated "*/
 {
 	NSLog(@"resign!!!!!!!!!");
 }
 
 - (void)dealloc 
-/*" Clean Up "*/
 {
     [toolbar release];
     [items release];
 	[super dealloc];
 }
+
 @end

@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import <Foundation/Foundation.h>
 
 @interface AGFIBSTriangle : NSObject <NSCoding> {
@@ -34,17 +33,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	
 }
 
-/*" Designated Initializers "*/
 - (id)initWithOwnedBy:(int)owner numberOfChips:(int)numOfChips pipNumber:(int)pNum;
 
-/*" Overridden Initializer "*/
 - (id)init;
 
-/*" Chip methods  "*/
 - (void)removeChip;
 - (void)addChip;
 
-/*" Accessor methods  "*/
 - (int)ownedBy;
 - (void)setOwnedBy:(int)newOwnedBy;
 - (int)numberOfChips;
@@ -55,8 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)setArrayPos:(int)newArrayPos;
 - (BOOL)highlighted;
 - (void)setHighlighted:(BOOL)flag;
-- (int)pipNumber;
 
-/*" Clean Up "*/
 - (void)dealloc;
+
 @end

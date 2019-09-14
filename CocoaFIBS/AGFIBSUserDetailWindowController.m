@@ -29,8 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 - (void)dealloc
-/*" Clean Up "*/
-{    
+{
 	[clipWhoInfoDictionary release];
 	[super dealloc];
 }
@@ -60,7 +59,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 -(void)sendNotificationToSendCommandToSocket:(NSString *)stringToSend 
-/*" Sends a command to the server through the socket "*/
 {
 	NSNotificationCenter *nc;
 	nc = [NSNotificationCenter defaultCenter];
@@ -72,16 +70,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	if (boolAsInt == 1) {
 		return @"Yes";
 	}
-	else /* if (boolAsInt == 0) */ {
+	else {
 		return @"No";
 	}
 }
 
 - (void)windowDidLoad
-/*" Nib file is loaded "*/
 {
 	[[self window] setFrameAutosaveName:@"UserDetailWindow"];	
 }
-
 
 @end

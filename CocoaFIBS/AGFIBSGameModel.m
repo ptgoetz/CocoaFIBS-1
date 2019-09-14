@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import "AGFIBSGameModel.h"
 #import "AGFIBSGameView.h"
 #import "AGFIBSTriangle.h"
@@ -36,11 +35,11 @@ Instances of this class encapsulate the game board. This is a model class that r
 "*/
 
 - (id)init {
-/*" Designated Initializer "*/
 	self = [super init];
 	gameBoard  = [[NSMutableArray alloc] initWithCapacity:24];
 	return self;
 }
+
 - (id)copyWithZone:(NSZone *)zone {
 	AGFIBSGameModel *copy = [[AGFIBSGameModel alloc] init];
 	[copy setGameBoard:[gameBoard mutableCopy]];
@@ -50,7 +49,6 @@ Instances of this class encapsulate the game board. This is a model class that r
 
 - (void)encodeWithCoder:(NSCoder *)coder 
 {
-
     [coder encodeObject:[self gameBoard] forKey:@"noneGameBoard"];
     [coder encodeObject:[self playerDice] forKey:@"nonePlayerDice"];
     [coder encodeObject:[self opponentDice] forKey:@"noneOpponentDice"];
@@ -72,7 +70,6 @@ Instances of this class encapsulate the game board. This is a model class that r
 
 - (id)initWithCoder:(NSCoder *)coder 
 {
-  
    AGFIBSGameModel *copy = [[AGFIBSGameModel alloc] init];     
         [copy setPlayerDice:[coder decodeObjectForKey:@"nonePlayerDice"]];
         [copy setOpponentDice:[coder decodeObjectForKey:@"noneOpponentDice"]];
@@ -94,8 +91,8 @@ Instances of this class encapsulate the game board. This is a model class that r
     
     return copy;
 }
+
 - (void)invertGameBoardArray {
-/*" "*/
 	NSMutableArray *temp = [[NSMutableArray alloc] initWithCapacity:24];
 	int j = [gameBoard count]-1;
 	int i;
@@ -108,7 +105,6 @@ Instances of this class encapsulate the game board. This is a model class that r
 }
 
 - (void)newGame {
-/*" Sets up a new game from scratch "*/
 	int ownedBySetup[24] =			{1,0,0,0,0,2,0,2,0,0,0,1,2,0,0,0,1,0,1,0,0,0,0,2};
 	int numberOfChipsSetup[24] =	{2,0,0,0,0,5,0,3,0,0,0,5,5,0,0,0,3,0,5,0,0,0,0,2};
 	
@@ -133,49 +129,17 @@ Instances of this class encapsulate the game board. This is a model class that r
 		[self setGameBoard:gameBoard];
 		j--;
 	}
+
+    NSString *tempBoard = @"board:You:someplayer:3:0:0:0:-2:0:0:0:0:5:0:3:0:0:0:-5:5:0:0:0:-3:0:-5:0:0:0:0:2:0:1:0:0:0:0:1:1:1:0:1:-1:0:25:0:0:0:0:2:0:0:0";
 	
-	//Ready to bare off
-	//NSString *tempBoard = @"board:ParlorBot:mrklaw:15:12:2:0:1:0:-1:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:-1:-1:-2:-3:-7:0:1:2:3:0:0:2:1:0:0:1:-1:0:25:14:0:0:0:2:3:0:0";
-	
-	//Normal move
-	//NSString *tempBoard =   @"board:You:ain:3:0:0:0:-2:1:0:0:0:5:0:3:0:0:0:-5:5:0:0:0:-3:0:-5:0:0:0:-1:2:0:1:1:1:0:0:1:1:1:0:1:-1:0:25:0:0:0:0:2:0:0:0";
-
-	//on bar
-	//NSString *tempBoard = @"board:You:ain:3:0:0:0:-2:0:1:0:0:5:0:2:0:0:0:-3:5:0:0:0:-4:-1:-5:0:0:0:0:1:1:1:5:5:1:2:1:1:1:0:1:-1:0:25:0:0:1:0:2:0:0:0";
-	
-//
-
-//Bug from bot 
-	//NSString *tempBoard = @"board:You:jigsaw:3:0:0:0:3:0:0:0:0:0:-2:0:0:0:0:0:-1:0:0:0:0:-1:-4:-3:-2:-2:0:0:0:-1:0:0:0:0:2:0:1:0:1:-1:0:25:12:0:0:0:2:6:0:0";
-//nasty bareoff bug 
-//NSString *tempBoard = @"board:You:sponi:5:0:2:0:2:2:1:2:2:3:0:0:1:0:0:0:0:0:0:0:0:-2:-2:0:-5:2:-4:-2:0:-1:6:3:0:0:2:0:1:0:-1:1:25:0:0:0:0:0:2:0:0:0";
-	
-	//matias
-	//NSString *tempBoard = @"board:You:koltes:7:4:4:-1:0:2:0:0:0:1:1:3:1:0:0:-3:1:0:-2:0:-3:2:-2:0:-2:-2:0:0:0:-1:3:3:0:0:1:1:1:0:-1:1:25:0:0:0:1:0:4:3:0:0";
-
-	//Start Game
-	NSString *tempBoard = @"board:You:someplayer:3:0:0:0:-2:0:0:0:0:5:0:3:0:0:0:-5:5:0:0:0:-3:0:-5:0:0:0:0:2:0:1:0:0:0:0:1:1:1:0:1:-1:0:25:0:0:0:0:2:0:0:0";
-	
-
-	//
-	//line um up
-
-
-
 	NSArray *fibsBoardStateKeys = [@"board player opponent matchLength playerScore opponentScore playerBar tri1 tri2 tri3 tri4 tri5 tri6 tri7 tri8 tri9 tri10 tri11 tri12 tri13 tri14 tri15 tri16 tri17 tri18 tri19 tri20 tri21 tri22 tri23 tri24 opponentBar turn playerDie1 playerDie2 opponentDie1 opponentDie2 doubleCube playerMayDouble opponentMayDouble wasDoubled color direction home bar playerHomeNum opponentHomeNum playerBarNum opponentBarNum canMove forcedMove didCrawford redoubles" componentsSeparatedByString:@" "];
 	NSArray *fibsBoardStateMessage = [tempBoard componentsSeparatedByString:@":"];
 	NSDictionary *lfibsBoardStateDictionary = [[NSDictionary alloc] initWithObjects:fibsBoardStateMessage forKeys:fibsBoardStateKeys];
 	
-
-	
 	[self setFibsBoardStateDictionary:lfibsBoardStateDictionary];
 	
 	[self updateModelFromFIBS_Board];
-		
 }
-
-
-
 
 - (BOOL)isWatching {
 	if ([[fibsBoardStateDictionary objectForKey:@"player"] isEqualToString:@"You"]) {
@@ -185,19 +149,7 @@ Instances of this class encapsulate the game board. This is a model class that r
 }
 
 - (void)updateModelFromFIBS_Board 
-/*" Updates the model's instance variables from a new FIBS_Board state returned from the server "*/
 {
-/*
-	NSDate *now = [NSDate date];
-	NSString *nowAsFormattedString = [[NSDate date] descriptionWithCalendarFormat:@"%m%d%Y" timeZone:nil locale:nil];
-	NSString *fileName = [NSString stringWithFormat:@"oldmoves/%@_vs_%@_%@", [fibsBoardStateDictionary objectForKey:@"player"],[fibsBoardStateDictionary objectForKey:@"opponent"],nowAsFormattedString];
-	NSString *fileContents = [NSString stringWithContentsOfFile:fileName];
-	NSString *newFileContents = [NSString stringWithFormat:@" %@ %@ %@ ", fileContents, @"\n", [fibsBoardStateDictionary description]];
-	[newFileContents writeToFile:fileName atomically:YES];
-	
-	*/
-	
-	//NSLog([fibsBoardStateDictionary description]);
 	NSArray *fibsBoardStateTriangleKeys = nil;
 	[self setDirection:[[fibsBoardStateDictionary objectForKey:@"direction"] intValue]];
 	
@@ -248,9 +200,7 @@ Instances of this class encapsulate the game board. This is a model class that r
 		i++;
 		j--;
 	}
-	
-	
-	
+		
 	int playerDie1 = [[fibsBoardStateDictionary objectForKey:@"playerDie1"] intValue];
 	int playerDie2 = [[fibsBoardStateDictionary objectForKey:@"playerDie2"] intValue];
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"highestDiceFirst"] && playerDie1 < playerDie2) {
@@ -296,19 +246,10 @@ Instances of this class encapsulate the game board. This is a model class that r
 		}
 		[nc postNotificationName:@"AGFIBSDisplaySystemMsg" object:moveStringForPrint];
 	}
-	
-	
-	
-
-	
-		
 }
 
-
 - (BOOL)isPlayerHome 
-/*" Returns YES if the player has all of their peices in the home. Otherwise returns NO "*/
 {
-	
 	int i;
 	for (i = 0; i <= 17; i++) {
 		if ([[[self gameBoard] objectAtIndex:i] numberOfChips] > 0 && [[[self gameBoard] objectAtIndex:i] ownedBy] == OWNEDBY_PLAYER) {
@@ -319,7 +260,6 @@ Instances of this class encapsulate the game board. This is a model class that r
 }
 
 - (int)clearTrianglesInHomeForBareoff
-/*" How many triangles are free in the player's home for greedy baroffs? BAD EXPLINATON - FIX! "*/
 {
 	int draggedFromTriangleArrayPos = [self pipNumToArrayPos:[[self draggedFromTriangle] pipNumber]];
 	int i;
@@ -337,7 +277,6 @@ Instances of this class encapsulate the game board. This is a model class that r
 }
 
 -(int)pipNumToArrayPos:(int)pipPos 
-/*" Get pip number of triangle from its position in the array. "*/
 {
 	if ([self direction] == DIRECTION_PIP1_TO_PIP24) {
 		return (pipPos - 1);
@@ -347,9 +286,7 @@ Instances of this class encapsulate the game board. This is a model class that r
 	}
 }
 
-
 - (int)howManyChipsNotHome
-/*" Returns the number of chips still in play outside of the player's home "*/
 {
 	int i;
 	int howManyChipsNotHome = 0;
@@ -370,11 +307,6 @@ Instances of this class encapsulate the game board. This is a model class that r
 	return howManyChipsNotHome;
 }
 
-
-
-//=========================================================== 
-//  gameBoard 
-//=========================================================== 
 - (NSMutableArray *)gameBoard { return [[gameBoard retain] autorelease]; }
 - (void)setGameBoard:(NSMutableArray *)aGameBoard
 {
@@ -384,9 +316,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  playerDice 
-//=========================================================== 
 - (AGFIBSDice *)playerDice { return [[playerDice retain] autorelease]; }
 - (void)setPlayerDice:(AGFIBSDice *)aPlayerDice
 {
@@ -396,9 +325,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  opponentDice 
-//=========================================================== 
 - (AGFIBSDice *)opponentDice { return [[opponentDice retain] autorelease]; }
 - (void)setOpponentDice:(AGFIBSDice *)anOpponentDice
 {
@@ -408,9 +334,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  playerDiceFromLastTurn 
-//=========================================================== 
 - (AGFIBSDice *)playerDiceFromLastTurn { return [[playerDiceFromLastTurn retain] autorelease]; }
 - (void)setPlayerDiceFromLastTurn:(AGFIBSDice *)aPlayerDiceFromLastTurn
 {
@@ -420,9 +343,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  opponentDiceFromLastTurn 
-//=========================================================== 
 - (AGFIBSDice *)opponentDiceFromLastTurn { return [[opponentDiceFromLastTurn retain] autorelease]; }
 - (void)setOpponentDiceFromLastTurn:(AGFIBSDice *)anOpponentDiceFromLastTurn
 {
@@ -432,9 +352,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  playerBar 
-//=========================================================== 
 - (AGFIBSTriangle *)playerBar { return [[playerBar retain] autorelease]; }
 - (void)setPlayerBar:(AGFIBSTriangle *)aPlayerBar
 {
@@ -444,9 +361,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  opponentBar 
-//=========================================================== 
 - (AGFIBSTriangle *)opponentBar { return [[opponentBar retain] autorelease]; }
 - (void)setOpponentBar:(AGFIBSTriangle *)anOpponentBar
 {
@@ -456,9 +370,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  playerHome 
-//=========================================================== 
 - (AGFIBSTriangle *)playerHome { return [[playerHome retain] autorelease]; }
 - (void)setPlayerHome:(AGFIBSTriangle *)aPlayerHome
 {
@@ -468,27 +379,18 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  opponentHome 
-//=========================================================== 
 - (int)opponentHome { return opponentHome; }
 - (void)setOpponentHome:(int)anOpponentHome
 {
     opponentHome = anOpponentHome;
 }
 
-//=========================================================== 
-//  theCube 
-//=========================================================== 
 - (int)theCube { return theCube; }
 - (void)setTheCube:(int)aTheCube
 {
     theCube = aTheCube;
 }
 
-//=========================================================== 
-//  playerName 
-//=========================================================== 
 - (NSString *)playerName { return [[playerName retain] autorelease]; }
 - (void)setPlayerName:(NSString *)aPlayerName
 {
@@ -498,9 +400,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  opponentName 
-//=========================================================== 
 - (NSString *)opponentName { return [[opponentName retain] autorelease]; }
 - (void)setOpponentName:(NSString *)anOpponentName
 {
@@ -510,18 +409,12 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  color 
-//=========================================================== 
 - (int)color { return color; }
 - (void)setColor:(int)aColor
 {
     color = aColor;
 }
 
-//=========================================================== 
-//  draggedFromTriangle 
-//=========================================================== 
 - (AGFIBSTriangle *)draggedFromTriangle { return [[draggedFromTriangle retain] autorelease]; }
 - (void)setDraggedFromTriangle:(AGFIBSTriangle *)aDraggedFromTriangle
 {
@@ -531,9 +424,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  draggedToTriangle 
-//=========================================================== 
 - (AGFIBSTriangle *)draggedToTriangle { return [[draggedToTriangle retain] autorelease]; }
 - (void)setDraggedToTriangle:(AGFIBSTriangle *)aDraggedToTriangle
 {
@@ -543,9 +433,6 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  fibsBoardStateDictionary 
-//=========================================================== 
 - (NSDictionary *)fibsBoardStateDictionary { return [[fibsBoardStateDictionary retain] autorelease]; }
 - (void)setFibsBoardStateDictionary:(NSDictionary *)aFibsBoardStateDictionary
 {
@@ -555,25 +442,18 @@ Instances of this class encapsulate the game board. This is a model class that r
     }
 }
 
-//=========================================================== 
-//  direction 
-//=========================================================== 
 - (int)direction { return direction; }
 - (void)setDirection:(int)aDirection
 {
     direction = aDirection;
 }
 
-
-
-
-
 - (void)dealloc
-/*" Clean Up "*/
 {
 	[gameBoard release];
 	[playerDice release];
 	[playerHome release];
 	[super dealloc];
 }
+
 @end

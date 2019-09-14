@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import "AGFIBSGameController.h"
 #import "AGFIBSGameModel.h"
 #import "AGFIBSGameView.h"
@@ -28,24 +27,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "AGFIBSSocketStream.h"
 #import "AGFIBSAppController.h"
 
-
 @implementation AGFIBSGameController
 /*" 
 An instance of this controller class acts as the bridge between the game model and the game view. The methods of this class handle non-view related user interaction such as doubling, opening and closing of the drawer, and the display of score.
 "*/
 
-
 - (id)init 
-/*" Designated Initializer "*/
 {
 	self = [super init];
 	
 	return self;
 }
 
-
 - (void)controlTextDidChange:(NSNotification *)aNotification
-/*" "*/
 {
 	[matchLengthStepper takeDoubleValueFrom:desieredMatchLengthTextField];
 }
@@ -54,7 +48,6 @@ An instance of this controller class acts as the bridge between the game model a
 {
 	[theAGFIBSGameView undoMove];
 }
-
 
 - (IBAction)redoMove:(id)sender
 {
@@ -77,33 +70,9 @@ An instance of this controller class acts as the bridge between the game model a
 	if (newValue > 21) {
        [desieredMatchLengthTextField setStringValue:@"unlimited"];
     }
-	
-		//NSLog(@"[userListWindow description] %@",[userListWindow description]);
-		//NSLog(@"userListWindow %@",[[userListWindow userListWindowData] description]);
-		//NSLog(@"Nullwwww ? %@",[[userListWindow getDataForPlayer:@"RepBot"] description]);
-	
-
 }
-
-
-- (void)commandSelector
-/*" "*/
-{
-
-
-}
-/*
-- (BOOL)control: (NSControl *)control textView:
-(NSTextView *)textView doCommandBySelector:
-(SEL)commandSelector {
-NSLog(@"entered control area = %@",
-NSStringFromSelector(commandSelector));
-
-}
-*/
 
 - (void)reset
-/*" "*/
 {
 	[self setGameWindowTitleConnected:NO];
 	[[[self theAGFIBSGameView] theAGFIBSGameModel] newGame];
@@ -123,7 +92,6 @@ NSStringFromSelector(commandSelector));
 - (void)newMatchRequest:(NSString *)aMessage
 /*" Tokkenizes a request to play a match from another user. Displays the InviteToGame Window. "*/
 {
-
 	NSArray *tokkenizer = [aMessage componentsSeparatedByString:@" "];
 	NSString *playerWhoInvitedName = [tokkenizer objectAtIndex:0];
 	int proposedMatchLength = [[tokkenizer objectAtIndex:5] intValue];
@@ -134,13 +102,6 @@ NSStringFromSelector(commandSelector));
 	[inviteToGameWindow setProposedMatchLength:proposedMatchLength];
 	
 	NSLog(@"userListWindow %@",[[userListWindow getDataForPlayer:@"RepBot"] objectForKey:@"rating"]);
-	
-	
-	
-	
-	
-	
-	
 	
 	[inviteToGameWindow setPlayerRating:[[userListWindow getDataForPlayer:playerWhoInvitedName] objectForKey:@"rating"]];
 	[inviteToGameWindow setPlayerExp:[[userListWindow getDataForPlayer:playerWhoInvitedName] objectForKey:@"experience"]];
@@ -180,13 +141,10 @@ NSStringFromSelector(commandSelector));
     aFrame = [NSWindow frameRectForContentRect:aFrame styleMask:[mainWindow styleMask]];
     
     [mainWindow setFrame:aFrame display:YES animate:YES];
-	
-	//[[[self window] contentView] setFlipped:YES];
 }
 - (void)resumeMatchRequest:(NSString *)aMessage
 /*" Tokkenizes a request to resume a match from another user. Displays the InviteToGame Window. "*/
 {
-
 	NSArray *tokkenizer = [aMessage componentsSeparatedByString:@" "];
 	NSString *playerWhoInvitedName = [tokkenizer objectAtIndex:0];
 	int proposedMatchLength = 0;
@@ -202,13 +160,8 @@ NSStringFromSelector(commandSelector));
     return [opponentName stringValue];
 }
 
-
-
 - (void)updateTheGameView
-/*" Tells the game view to update. Creates a new string for the score fields "*/
 {
-	
-	
 	[theAGFIBSGameView setNeedsDisplay:YES];
 	
 	NSString *scoreString;
@@ -216,16 +169,12 @@ NSStringFromSelector(commandSelector));
 	NSString *matchLengthString;
 	int pipCountDif = playerPipCount - opponentPipCount;
 	
-	
-	
-	
 	if ([[[[theAGFIBSGameView theAGFIBSGameModel] fibsBoardStateDictionary] objectForKey:@"player"] isEqualTo:@"You"]) {
 		[playerName setStringValue:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]];
 	}
 	else {
 		[playerName setStringValue:[[[theAGFIBSGameView theAGFIBSGameModel] fibsBoardStateDictionary] objectForKey:@"player"]];
 	}
-	
 	
 	[opponentName setStringValue:[[[theAGFIBSGameView theAGFIBSGameModel] fibsBoardStateDictionary] objectForKey:@"opponent"]];
 	
@@ -240,12 +189,9 @@ NSStringFromSelector(commandSelector));
 	
 	matchLengthString = [NSString stringWithFormat:@"Match: %@",[[[theAGFIBSGameView theAGFIBSGameModel] fibsBoardStateDictionary] objectForKey:@"matchLength"]];
 	[matchLengthField setStringValue:matchLengthString];
-	
-	
 }
 
 - (void)displaySystemMsg:(NSString *)aMessage withTime:(BOOL)timeLimit
-/*" Displays a system message "*/
 {
 	if (timeLimit) {
 		NSTimer *timer;
@@ -260,13 +206,11 @@ NSStringFromSelector(commandSelector));
 }
 
 - (void)clearSystemMsg
-/*" Displays a system message "*/
 {
 	[systemMsgText setStringValue:@""];
 }
 
 - (void)setPipCounts:(NSString *)aMessage
-/*" tokkenizes individual pip count info from a string and calls updateTheGameView to display new info. "*/
 {
 	NSArray *tokkenizer = [aMessage componentsSeparatedByString:@" "];
 	playerPipCount = [[tokkenizer objectAtIndex:2] intValue];
@@ -275,7 +219,6 @@ NSStringFromSelector(commandSelector));
 }
 
 - (IBAction)toggleUserListDrawer:(id)sender
-/*" Toggles the opening and closing of the user list drawer with a specified size. Reloads the contents of the list from its datasource. "*/
 {
 	[userListDrawer setContentSize:NSMakeSize(273,50)];	
 	[[userListWindow tableView] reloadData];
@@ -297,23 +240,16 @@ aFrame = [NSWindow frameRectForContentRect:aFrame styleMask:[[self window] style
 }
 
 - (IBAction)openUserListDrawer 
-/*" Opens the user list drawer. Reloads the contents of the list from its datasource. "*/
 {
 	[[userListWindow tableView] reloadData];
 	[userListDrawer open];
 }
 
-
-
 - (AGFIBSGameView *)theAGFIBSGameView {
     return [[theAGFIBSGameView retain] autorelease];
 }
 
-
-
-
 - (void)awakeFromNib
-/*"Responding to being loaded from a nib file. "*/
 {
 	[theAGFIBSGameView setTheAGFIBSGameModel:[[AGFIBSGameModel alloc] init]];
 	[[theAGFIBSGameView theAGFIBSGameModel] newGame];
@@ -322,14 +258,10 @@ aFrame = [NSWindow frameRectForContentRect:aFrame styleMask:[[self window] style
 	[self toggleUserListDrawer:nil];
 	[theAGFIBSGameView setNeedsDisplay:YES];
 	[theAGFIBSGameView setParentWindow:[self window]];
-	[desieredMatchLengthTextField setDelegate:self];	
-	
-
-
+	[desieredMatchLengthTextField setDelegate:self];
 }
 
 - (void)displayModelForUserChoiceWithMessageText:(NSString *)messageText button1Title:(NSString *)button1Title button2Title:(NSString *)button2Title iconImage:(NSImage *)iconImage didEndSelector:(SEL)didEndSelector
-/*" Displays a model diologue as a sheet for the user to make some choice and cause some action method. "*/
 {
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	[[alert window] setAlphaValue:1.0];
@@ -344,9 +276,7 @@ aFrame = [NSWindow frameRectForContentRect:aFrame styleMask:[[self window] style
 	[self performSelector: didEndSelector withObject: returnCode];
 }
 
-//- (void)askedToResignAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo 
 - (void)askedToResignAlertDidEndWithReturnCode:(NSNumber *)returnCode
-/*" Called when the user makes some choice about responding to a resign offer. "*/
 {
     if ([returnCode intValue] == NSAlertFirstButtonReturn) {
 		[[theAppController theAGFIBSSocket] sendMessage:@"accept"];
@@ -357,7 +287,6 @@ aFrame = [NSWindow frameRectForContentRect:aFrame styleMask:[[self window] style
 }
 
 - (void)askedToDoubleAlertDidEndWithReturnCode:(NSNumber *)returnCode
-/*" Called when the user makes some choice about responding to a double offer. "*/
 {
     if ([returnCode intValue] == NSAlertFirstButtonReturn) {
 		[[theAppController theAGFIBSSocket] sendMessage:@"accept"];
@@ -368,21 +297,16 @@ aFrame = [NSWindow frameRectForContentRect:aFrame styleMask:[[self window] style
 }
 
 - (AGFIBSAppController *)theAppController 
-/*" Returns the AGFIBSAppController "*/
 {
     return [[theAppController retain] autorelease];
 }
 
 - (void)setTheAppController:(AGFIBSAppController *)newTheAppController 
-/*" Sets the AGFIBSAppController "*/
 {
     if (theAppController != newTheAppController) {
         [theAppController release];
         theAppController = [newTheAppController retain];
     }
 }
-
-
-
 
 @end

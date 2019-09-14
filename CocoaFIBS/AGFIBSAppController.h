@@ -17,9 +17,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
-
 #import <Cocoa/Cocoa.h>
+
 @class AGFIBSUserListWindowController;
 @class AGFIBSPrefController;
 @class AGFIBSGameController;
@@ -31,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 @interface AGFIBSAppController : NSObject
 {
-    IBOutlet AGFIBSTerminalWindowController *terminalWindow;			/*"  "*/
+    IBOutlet AGFIBSTerminalWindowController *terminalWindow;
 	IBOutlet AGFIBSUserListWindowController *userListWindow;			/*" The controller class for the user list window "*/
 	IBOutlet AGFIBSPrefController *thePrefWindow;						/*" The controller class for the preference list window "*/
 	IBOutlet AGFIBSGameController *theGameController;					/*" The controller class for the game window "*/
@@ -41,11 +40,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	IBOutlet NSPopUpButton *sortKeyPopUpButton;							/*" PopUpButtonm for sorting the user list "*/
 	AGFIBSSocketStream *theAGFIBSSocket;								/*" The main communications socket "*/
 	BOOL loginDone;	
-	BOOL notifiedOfFriendsAndGagAndBlind;														/*" Is the login process compleate? "*/
+	BOOL notifiedOfFriendsAndGagAndBlind;								/*" Is the login process compleate? "*/
 	BOOL readyToPlayStatus;												/*" Has the user set their status as ready to play? "*/
 	IBOutlet NSWindow *loginWindow;										/*" The Login Window "*/
 	NSString *loginString;												/*" The login string containing the syntax login MyClient_v0.1 1008 name mypassword "*/
-	//NSMutableString *whileDraggingBuffer;
 	NSMutableArray *whileDraggingBufferGlobal;
 	BOOL whileDraggingBufferNeedsEmpty;
 	IBOutlet NSPopUpButton *gameChatTypeOfChatPopUpButton;
@@ -54,14 +52,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	IBOutlet NSMenuItem *prefMenuItem;
 	int FIBSPreLoginCheckForErrorCount;
 	int firstBoardOfNewGame;
-	
 }
 
-/*" Designated Initializer "*/
 - (id)init;
 - (void)handleFIBSResponseEvent:(int)cookie message:(NSString *)aMessage;
 
-/*" Accessor Methods  "*/
 - (AGFIBSLoginWindowController *)theLoginWindowController;
 - (AGFIBSChatController *)theChatController;
 - (AGFIBSUserListWindowController *)userListWindow;
@@ -80,8 +75,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)setAsFriend:(NSString *)name;
 - (void)removeAsFriend:(NSString *)name;
 
-
-/*" Application Controller Notification Methods "*/
 - (void)sendCommandToSocket:(NSNotification *)notification;
 - (void)connect;
 - (void)playSoundFile:(NSNotification *)notification;
@@ -90,13 +83,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)setAsGagAndBlind:(NSString *)name;
 - (void)removeAsGagAndBlind:(NSString *)name;
 
-/*" Application Controller Methods "*/
 - (void)clipWhoEnd;
 - (void)setDefaultPrefs;
 - (IBAction)showUserListWindow:(id)sender;
 - (IBAction)showPrefWindow:(id)sender;
 - (void)showGameWindow;
-//- (IBAction)changeSortKey:(id)sender;
 - (void)checkForNewVersion;
 - (IBAction)showTerminalWindow:(id)sender;
 - (IBAction)sendBugReport:(id)sender;
@@ -111,7 +102,5 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (BOOL)isFriend:(NSString *)name;
 - (BOOL)isGagAndBlind:(NSString *)name;
 - (void)reset;
-
-/*" Clean Up "*/
 - (void)dealloc;
 @end

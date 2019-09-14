@@ -17,13 +17,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import <Cocoa/Cocoa.h>
 
 @class AGFIBSAppController;
 
 @interface AGFIBSChatController : NSObject
-
 {
     IBOutlet NSTextView *gameChatMainTextView;					/*" TextView for in-game chat "*/
 	IBOutlet AGFIBSAppController *theAppController;				/*" Reference to the app controller "*/
@@ -31,22 +29,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     IBOutlet NSPopUpButton *gameChatTypeOfChatPopUpButton;		/*" PopUpButton to chosse the type of in-game chat "*/
     IBOutlet NSTextView *publicChatMainTextView;				/*" TextView for public chat "*/
     IBOutlet NSTextField *publicChatTextToSendTextField;		/*" TextField for public chat "*/
-    IBOutlet NSTextField *privateChatSendTellToWhomTextField;	/*"  "*/
+    IBOutlet NSTextField *privateChatSendTellToWhomTextField;
 	IBOutlet NSWindow *publicChatWindow;
 	IBOutlet NSBox *publicChatBox;
 }
 
-/*" Send Chat Methods "*/
 - (IBAction)gameChatSendButton:(id)sender;
 - (IBAction)publicChatSendButton:(id)sender;
-//- (IBAction)tellChatSendButton:(id)sender;
 - (IBAction)changeTypeOfChat:(id)sender;
 
 - (NSTextField *)privateChatSendTellToWhomTextField;
 - (NSTextField *)gameChatTextToSendTextField;
 
-/*" Recive Chat Methods "*/
-//- (void)consoleSays:(NSString *)aMessage;
 - (void)clipKibitzes:(NSString *)aMessage;
 - (void)clipYouKibitz:(NSString *)aMessage;
 - (void)clipSay:(NSString *)aMessage;
@@ -54,15 +48,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)clipShouts:(NSString *)aMessage;
 - (void)clipYouShout:(NSString *)aMessage;
 
-/*" Accessor methods  "*/
 - (AGFIBSAppController *)theAppController;
 - (void)setTheAppController:(AGFIBSAppController *)newTheAppController;
 - (NSPopUpButton *)gameChatTypeOfChatPopUpButton;
 - (void)setGameChatTypeOfChatPopUpButton:(NSPopUpButton *)newGameChatTypeOfChatPopUpButton;
-//- (NSPanel *)publicChatPanel;
 - (void)reset;
 - (NSWindow *)publicChatWindow;
-
-
 
 @end

@@ -42,17 +42,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	int						direction;
 }
 
-/*" Designated Initializer "*/
 - (id)init;
 
-/*" Game State "*/
 - (void)newGame;
 - (void)updateModelFromFIBS_Board;
 - (BOOL)isPlayerHome;
 - (int)clearTrianglesInHomeForBareoff;
 - (int)howManyChipsNotHome;
 
-/*" Accessor methods  "*/
 - (AGFIBSDice *)playerDice;
 - (void)setPlayerDice:(AGFIBSDice *)newPlayerDice;
 - (AGFIBSDice *)opponentDice;
@@ -88,12 +85,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)setGameBoard:(NSMutableArray *)aGameBoard;
 - (NSMutableArray *)gameBoard;
 -(int)pipNumToArrayPos:(int)pipPos;
-- (BOOL)isPlayerHome;
-- (int)clearTrianglesInHomeForBareoff;
 
-
-
-/*" Clean Up "*/
 - (void)dealloc;
 
 

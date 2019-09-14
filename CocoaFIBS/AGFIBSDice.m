@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import "AGFIBSDice.h"
 #import "AGFIBSTriangle.h"
 #import "AGFIBSGameModel.h"
@@ -30,7 +29,6 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 "*/
 
 - (id)initWithDie:(int)die0 otherDie:(int)die1
-/*" Designated initializer: Initializes the receiver with the specified dice."*/
 {
 	self = [super init];
 	//Not double roll
@@ -57,7 +55,6 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 }
 
 - (id)init 
-/*" Overridden Initializer "*/
 {
 	return [self initWithDie:0 otherDie:0];	
 }
@@ -134,7 +131,6 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 
 
 - (void)useDie:(int)distanceMovied withGameModel:(AGFIBSGameModel *)theAGFIBSGameModel
-/*" Marks the dice as used "*/
 {
 	int i;
 	distanceMovied = abs(distanceMovied);
@@ -172,7 +168,6 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 
 
 - (void)useThisNumberOfDice:(int)num 
-/*" Marks a number of unused dice as used "*/
 {
 	int i;
 	while (num > 0) {
@@ -188,7 +183,6 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 }
 
 - (int)numberOfUnusedRolls
-/*" Returns how many unused dice remain "*/
 {
 	int countRemainingRolls;
 	int j;
@@ -211,7 +205,6 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 }
 
 - (int)numberOfDiceUsed
-/*" Returns how many dice were used "*/
 {
 	int countOfDiceUsed = 0;
 	int i;
@@ -242,7 +235,6 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 }
 
 - (BOOL)isDoubleRoll
-/*" Is this roll a double? "*/
 {
 	if (playersDice[0] == playersDice[1]) {
 		return YES;
@@ -251,14 +243,10 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 }
 
 - (int)valueOfDie:(int)dieNumber 
-/*" Returns the value of a specific die number "*/
 {
     return playersDice[dieNumber];
 }
 
-//=========================================================== 
-//  playerMoves 
-//=========================================================== 
 - (NSMutableArray *)playerMoves { return [[playerMoves retain] autorelease]; }
 - (void)setPlayerMoves:(NSMutableArray *)newPlayerMoves
 {
@@ -269,10 +257,8 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 }
 
 - (void)dealloc
-/*" Clean Up "*/
 {
 	[super dealloc];
 }
-
 
 @end

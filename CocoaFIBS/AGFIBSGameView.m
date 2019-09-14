@@ -17,13 +17,11 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import "AGFIBSGameView.h"
 #import "AGFIBSGameModel.h"
 #import "AGFIBSTriangle.h"
 #include "AGFIBSDice.h"
 
-/*" Game View Constants "*/
 #define NUMBER_OF_TRIANGLES 24
 #define TRIANGLE_WIDTH 32
 #define TRIANGLE_HEIGHT 150
@@ -35,12 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define DIRECTION_PIP1_TO_PIP24 1	/*"  "*/
 
 @implementation AGFIBSGameView
-/*"
-An instance of this view class defines the basic drawing, event-handling, and printing architecture of the game model. 
-"*/
 
 - (id)initWithFrame:(NSRect)frameRect
-/*" Designated Initializer. Set the inicial X,Y chordinates for all objects in the game. "*/
 {
 	if ((self = [super initWithFrame:frameRect]) != nil) {
 		[self setUpImagesAndChords];
@@ -51,9 +45,7 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 	return self;
 }
 
-
 - (void)dealloc
-/*" Clean Up "*/
 {
 	[boardAttributes release];
 	[undoDataStack release];
@@ -62,14 +54,12 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 }
 
 - (void)setUpImagesAndChords
-/*"  "*/
 {
 		NSString *boardsFolderInBundle = [NSString stringWithFormat:@"%@/Contents/Resources/boards", [[NSBundle mainBundle] bundlePath]];
 		NSString *prefForBoardImages = [[NSUserDefaults standardUserDefaults] stringForKey:@"customBoard"];
 		if (prefForBoardImages == nil) {
 			prefForBoardImages = @"wood";
 		}
-		//NSString *pathToApplicationSupportBoardsFolder = @"/Library/Application Support/Mac OS X FIBS/boards";
 
 		NSFileManager *fileManager = [NSFileManager defaultManager];
 		
@@ -82,7 +72,6 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 		NSLog(@"%@", [NSString stringWithFormat:@"%@",pathToBoardImages]);
 		
 		boardAttributes = [[NSDictionary alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@boardAttributes.plist", pathToBoardImages]];
-		
 		
 		firstTimeDiceRoll = YES;
 		mouseIsDown = NO;
@@ -121,8 +110,6 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 		chipSizeRect = NSMakeRect(0,0,chipSize,chipSize);
 		chipRect = NSMakeRect(0,0,chipSize,chipSize);
 		
-		
-		
 		NSImage *tempImageLoader;
 		tempImageLoader = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@playerpiece.%@", pathToBoardImages,imageType]];
 		chipImages[1] = tempImageLoader;
@@ -135,7 +122,6 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 		
 		tempImageLoader = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@opponentpiecehome.%@", pathToBoardImages,imageType]];
 		chipImages[4] = tempImageLoader;
-		
 		
 		playerDiceImages[1] = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@playerdie1.%@", pathToBoardImages,imageType]];
 		playerDiceImages[2] = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@playerdie2.%@", pathToBoardImages,imageType]];
@@ -175,11 +161,8 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 }
 
 - (void)setDynamicChords
-/*"  Sets chords based on user preference"*/
 {
-		
-
-		int i;
+        int i;
 		startDirectionLeftRightPref = [[NSUserDefaults standardUserDefaults] integerForKey:@"startPosition"];
 		
 		if (startDirectionLeftRightPref == 2) {
@@ -214,7 +197,6 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 }
 
 - (void)drawRect:(NSRect)rect 
-/*" Draw the view "*/
 {
 	[self setDynamicChords];
 	[self drawBackground];
@@ -227,15 +209,12 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 	}
 }
 
-
 - (NSWindow *)parentWindow 
-/*" Returns the Parent Window of this view"*/
 {
     return [[parentWindow retain] autorelease];
 }
 
 - (void)setParentWindow:(NSWindow *)newParentWindow 
-/*" Sets the Parent Window of this view "*/
 {
     if (parentWindow != newParentWindow) {
         [parentWindow release];
@@ -244,14 +223,12 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 }
 
 -(void)sendNotificationToSendCommandToSocket:(NSString *)stringToSend 
-/*" Send a string to the server "*/
 {
 	NSNotificationCenter *nc;
 	nc = [NSNotificationCenter defaultCenter];
 	[nc postNotificationName:@"AGFIBSSendCommandToSocket" object:stringToSend];
 }
 -(void)chipFollowsMouseWhileDragging 
-/*" Redraws a chip on the view to match the current mouse position while dragging. "*/
 {
 	chipRect = NSMakeRect((mouseLocationWhileDragging.x-chipSize/2),(mouseLocationWhileDragging.y-chipSize/2),chipSize,chipSize);
 	[chipImages[draggedChipOwnedBy] compositeToPoint:chipRect.origin operation:NSCompositeSourceOver];
@@ -259,10 +236,7 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 
 
 -(void)mouseDown:(NSEvent *)theEvent 
-/*" Informs the receiver that the user has pressed the left mouse button specified by theEvent. Trys to pick up a chip. "*/
 {
-	//[self addCursorRect:[self frame] cursor:[NSCursor closedHandCursor]];
-	//[self highlightTriangles];
 	[self setUndoData:[NSKeyedArchiver archivedDataWithRootObject:theAGFIBSGameModel]];
 	[self pickupChip:[self convertPoint:[theEvent locationInWindow] fromView:nil]];
 	
@@ -271,13 +245,10 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 	}
 	[self setNeedsDisplay:YES];
 	firstDragMovement = YES;
-		
 }
 
 -(void)mouseDragged:(NSEvent *)theEvent 
-/*" Informs the receiver that the user has moved the mouse with the left button pressed specified by theEvent. "*/
 {
-	
 	if (firstDragMovement == YES) {
 		if ([self canMoveFromTriangle:draggedFromTriangle]) { 
 			mouseLocationWhileDown = [self convertPoint:[theEvent locationInWindow] fromView:nil];
@@ -300,13 +271,8 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 	[self setNeedsDisplay:YES];
 }
 
-
-
 -(void)mouseUp:(NSEvent *)theEvent 
-/*" Informs the receiver that the user has released the left mouse button specified by theEvent. Cheks to see if the mouse position matches the position of any board objects the user may have been trying to interact with. "*/
 {
-
-	//[self removeCursorRect:[self bounds] cursor:[NSCursor closedHandCursor]];
 	mouseIsDown = NO;
 	NSPoint aPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
 	//NSLog(@"%f",aPoint.y);
@@ -319,10 +285,7 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 	
 	NSRect myRectCube = NSMakeRect(chordsForCube.x,chordsForCube.y,[cubeImage size].height,[cubeImage size].width);
 		
-				
-				
 	//Clicks on dice
-	//NSLog(@"%d",[[theAGFIBSGameModel playerHome] numberOfChips]);
 	if (NSPointInRect(aPoint,  myRectPlayerDiceLeft) || NSPointInRect(aPoint,  myRectPlayerDiceRight)) {
 		if([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSAlternateKeyMask) {
 			[[theAGFIBSGameModel playerDice] swapDice];
@@ -344,8 +307,6 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 			[nc postNotificationName:@"AGFIBSDisplaySystemMsg" object:@""];
 			[self clearUndoStack];
 		}
-		
-		
 	}
 	//Clicks on roll
 	else if (NSPointInRect(aPoint,  myRectPlayerRollDice) ) {
@@ -374,9 +335,7 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 }
 
 - (void)autoMoveFromTriangle:(AGFIBSTriangle *)fromTriangle
-/*" "*/
 {
-		
 		int fromTriangleArrayPos = [self pipNumToArrayPos:[fromTriangle pipNumber]];
 		
 		int playerDie1 = [[theAGFIBSGameModel playerDice] valueOfDie:0];
@@ -396,8 +355,7 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 		int i;
 		
 		//Do this once, break if we want to
-		for (i = 0; i <= 0; i++) { 
-			
+		for (i = 0; i <= 0; i++) {
 			if([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSAlternateKeyMask) {
 				if (fromTriangleArrayPos+playerDie1 < NUMBER_OF_TRIANGLES) {
 					toTrianglePossability1 = [[theAGFIBSGameModel gameBoard] objectAtIndex:fromTriangleArrayPos+playerDie1];
@@ -451,13 +409,10 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 					break;
 				}
 			}
-			//[self placeChip:fromTriangle];
 		}
-		
 }
 
 - (void)autoDoubleMoveFromTriangle:(AGFIBSTriangle *)fromTriangle
-/*" "*/
 {
 		int fromTriangleArrayPos = [self pipNumToArrayPos:[fromTriangle pipNumber]];
 		
@@ -506,7 +461,6 @@ An instance of this view class defines the basic drawing, event-handling, and pr
 }
 
 - (void)doubleAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo 
-/*"  Called if the player confirms that they want to double. "*/
 {
     if (returnCode == NSAlertFirstButtonReturn) {
 		[self sendNotificationToSendCommandToSocket:@"double"];
@@ -545,9 +499,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	[self setNeedsDisplay:YES];
 }
 
-
 -(AGFIBSTriangle *)determineTriangleFromPoint:(NSPoint)aPoint 
-/*" Given a point what triangle or other game object is at that point. "*/
 {
 	int i;
 	NSRect myRectTop;
@@ -563,7 +515,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		myRectOpponentBar = NSMakeRect(xChordsForBar,(yChordsForOpponentBar-TRIANGLE_HEIGHT+chipSize),TRIANGLE_WIDTH,TRIANGLE_HEIGHT);
 		myRectPlayerHome = NSMakeRect(xChordsForHome,bottomRowY,TRIANGLE_WIDTH,TRIANGLE_HEIGHT);
 
-		
 		if (i <= 11 && NSPointInRect(aPoint,  myRectTop) || NSPointInRect(aPoint, myRectBottom))
 			return [[theAGFIBSGameModel gameBoard] objectAtIndex:i];
 		else if (NSPointInRect(aPoint,  myRectPlayerBar))
@@ -577,7 +528,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 }
 
 - (void)drawBackground 
-/*" Draw the background eliments onto the view. "*/
 {
 	
 	NSImage *topPipNumbers;
@@ -612,8 +562,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		}
 	}
 
-
-	
 	NSRect backgroundImageRect = NSMakeRect(0,0,[backgroundImage size].width,[backgroundImage size].height);
 	[backgroundImage drawInRect:backgroundImageRect fromRect:backgroundImageRect operation:NSCompositeSourceOver fraction:1.0];
 	
@@ -624,10 +572,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	NSRect bottomPipNumbersImageRect1 = NSMakeRect(xChordsForBottomPipNumbers,yChordsForBottomPipNumbers,[bottomPipNumbers size].width,[bottomPipNumbers size].height);
 	NSRect bottomPipNumbersImageRect2 = NSMakeRect(0,0,[bottomPipNumbers size].width,[bottomPipNumbers size].height);
 	[bottomPipNumbers drawInRect:bottomPipNumbersImageRect1 fromRect:bottomPipNumbersImageRect2 operation:NSCompositeSourceOver fraction:1.0];
-	
-
-
-
 }
 
 - (int)windowWidthBoardAttribute
@@ -639,7 +583,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 {
 	return [[boardAttributes objectForKey:@"windowHeight"]intValue];
 }
-
 
 - (void)setHighlightStatusOfTriangles
 {
@@ -657,7 +600,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 }
 
 - (void)highlightTriangles
-/*" "*/
 {
 	int i;
 	NSRect triangleHighlightRect;
@@ -685,7 +627,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 }
 
 - (void)clearAllHighlightedTriangles
-/*" "*/
 {
 	unsigned int i;
 	AGFIBSTriangle *aTriangle;
@@ -697,7 +638,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 }
 
 - (void)drawModel 
-/*" Draw the eliments from the Game Model onto the view. "*/
 {
 	
 	int i,j;
@@ -710,7 +650,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		ownedBy = [[[theAGFIBSGameModel gameBoard] objectAtIndex:i] ownedBy];
 		numberOfChipsOnTriangle = [[[theAGFIBSGameModel gameBoard] objectAtIndex:i] numberOfChips];
 		y = 0;
-		
 		
 		for (j = 0; j < numberOfChipsOnTriangle; j++) {
 			if (j < 5) {										//5 or less chips on tri
@@ -763,8 +702,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		chipRect = NSMakeRect(myPoint.x,y,chipSize,chipSize);
 		[chipImages[ownedBy+2] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositeSourceOver fraction:1.0];
 	}
-
-	
 	//Opponent Home
 	numOfChipsInHome = [theAGFIBSGameModel opponentHome];
 	ownedBy = 2;
@@ -774,8 +711,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		chipRect = NSMakeRect(myPoint.x,y,chipSize,chipSize);
 		[chipImages[ownedBy+2] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositeSourceOver fraction:1.0];
 	}
-		
-	
 	//Cube
 	NSString *cubeValue = [[theAGFIBSGameModel fibsBoardStateDictionary] objectForKey:@"doubleCube"];
 	NSImage *lcubeImage = cubeImages[[cubeValue intValue]];
@@ -795,10 +730,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 					operation:NSCompositeSourceOver 
 					fraction:1.0];
 	//Dice
-	
-	
-	
-	
 	int playerDie1 = [[theAGFIBSGameModel playerDice] valueOfDie:0];
 	int playerDie2 = [[theAGFIBSGameModel playerDice] valueOfDie:1];
 	int opponentDie1 = [[theAGFIBSGameModel opponentDice] valueOfDie:0];
@@ -809,13 +740,11 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	int opponentDieFromLastTurn1 = [[theAGFIBSGameModel opponentDiceFromLastTurn] valueOfDie:0];
 	int opponentDieFromLastTurn2 = [[theAGFIBSGameModel opponentDiceFromLastTurn] valueOfDie:1];
 	
-	
 	int color = [[[theAGFIBSGameModel fibsBoardStateDictionary] objectForKey:@"color"] intValue];
 	int turn = [[[theAGFIBSGameModel fibsBoardStateDictionary] objectForKey:@"turn"] intValue];
 	
 	if (playerDie1 != 0)
 	{
-	
 		if (firstTimeDiceRoll) {
 			firstTimeDiceRoll = NO;	
 		}
@@ -829,7 +758,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 							  fromRect:NSMakeRect(0,0,[playerDiceImages[playerDie2] size].height,[playerDiceImages[playerDie2] size].width) 
 							 operation:NSCompositeSourceOver 
 							  fraction:1.0];
-
 	}
 	else if (opponentDie1 != 0)
 	{
@@ -846,8 +774,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 							  
 
 	}
-
-	
 	else if (playerDie1 == 0 && opponentDie1 == 0 && color == turn) {
 
 		[rollOrDoubleImage				drawInRect:NSMakeRect((chordsForPlayerDiceLeft.x + [playerDiceImages[1] size].width),chordsForPlayerDiceLeft.y,[rollOrDoubleImage size].height,[rollOrDoubleImage size].width) 
@@ -883,7 +809,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 }
 
 -(BOOL)mouseDownCanMoveWindow
-/*" Prevents in-view clicking from moving textured metal windows "*/
 {
 	return NO;
 }
@@ -892,27 +817,16 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
     return isDragging;
 }
 
-
-
-
 -(void)pickupChip:(NSPoint)mouseLocation 
-/*" Remove a chip from a triangle in the model. "*/
 {
-	
-
 	AGFIBSTriangle *selectedTriangle = [self determineTriangleFromPoint:mouseLocation];
 	draggedFromTriangle = selectedTriangle;
 	[theAGFIBSGameModel setDraggedFromTriangle:selectedTriangle];
 	draggedChipOwnedBy = [draggedFromTriangle ownedBy];
-	
-
-	
 }
 
 -(void)placeChip:(AGFIBSTriangle *)selectedTriangle 
-/*" Add a chip to a triangle in the model. Check to see if its a legal move. Use the apropriate number of dice. Handle bumps. "*/
 {
-
 	if (draggedFromTriangle != selectedTriangle) {
 		[undoDataStack addObject:[self undoData]];
 	}
@@ -971,14 +885,8 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 				int inbetweenTriangleArrayPos = abs([self pipNumToArrayPos:inbetweenTrianglePipNum]);
 				int otherPossablilityForInbetweenTriabgleArrayPos = abs([self pipNumToArrayPos:otherPossablilityForInbetweenTriabglePipNum]);
 				
-				
-				
 				int ownedBY = [[[theAGFIBSGameModel gameBoard] objectAtIndex:inbetweenTriangleArrayPos] ownedBy];
 				int otherOwnedBY = [[[theAGFIBSGameModel gameBoard] objectAtIndex:otherPossablilityForInbetweenTriabgleArrayPos] ownedBy];
-				
-	
-	//NSLog(@"Object at 11 ownedby %d ", [[[theAGFIBSGameModel gameBoard] objectAtIndex:11] ownedBy]);
-	
 				
 				if (ownedBY == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:inbetweenTriangleArrayPos] numberOfChips] == 1){
 					moveString = [NSString stringWithFormat:@" %d - %d %d - %d ", [draggedFromTriangle pipNumber], inbetweenTrianglePipNum, inbetweenTrianglePipNum, [selectedTriangle pipNumber]];
@@ -995,20 +903,11 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 					moveString = [NSString stringWithFormat:@" %d - %d %d - %d ", [draggedFromTriangle pipNumber], otherPossablilityForInbetweenTriabglePipNum, otherPossablilityForInbetweenTriabglePipNum, [selectedTriangle pipNumber]];
 				}
 				
-				//Send it back from whence it came
-				else {
-					
-					//[draggedFromTriangle addChip]; 
-					//[draggedFromTriangle setOwnedBy:draggedChipOwnedBy];
-					//return;
-				}
 				//Put inbetween chip on bar
 
 				if (ownedBY == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:inbetweenTriangleArrayPos] numberOfChips] == 1 && otherOwnedBY == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:otherPossablilityForInbetweenTriabgleArrayPos] numberOfChips] == 1 && ![[theAGFIBSGameModel playerDice] isDoubleRoll]){
 					[[[theAGFIBSGameModel gameBoard] objectAtIndex:inbetweenTriangleArrayPos] removeChip];
 					[[theAGFIBSGameModel opponentBar] addChip];
-					//[[[theAGFIBSGameModel gameBoard] objectAtIndex:otherPossablilityForInbetweenTriabgleArrayPos] removeChip];
-				//	[[theAGFIBSGameModel opponentBar] addChip];
 				}
 				else if (ownedBY == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:inbetweenTriangleArrayPos] numberOfChips] > 1 && otherOwnedBY == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:otherPossablilityForInbetweenTriabgleArrayPos] numberOfChips] == 1 && ![[theAGFIBSGameModel playerDice] isDoubleRoll]){
 					[[[theAGFIBSGameModel gameBoard] objectAtIndex:otherPossablilityForInbetweenTriabgleArrayPos] removeChip];
@@ -1018,9 +917,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 					[[[theAGFIBSGameModel gameBoard] objectAtIndex:inbetweenTriangleArrayPos] removeChip];
 					[[theAGFIBSGameModel opponentBar] addChip];
 				}
-				
-				
-									
 				else if ([[theAGFIBSGameModel playerDice] isDoubleRoll]	&& otherOwnedBY == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:otherPossablilityForInbetweenTriabgleArrayPos] numberOfChips] == 1){
 					[[[theAGFIBSGameModel gameBoard] objectAtIndex:otherPossablilityForInbetweenTriabgleArrayPos] removeChip];
 					[[theAGFIBSGameModel opponentBar] addChip];
@@ -1115,18 +1011,14 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 					[[theAGFIBSGameModel opponentBar] addChip];
 				}
 		}
-		 
-		
-			
+        
 		NSMutableString *moveStringReplaceBar = [[NSMutableString alloc] init];
 		[moveStringReplaceBar setString:moveString];
 		[moveStringReplaceBar replaceOccurrencesOfString:@" 0 " withString:@" bar " options:NSLiteralSearch range:NSMakeRange(0, [moveStringReplaceBar length])];
 		[moveStringReplaceBar replaceOccurrencesOfString:@" 25 " withString:@" home " options:NSLiteralSearch range:NSMakeRange(0, [moveStringReplaceBar length])];
-		//NSLog(@"Move String: %2", moveStringReplaceBar);
 		[[[theAGFIBSGameModel playerDice] playerMoves] addObject:moveStringReplaceBar];
 		
 		if ([selectedTriangle ownedBy] == OWNEDBY_OPPONENT && [selectedTriangle numberOfChips] == 1) {
-			//NSLog(@"to bar");
 			[selectedTriangle removeChip];
 			[[theAGFIBSGameModel opponentBar] addChip];
 		}
@@ -1143,37 +1035,24 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 			}
 		}
 		else {
-			if ([draggedFromTriangle pipNumber] == 0 && color == 1)  {
-				//distanceToUseUpDice = 25 - distanceToUseUpDice;
-		}
 			[[theAGFIBSGameModel playerDice] useDie:distanceBetweenTriangles withGameModel:theAGFIBSGameModel];
-			
 		}
 		
 		[nc postNotificationName:@"AGFIBSSPlaySoundFile" object:@"checkerMove0"];
 		
 		[self displayMoveString];
-		
-		
 	}
 	else {
 		 //Send it back from whence it came
-		 //NSLog(@"sent back");
-		[draggedFromTriangle addChip]; 
+		[draggedFromTriangle addChip];
 		[draggedFromTriangle setOwnedBy:draggedChipOwnedBy];
 	}
 	
-
-	
-	
-	
 	[self setNeedsDisplay:YES];
-	
 }
 
 -(void)displayMoveString
 {
-	
 	NSEnumerator *e = [[[theAGFIBSGameModel playerDice] playerMoves] objectEnumerator];
 	id obj;
 	NSString *moveStringForPrint;
@@ -1252,11 +1131,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	redoDataStack = [[NSMutableArray alloc] initWithCapacity:1];
 }
 
-
-	
-	
 -(BOOL)canMoveFromTriangle:(AGFIBSTriangle *)fromTriangle 
-/*" Is it legal to remove a chip from this triangle? "*/
 {
 	if ([fromTriangle pipNumber] == HOME_PIP_NUMBER) {
 		NSLog(@"Failed: can take chips out of home");
@@ -1277,12 +1152,9 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	else {
 		return YES;
 	}
-
-	
 }
 
 -(BOOL)canMoveToTriangle:(AGFIBSTriangle *)toTriangle 
-/*" Is it legal to move a chip to this triangle? "*/
 {
 	[theAGFIBSGameModel setDraggedToTriangle:toTriangle];
 	int draggedFromTrianglePipNumber = [draggedFromTriangle pipNumber];
@@ -1323,25 +1195,17 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		NSLog(@"Failed: not home yet");
 		canMove =  NO;
 	}
-	/* else if ([draggedFromTriangle pipNumber] > [toTriangle pipNumber]) {
-		NSLog(@"Failed: draggedFromTriangle pipNumber] > [toTriangle pipNumber]");
-		canMove =  NO;
-	} 
-	*/
 	else if ([toTriangle ownedBy] == OWNEDBY_OPPONENT && [toTriangle numberOfChips] > 1) {
 		NSLog(@"Failed: [toTriangle ownedBy] == OWNEDBY_OPPONENT && [toTriangle numberOfChips] > 1");
 		canMove =  NO;
 	}
-	//else if ([draggedFromTriangle pipNumber] == 0 && color == 1 && ![[theAGFIBSGameModel playerDice] legalMoveType:(25 - distanceBetweenTriangles) withGameModel:theAGFIBSGameModel]) {
 	else if ([draggedFromTriangle pipNumber] == 0 && color == 1 && ![[theAGFIBSGameModel playerDice] legalMoveType:distanceBetweenTriangles withGameModel:theAGFIBSGameModel]) {
-			//NSLog(@"Failed: llegalMoveType distanceBetweenTriangles %d legalMoveType %d ",distanceBetweenTriangles, [[theAGFIBSGameModel playerDice] legalMoveType:distanceBetweenTriangles barringOff:[theAGFIBSGameModel isPlayerHome]]);
 			canMove =  NO;
 	}
 	else if ([draggedFromTriangle pipNumber] == 0 && color == -1 && ![[theAGFIBSGameModel playerDice] legalMoveType:distanceBetweenTriangles withGameModel:theAGFIBSGameModel]) {
 		canMove =  NO;
 	}
 	else if ([draggedFromTriangle pipNumber] > 0 && ![[theAGFIBSGameModel playerDice] legalMoveType:distanceBetweenTriangles withGameModel:theAGFIBSGameModel]) {
-			//NSLog(@"Failed: llegalMoveType distanceBetweenTriangles %d legalMoveType %d ",distanceBetweenTriangles, [[theAGFIBSGameModel playerDice] legalMoveType:distanceBetweenTriangles barringOff:[theAGFIBSGameModel isPlayerHome]]);
 			canMove =  NO;
 	}
 	else if (![[theAGFIBSGameModel playerDice] isDoubleRoll] && moveType == 2) {
@@ -1360,16 +1224,9 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 			inbetweenJump1PipNum =  pip - roll1;
 			inbetweenJump2PipNum =  pip - roll2;
 		}
-		if ([draggedFromTriangle pipNumber] == BAR_PIP_NUMBER) {
-			//inbetweenJump1PipNum++;
-			//inbetweenJump2PipNum++;
-		}
 				
 		inbetweenJump1PipNum = abs(inbetweenJump1PipNum);
 		inbetweenJump2PipNum = abs(inbetweenJump2PipNum);
-		
-		
-		
 		
 		AGFIBSTriangle *inbetweenStepTriangle1 = [[theAGFIBSGameModel gameBoard] objectAtIndex:[self pipNumToArrayPos:inbetweenJump1PipNum]];
 		AGFIBSTriangle *inbetweenStepTriangle2 = [[theAGFIBSGameModel gameBoard] objectAtIndex:[self pipNumToArrayPos:inbetweenJump2PipNum]];
@@ -1396,13 +1253,9 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		int i;
 		if ([theAGFIBSGameModel color] == -1) {
 			inbetweenJumpPipNum =  pip +  roll;
-			//if ([draggedFromTriangle pipNumber] == BAR_PIP_NUMBER)
-				//inbetweenJumpPipNum++;
 		}
 		else if ([theAGFIBSGameModel color] == 1) {
 			inbetweenJumpPipNum =  pip -  roll;
-			//if ([draggedFromTriangle pipNumber] == BAR_PIP_NUMBER)
-				//inbetweenJumpPipNum++;
 		}
 		inbetweenJumpPipNum = abs(inbetweenJumpPipNum);
 		for (i = 0; i < moveType-1; i++) {
@@ -1426,10 +1279,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 				distanceToUseUpDice = distanceBetweenTriangles;
 				canMove =  YES;
 			}
-			/* else if ([inbetweenStepTriangle ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle numberOfChips] == 1) {
-				[[theAGFIBSGameModel opponentBar] addChip];
-				[inbetweenStepTriangle removeChip];
-			}*/
 			pip = [inbetweenStepTriangle pipNumber];
 			if ([theAGFIBSGameModel color] == -1) {
 				inbetweenJumpPipNum =  pip +  roll;
@@ -1438,8 +1287,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 				inbetweenJumpPipNum =  pip -  roll;
 			}
 		}
-		//distanceToUseUpDice = distanceBetweenTriangles;
-		//canMove =  YES;
 	}
 	else if ([toTriangle pipNumber] == BAR_PIP_NUMBER) {
 		canMove =  NO;
@@ -1456,31 +1303,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	return canMove;
 }
 
--(void)checkForInbetweenMoveBumps 
-{
-/*" 
-
-	if ([toTriangle ownedBy] == OWNEDBY_OPPONENT && [toTriangle numberOfChips] == 1) {
-		distanceToUseUpDice = distanceBetweenTriangles;
-		[[theAGFIBSGameModel opponentBar] addChip];
-		[toTriangle removeChip];
-		canMove =  YES;
-	}
-	else if ([inbetweenStepTriangle1 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle1 numberOfChips] == 1 && [inbetweenStepTriangle2 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle2 numberOfChips] == 1) {
-			[[theAGFIBSGameModel opponentBar] addChip];
-			//[[theAGFIBSGameModel opponentBar] addChip];
-			[inbetweenStepTriangle1 removeChip];
-			//[inbetweenStepTriangle2 removeChip];
-			distanceToUseUpDice = distanceBetweenTriangles;
-			[self setNeedsDisplay:YES];
-			canMove =  YES;
-		}
-		"*/
-}
-
-//=========================================================== 
-//  theAGFIBSGameModel 
-//=========================================================== 
 - (AGFIBSGameModel *)theAGFIBSGameModel { return [[theAGFIBSGameModel retain] autorelease]; }
 - (void)setTheAGFIBSGameModel:(AGFIBSGameModel *)newTheAGFIBSGameModel
 {
@@ -1490,9 +1312,6 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
     }
 }
 
-//=========================================================== 
-//  undoData 
-//=========================================================== 
 - (NSData *)undoData { return [[undoData retain] autorelease]; }
 - (void)setUndoData:(NSData *)newUndoData
 {
@@ -1502,18 +1321,14 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
     }
 }
 
-
 -(int)pipNumToArrayPos:(int)pipPos 
-/*" Get pip number of triangle from its position in the array. "*/
 {
 	if ([theAGFIBSGameModel direction] == DIRECTION_PIP1_TO_PIP24) {
 		return (pipPos - 1);
 	}
-	else /* if ([theAGFIBSGameModel direction] == DIRECTION_PIP24_TO_PIP1) */ {
+	else {
 		return (abs(NUMBER_OF_TRIANGLES - pipPos));
 	}
 }
-
-
 
 @end

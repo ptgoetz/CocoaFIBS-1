@@ -25,7 +25,6 @@ Instances of this class encapsulate a single backgammon triangle. A triangle kno
 "*/
 
 - (id)initWithOwnedBy:(int)owner numberOfChips:(int)numOfChips pipNumber:(int)pNum 
-/*" Designated initializer: Initializes the receiver with the specified information about a triangle."*/
 {
 	self = [super init];
 	ownedBy = owner;
@@ -36,7 +35,6 @@ Instances of this class encapsulate a single backgammon triangle. A triangle kno
 }
 
 - (id)init 
-/*" Overridden Initializer "*/
 {
 	return [self initWithOwnedBy:0 numberOfChips:0 pipNumber:0];	
 }
@@ -62,13 +60,11 @@ Instances of this class encapsulate a single backgammon triangle. A triangle kno
 }
 
 - (NSString *)description 
-/*" Overridden description "*/
 {
 	return [NSString stringWithFormat:@"ownedBy: %d numberOfChips: %d pipNumber: %d arrayPos: %d highlighted: %d ", ownedBy,numberOfChips,pipNumber,arrayPos,highlighted];	
 }
 
 - (void)removeChip 
-/*" Decrements the number of chips held on this triangle instance "*/
 {
 	numberOfChips--;
 	if (numberOfChips < 1) {
@@ -77,60 +73,43 @@ Instances of this class encapsulate a single backgammon triangle. A triangle kno
 }
 
 - (void)addChip 
-/*" Increments the number of chips held on this triangle instance "*/
 {
 	numberOfChips++;
 }
 
-//=========================================================== 
-//  ownedBy 
-//=========================================================== 
 - (int)ownedBy { return ownedBy; }
 - (void)setOwnedBy:(int)newOwnedBy
 {
     ownedBy = newOwnedBy;
 }
 
-//=========================================================== 
-//  numberOfChips 
-//===========================================================
 - (int)numberOfChips { return numberOfChips; }
 - (void)setNumberOfChips:(int)newNumberOfChips
 {
     numberOfChips = newNumberOfChips;
 }
 
-//=========================================================== 
-//  pipNumber 
-//=========================================================== 
 - (int)pipNumber { return pipNumber; }
 - (void)setPipNumber:(int)newPipNumber
 {
     pipNumber = newPipNumber;
 }
 
-//=========================================================== 
-//  arrayPos 
-//=========================================================== 
 - (int)arrayPos { return arrayPos; }
 - (void)setArrayPos:(int)newArrayPos
 {
     arrayPos = newArrayPos;
 }
 
-//=========================================================== 
-//  highlighted 
-//=========================================================== 
 - (BOOL)highlighted { return highlighted; }
 - (void)setHighlighted:(BOOL)flag
 {
     highlighted = flag;
 }
 
-
 - (void)dealloc
-/*" Clean Up "*/
 {
 	[super dealloc];
 }
+
 @end

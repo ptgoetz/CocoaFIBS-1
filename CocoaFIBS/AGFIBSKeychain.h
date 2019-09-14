@@ -19,13 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface AGFIBSKeychain : NSObject {
 	NSMutableString *keychainItemName;
 	NSMutableString *keychainItemKind;
 }
 
-/* OF: why have all these methods been declared as class methods raher than as instance methods? */
 + (NSString *)getPassword:(SecKeychainItemRef)item;
 + (BOOL)doesAccountExistInKeychain;
 + (BOOL)addAccountInfoToKeychain:(NSString *)password;

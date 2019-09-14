@@ -22,9 +22,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 @implementation AGFIBSTerminalWindowController
+
 - (id)init
 {
-   //localPool = [[NSAutoreleasePool alloc] init];
 	self = [super initWithWindowNibName:@"TerminalWindow"];
 	isDragging = NO;
 	commandHistory = [[NSMutableArray alloc] initWithCapacity:1];
@@ -33,7 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 - (void)windowDidLoad
-/*" Nib file is loaded "*/
 {
 	[[self window] setFrameAutosaveName:@"TerminalWindow"];	
 }
@@ -52,23 +51,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (IBAction)removeFromSavedCommands:(id)sender
 {
-	//if (![[terminalInputTextField stringValue] isEqualToString:@""]) {
-		//[savedTerminalCommandsPopUpButton removeItemWithTitle:[savedTerminalCommandsPopUpButton titleOfSelectedItem]];
-		
 		NSMutableArray *terminalWindowSavedCommands = [NSMutableArray arrayWithCapacity:1];
 		[terminalWindowSavedCommands addObjectsFromArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"terminalWindowSavedCommands"]];
 		[terminalWindowSavedCommands removeObject:[savedTerminalCommandsPopUpButton titleOfSelectedItem]];
 		[[NSUserDefaults standardUserDefaults] setObject:terminalWindowSavedCommands forKey:@"terminalWindowSavedCommands"];
-	//}
 }
 
 - (void)displayInTerminal:(NSMutableString *)aMessage
-/*" Displays all console commands returned by the server "*/
 {
-
-//localPool = [[NSAutoreleasePool alloc] init];
-	//[[terminalDisplayTextView textStorage] setFont:[NSFont fontWithName:@"Monaco" size:10]];
-	//[[terminalDisplayTextView textStorage] setForegroundColor:[NSColor redColor]];
 	NSMutableString *consoleString = [NSMutableString string];
 	[consoleString appendFormat:@"%@ \n", aMessage];
 
@@ -77,13 +67,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	if (NSMaxY([terminalDisplayTextView bounds]) == NSMaxY([terminalDisplayTextView visibleRect])) {
 		[terminalDisplayTextView scrollRangeToVisible:NSMakeRange([[terminalDisplayTextView string] length], [[terminalDisplayTextView string] length])];
 	}
-	
-	
-	
-	//[[terminalDisplayScrollView contentView] scrollToPoint: NSMakePoint(0,([[terminalDisplayScrollView contentView] documentRect].size.height)-10)];
-   // [terminalDisplayScrollView reflectScrolledClipView: [terminalDisplayScrollView contentView]];
-	//[terminalDisplayTextView setNeedsDisplay:YES];
-
 }
 
 - (IBAction)sendCommandToTerminal:(id)sender
@@ -93,7 +76,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	NSMutableString *stringToSend = nil;
 	if ([sender tag] == 0) {
 		[[stringToSend initWithCapacity:[[sender stringValue] length]] setString:[sender stringValue]] ;
-//		stringToSend = [[NSMutableString initWithCapacity:[[sender stringValue] length] setString:[sender stringValue]] ;
 		[sender setStringValue:@""];
 	}
 	else if ([sender tag] == 1) {
@@ -130,7 +112,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	return NO;
 }
 
-
 - (BOOL)isDragging {
     return isDragging;
 }
@@ -140,6 +121,5 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         isDragging = newIsDragging;
     }
 }
-
 
 @end

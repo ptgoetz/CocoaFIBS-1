@@ -17,21 +17,13 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import  "AGFIBSLoginWindowController.h"
 #import  "AGFIBSKeychain.h"
 #include "AGFIBSAppController.h"
 
-
-
-
 @implementation AGFIBSLoginWindowController
-/*" Instances of this class act as the controller for the login window. "*/
-
-
 
 - (BOOL)areFieldsEmpty
-/*" Called when the server reports that login is sucessful. "*/
 {
 	NSString *emptyFieldMsg;
 	BOOL fieldsWereEmprty = NO;
@@ -70,14 +62,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	[connectionProgressIndicator stopAnimation:nil];
 	[cancelButton setHidden:YES];
 	[connectButton setHidden:NO];
-
 }
 
-
 - (IBAction)connect:(id)sender
-/*" Formats the login string, disables the connect button, sets the login string, animates the progress indicator and tells the app controller to connect. "*/
 {
-	
 	if (![self areFieldsEmpty]) {
 		[cancelButton setHidden:NO];
 		[connectButton setHidden:YES];
@@ -98,11 +86,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		[connectButton setEnabled:NO];
 		[newAccountButton setEnabled:NO];
 		[[theAppController connectMenuItem] setEnabled:NO];
-		
-		
-		
-		
-		
+	
 		[[theAppController disconnectMenuItem] setEnabled:YES];
 		[theAppController setLoginString:loginString];	
 		[theAppController connect];
@@ -116,7 +100,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 			repeats:NO];
 			
 		}
-	
 }
 
 - (IBAction)loginCanceled:(id)sender 
@@ -125,7 +108,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 - (void)loginDone
-/*" Called when the server reports that login is sucessful. "*/
 {
 	[loginTimeoutTimer invalidate];
 	[connectionProgressIndicator stopAnimation:nil];
@@ -138,9 +120,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 - (void)loginFailed
-/*" Called when the server reports that login has failed. NOT WORKING "*/
 {
-	
 	NSLog(@"loginFailed at login window!!!!!!!!!");
 	 if ([[NSUserDefaults standardUserDefaults] integerForKey:@"soundOnOff"] == 1) {
 		NSBeep();
@@ -153,8 +133,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	[loginTimeoutTimer invalidate];
 	[errorMsgTextField setStringValue:@"Login Failed"];
 	[NSApp requestUserAttention: NSCriticalRequest];
-	
-
 }
 
 - (void)displayFailedLoginAlertySheet
@@ -179,7 +157,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 			[AGFIBSKeychain deletePasswordInKeychain];
 		}
 	}
-
 }
 
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
@@ -189,7 +166,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)aNotification
-/*" "*/
 {
 	[[NSUserDefaults standardUserDefaults] setObject:[userNameTextField stringValue] forKey:@"username"];
 	if ([addToKeychainButton state] == NSOnState) {
@@ -199,25 +175,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (IBAction)newUserRegistration:(id)sender
 {
-    //Open terminal window
-	
 	NSString *command = @"telnet fibs.com 4321";
 	NSString *script= [NSString stringWithFormat:@"tell application \"Terminal\"\nactivate\ndo script \"%@\"\nend tell\n",command];
     NSAppleScript *as = [[NSAppleScript alloc] initWithSource:script];
     [as executeAndReturnError:NULL];
     [as release];
-	
-	/*
-	//Open web browser
-	NSString *stringURL = @"http://www.fibs.com/~cthulhu/register.html";
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:stringURL]];
-	*/
 }
 
 - (void)setUsernameAndPasswordFields
-/*" "*/
 {
-	
 	[userNameTextField setStringValue:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]];
 
 	if ([AGFIBSKeychain doesAccountExistInKeychain] && [[NSUserDefaults standardUserDefaults] boolForKey:@"addToKeychain"] == YES) {
@@ -233,8 +199,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	else if ([[NSUserDefaults standardUserDefaults] boolForKey:@"addToKeychain"] == NO) {
 		[addToKeychainButton setState:NSOffState];
 	}
-	
-	
 }
 
 - (NSWindow *)loginWindow {
@@ -242,7 +206,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 - (void)windowDidLoad
-/*" Nib file is loaded "*/
 {
 	[[self loginWindow] setFrameAutosaveName:@"LoginWindow"];	
 }

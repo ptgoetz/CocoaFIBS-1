@@ -17,8 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-//test
-
 #import "AGFIBSAppController.h"
 #import "AGFIBSUserListWindowController.h"
 #import "AGFIBSGameController.h"
@@ -48,7 +46,6 @@ AGFIBSSPrefsHaveChanged
 "*/
 
 - (id)init 
-/*" Designated Initializer "*/
 {
 	self = [super init];
 	[self setDefaultPrefs];
@@ -71,16 +68,11 @@ AGFIBSSPrefsHaveChanged
 	[self checkForNewVersion];
 	firstBoardOfNewGame = YES;
 	
-	
-
 	return self;
 }
 
-
-
 - (void)dealloc
-/*" Clean Up "*/
-{    
+{
 	[thePrefWindow release];
 	[theAGFIBSSocket release];
 	[userListWindow release];
@@ -89,6 +81,7 @@ AGFIBSSPrefsHaveChanged
     
     return;
 }
+
 - (void)setDefaultPrefs
 {
     NSString *chatNewGameDefualtMsg = [NSString stringWithFormat:@"Hello <name>! Greetings from %@",[[NSDate date] descriptionWithCalendarFormat:@"%Z" timeZone:nil locale:nil]];
@@ -127,43 +120,31 @@ AGFIBSSPrefsHaveChanged
 	NSData *gagAndBlindListAsData = [NSKeyedArchiver archivedDataWithRootObject:[NSMutableArray arrayWithCapacity:1]];
 	[defaultPrefs setObject:gagAndBlindListAsData forKey: @"gagAndBlindList"];
 	
-	
 	NSArray *terminalWindowSavedCommands = [NSArray arrayWithObjects:
 		@"show saved",
 		@"show watchers",
 		@"show games",
 		@"ratings",
 		@"dicetest",
-	nil];		
-
+	nil];
 	
 	[defaultPrefs setObject:terminalWindowSavedCommands forKey:@"terminalWindowSavedCommands"];
-	
-	
-	
 	[defaultPrefs setObject: @"" forKey: @"username"];
     [[NSUserDefaults standardUserDefaults] registerDefaults: defaultPrefs];
 }
 	
 - (void)playSoundFile:(NSNotification *)notification
-/*" Plays a sound file stored in the main app bundle with an aiff extension. "*/
 {
 	[self playSoundFileLocal:[notification object]];
 }
 
 - (void)prefsHaveChanged:(NSNotification *)notification
-/*"  "*/
 {
-	
 		NSString *currentDirectoryPath = [[NSFileManager defaultManager]currentDirectoryPath];
 		NSString *prefForBoardImages = [[NSUserDefaults standardUserDefaults] stringForKey:@"customBoard"];
 		NSString *pathToBoardImages = [[[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@/", currentDirectoryPath,prefForBoardImages]]autorelease];
 		
 		NSDictionary *boardAttributes = [[NSDictionary alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@boardAttributes.plist", pathToBoardImages]];
-	
-	
-	
-	//[[theGameController theAGFIBSGameView] setHidden:YES];
 	
 	NSRect aFrame;
     NSWindow *mainWindow = [theGameController window];
@@ -191,7 +172,6 @@ AGFIBSSPrefsHaveChanged
     [mainWindow setFrame:aFrame display:YES animate:YES];
 	[[theGameController theAGFIBSGameView] setUpImagesAndChords];
 	[theGameController updateTheGameView];
-	//[[theGameController theAGFIBSGameView] setHidden:NO];
 	
 	NSLog(@"Prefs have changed");
 }
@@ -200,33 +180,29 @@ AGFIBSSPrefsHaveChanged
 {
 	[[theGameController theAGFIBSGameView] rollDice];
 }
+
 - (IBAction)doubleFromMenu:(id)sender;
 {
 	[[theGameController theAGFIBSGameView] tryToDouble];
 }
 
 - (IBAction)sendBugReport:(id)sender;
-/*"  "*/
 {
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:email@host.com?subject=CocoaFibsBetaReport"]];
 }
 
 - (IBAction)makeADonation:(id)sender;
-/*"  "*/
 {
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/projects/cocoafibs/"]];
 }
 
-
 - (void)displaySystemMsg:(NSNotification *)notification
-/*"  "*/
 {
 	[theGameController clearSystemMsg];
 	[theGameController displaySystemMsg:[notification object] withTime:NO];
 }
 
 - (void)playSoundFileLocal:(NSString *)fileName
-/*" Plays a sound file stored in the main app bundle with an aiff extension. "*/
 {
 	if ([[NSUserDefaults standardUserDefaults] integerForKey:@"soundOnOff"] == 1) {
 		NSString *soundPath;
@@ -260,7 +236,6 @@ AGFIBSSPrefsHaveChanged
 	}
 }
 
-
 - (IBAction)printBoard:(id)sender
 {
     NSPrintInfo *printInfo = [NSPrintInfo sharedPrintInfo];
@@ -272,7 +247,6 @@ AGFIBSSPrefsHaveChanged
 }
 
 - (void)handleFIBSResponseEvent:(int)cookie message:(NSString *)aMessage
-/*" Decides what to do based on a command returned from the server "*/
 {
 	NSString *playerName;
 	NSArray *tokkenizer;
@@ -289,20 +263,12 @@ AGFIBSSPrefsHaveChanged
 	if (displayInTerminal) {
 		[self displayMsgInTerminaleWindow:aMessage];
 	}
-			/*
-			path = [@"~/Desktop/CocoaFIBSdebugInfo.txt" stringByExpandingTildeInPath];
-			fileContents = [NSString stringWithContentsOfFile:path];
-			newFileContents = [NSString stringWithFormat:@" %@ %@ %d %@ ", fileContents, @"\n", cookie, aMessage];
-			[newFileContents writeToFile:path atomically:YES];
-			*/
 
 	switch(cookie){
 	   
 	   case FIBS_PreLogin: {
 			FIBSPreLoginCheckForErrorCount++;
 			if (FIBSPreLoginCheckForErrorCount > 30) {
-				//[theLoginWindowController loginFailed];
-				//[self loginFailed];
 			}
 			break;
 		}
@@ -657,11 +623,8 @@ AGFIBSSPrefsHaveChanged
 				[userListWindow updateUserDetailWindow:playerName]; 
 			}
 
-			
-			
 			break;
 		}
-		
 		
 		case CLIP_LOGIN: {
 			int positionOfName = 1;
@@ -718,7 +681,6 @@ AGFIBSSPrefsHaveChanged
 				firstBoardOfNewGame = NO;
 			}
 
-
 			break;
 		}
 	}
@@ -769,7 +731,6 @@ AGFIBSSPrefsHaveChanged
 	[userListWindow setAttribute:@"relationship" forPlayer:name withValue:@"normal"];
 }
 
-
 - (BOOL)isFriend:(NSString *)name {
 	NSData *friendsListAsData = [[NSUserDefaults standardUserDefaults] objectForKey:@"friendsList"];
 	NSMutableArray *friendsList = [NSKeyedUnarchiver unarchiveObjectWithData:friendsListAsData];
@@ -781,12 +742,6 @@ AGFIBSSPrefsHaveChanged
 	}
 }
 
-
-
-
-	
-	
-
 - (BOOL)validateMenuItem:(NSMenuItem*)anItem {
 	
 	if ([theAGFIBSSocket isConnected]) {
@@ -797,8 +752,7 @@ AGFIBSSPrefsHaveChanged
 			return YES;
 		}
 		return YES;
-	}
-	else  /* if (![theAGFIBSSocket isConnected])  */ {
+	} else {
 		if ([[anItem title] isEqualToString:@"Connect"]) {
 			return YES;
 		}
@@ -848,72 +802,39 @@ AGFIBSSPrefsHaveChanged
     return [[disconnectMenuItem retain] autorelease];
 }
 
-
-
 - (void)checkForNewVersion
 {
-	
 	NSString *currVersionNumber = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleVersion"];
-	//NSDictionary *productVersionDict = [NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:@"http://sourceforge.net/projects/cocoafibs/versionlist.xml"]];
-	//NSString *latestVersionNumber = [productVersionDict valueForKey:@"cocoaFIBSBeta"];
-	NSString *latestVersionNumber = currVersionNumber; //until we get updates going again. 
-	if([latestVersionNumber isEqualTo: currVersionNumber])
-	{
-		// tell user software is up to date
-		/*
-		NSRunAlertPanel(NSLocalizedString(@"Your Software is up-to-date",
-		@"Title of alert when a the user's software is up to date."),
-		NSLocalizedString(@"You have the most recent version of Product One.",
-		@"Alert text when the user's software is up to date."),
-		NSLocalizedString(@"OK", @"OK"), nil, nil);
-		*/
-	}
-	else
-	{
-		// tell user to download a new version
-		int button = NSRunAlertPanel(@"A New Version is Available", @"%@", [NSString stringWithFormat:@"A new version of CocoaFIBS is available (version %@). Would you like to download the new version now?", latestVersionNumber], @"Download", @"Not Now", nil);
-		if(NSOKButton == button)
-		{
-			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/projects/cocoafibs/"]];
-		}
-	}
-
+	NSString *latestVersionNumber = currVersionNumber; //until we get updates going again.
+    // tell user to download a new version
+    int button = NSRunAlertPanel(@"A New Version is Available", @"%@", [NSString stringWithFormat:@"A new version of CocoaFIBS is available (version %@). Would you like to download the new version now?", latestVersionNumber], @"Download", @"Not Now", nil);
+    if(NSOKButton == button)
+    {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/projects/cocoafibs/"]];
+    }
 }
 
-
-
-
-
-
-
-
-
 - (AGFIBSLoginWindowController *)theLoginWindowController 
-/*" Returns the AGFIBSLoginWindowController "*/
 {
     return [[theLoginWindowController retain] autorelease];
 }
 
 - (AGFIBSChatController *)theChatController 
-/*" Returns the AGFIBSChatController "*/
 {
     return [[theChatController retain] autorelease];
 }
 
 - (AGFIBSUserListWindowController *)userListWindow 
-/*" Returns the AGFIBSUserListWindowController "*/
 {
     return [[userListWindow retain] autorelease];
 }
 
 - (BOOL)readyToPlayStatus 
-/*" Returns YES if the player has set them selves as ready, otherwise returns NO"*/
 {
     return readyToPlayStatus;
 }
 
 - (void)setReadyToPlayStatus:(BOOL)newReadyToPlayStatus 
-/*" Sets the readyToPlayStatus as YES or NO "*/
 {
     if (readyToPlayStatus != newReadyToPlayStatus) {
         readyToPlayStatus = newReadyToPlayStatus;
@@ -921,32 +842,27 @@ AGFIBSSPrefsHaveChanged
 }
 
 - (AGFIBSToolbarController *)theToolbarController 
-/*" Returns the AGFIBSToolbarController "*/
 {
     return [[theToolbarController retain] autorelease];
 }
 
 - (AGFIBSGameController *)theGameController 
-/*" Returns the AGFIBSGameController "*/
 {
     return [[theGameController retain] autorelease];
 }
 
 - (void)sendCommandToSocket:(NSNotification *)notification
-/*" Notification method that tells the socket to sent a string to the server "*/
 {
 	NSString *stringToSend = [notification object];
 	[theAGFIBSSocket sendMessage:stringToSend];
 }
 
 - (void)connect
-/*" Notification method that tells the socket to conect to the server "*/
 {
 	[theAGFIBSSocket connect];
 }
 
 - (void)clipWhoEnd
-/*" Called after the server compleates the login process and returns the incial bulk list of connected users  "*/
 {
 	if (!loginDone) {
 		[theLoginWindowController loginDone];
@@ -962,20 +878,15 @@ AGFIBSSPrefsHaveChanged
 		[theAGFIBSSocket sendMessage:@"who away"];
 		[theAGFIBSSocket sendMessage:@"who playing"];
 		[theAGFIBSSocket sendMessage:@"toggle moreboards"];
-		
-		//[theAGFIBSSocket sendMessage:[NSString stringWithFormat:@"who %@", [[NSUserDefaults standardUserDefaults] stringForKey:@"username"]]];
-		
 	}
 }
 
 - (IBAction)showUserListWindow:(id)sender
-/*" NSDrawer delegate method to toggle the visibility of the user list drawer "*/
 {
 	[userListWindow showWindow:self];
 }
 
 - (IBAction)showPrefWindow:(id)sender
-/*" Loads the pref controller NIB file "*/
 {
 	if (!thePrefWindow) {
 		thePrefWindow = [[AGFIBSPrefController alloc] init];
@@ -984,7 +895,6 @@ AGFIBSSPrefsHaveChanged
 }
 
 - (IBAction)showTerminalWindow:(id)sender
-/*" Loads the terminal controller NIB file "*/
 {
 	if (!terminalWindow) {
 		terminalWindow = [[AGFIBSTerminalWindowController alloc] init];
@@ -993,25 +903,21 @@ AGFIBSSPrefsHaveChanged
 }
 
 - (void)showPublicChatWindow
-/*" "*/
 {
 	[[theChatController publicChatWindow] makeKeyAndOrderFront:nil];
 }
 
 - (void)showGameWindow
-/*" Show the game window after login is done "*/
 {
 	[theGameController showWindow:self];
 }
 
 - (AGFIBSSocketStream *)theAGFIBSSocket 
-/*" Return the AGFIBSSocketStream "*/
 {
     return [[theAGFIBSSocket retain] autorelease];
 }
 
 - (void)setTheAGFIBSSocket:(AGFIBSSocketStream *)newTheAGFIBSSocket 
-/*" Sets the AGFIBSSocketStream "*/
 {
     if (theAGFIBSSocket != newTheAGFIBSSocket) {
         [theAGFIBSSocket release];
@@ -1020,41 +926,16 @@ AGFIBSSPrefsHaveChanged
 }
 
 - (NSString *)loginString 
-/*" Return the login string "*/
 {
     return [[loginString retain] autorelease];
 }
 
 - (void)setLoginString:(NSString *)newLoginString 
-/*" Return the login string "*/
 {
     if (loginString != newLoginString) {
         [loginString release];
         loginString = [newLoginString retain];
     }
 }
-
-/*
-- (IBAction)changeSortKey:(id)sender
-//" The user has changed the value of the sort NSPopUpButton. Update the sortKey in the userListWindow instance. "
-{
-	if ([[sortKeyPopUpButton titleOfSelectedItem] isEqualToString:@"Username"]) {
-		[userListWindow setSortKey:@"name"];
-	}
-	else if ([[sortKeyPopUpButton titleOfSelectedItem] isEqualToString:@"Status"]) {
-		[userListWindow setSortKey:@"status"];
-	}
-	else if ([[sortKeyPopUpButton titleOfSelectedItem] isEqualToString:@"Rating"]) {
-		[userListWindow setSortKey:@"rating"];
-	}
-	else if ([[sortKeyPopUpButton titleOfSelectedItem] isEqualToString:@"Experience"]) {
-		[userListWindow setSortKey:@"experience"];
-	}
-	else if ([[sortKeyPopUpButton titleOfSelectedItem] isEqualToString:@"Client"]) {
-		[userListWindow setSortKey:@"clientIcon"];
-	}
-	
-}
-*/
 
 @end

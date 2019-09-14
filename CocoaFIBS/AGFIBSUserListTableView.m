@@ -19,32 +19,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #import "AGFIBSUserListTableView.h"
 
-
 @implementation AGFIBSUserListTableView
 /*"
 Instances of this class inherit from the built in NSTableView and allow a custom TableView.
 "*/
 
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent 
-/*"  Returns a context-sensitive pop-up menu for the mouse-down event theEvent.  "*/
 {
 	return [[self delegate] menuForEvent:theEvent];
 }
 
 -(void)mouseDown:(NSEvent *)theEvent 
-/*" Informs the receiver that the user has pressed the left mouse button specified by theEvent. "*/
 {
 	[[self delegate] mouseDown:theEvent];
 }
 
 -(void)mouseUp:(NSEvent *)theEvent 
-/*" Informs the receiver that the user has pressed the left mouse button specified by theEvent. "*/
 {
 	[[self delegate] mouseUp:theEvent];
 }
 
 -(void)keyDown:(NSEvent *)theEvent 
-/*"  "*/
 {
 	[[self delegate] keyDown:theEvent];
 }

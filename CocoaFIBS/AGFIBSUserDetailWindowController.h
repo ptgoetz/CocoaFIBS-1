@@ -31,4 +31,5 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -(void)sendNotificationToSendCommandToSocket:(NSString *)stringToSend;
 
 - (IBAction)updateWho:(id)sender;
+
 @end

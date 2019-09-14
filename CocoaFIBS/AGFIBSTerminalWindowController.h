@@ -19,7 +19,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface AGFIBSTerminalWindowController : NSWindowController {
 		IBOutlet NSTextField *terminalInputTextField;
 		IBOutlet NSTextView *terminalDisplayTextView;
@@ -28,7 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		BOOL isDragging;
 		NSMutableArray *commandHistory;
 		int historyPoint;
-		//NSAutoreleasePool *localPool;
 }
 - (IBAction)sendCommandToTerminal:(id)sender;
 - (IBAction)addToSavedCommands:(id)sender;

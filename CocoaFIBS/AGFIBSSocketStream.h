@@ -17,10 +17,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
-
-
 #import <Foundation/Foundation.h>
+
 @class AGFIBSAppController;
 @class AGFIBSSocketStream;
 @class AGFIBSGameModel;
@@ -40,15 +38,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	BOOL blockSending;
 }
 
-/*" Overridden Initializer "*/
 - (id)init;
 
-/*" Designated Initializer "*/
 - (id)initWithServer:(NSString *)myServerAddress port:(int)myPort;
 
-/*" Accessor methods  "*/
-//- (AGFIBSGameModel *)theAGFIBSGameModel;
-//- (void)setTheAGFIBSGameModel:(AGFIBSGameModel *)newTheAGFIBSGameModel;
 - (NSInputStream *)inputStream;
 - (void)setInputStream:(NSInputStream *)newInputStream;
 - (NSOutputStream *)outputStream;
@@ -58,11 +51,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (bool)isConnected;
 - (void)setConnected:(bool)isConnected;
 
-/*" Stream methods  "*/
 - (void)connect;
 - (void)disconnect;
 - (void)sendMessage:(NSString *)stringToSend;
-//- (void)stream:(NSStream *)stream handleEvent:(NSStreamEvent)streamEvent;
 - (void)sendMessage:(NSString *)stringToSend;
 - (void)sendMessages;
 - (void)sendMessageNow:(NSString *)stringToSend;
@@ -70,6 +61,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)setBlockSendingYes;
 - (NSString *)findAndReplaceStringInString:(NSString *)string find:(NSString *)findString replace:(NSString *)replaceString;
 
-/*" Clean Up "*/
 - (void)dealloc;
+
 @end

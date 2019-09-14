@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import "AGFIBSUserListWindowController.h"
 #import "AGFIBSUserCell.h"
 #import "AGFIBSUserDetailWindowController.h"
@@ -38,7 +37,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 "*/
 
 - (id)init
-/*" Designated Initializer. "*/
 {
 	userListWindowData = [[NSMutableArray alloc] init];
 	NSArray *clipWhoInfoKeys = [@"cookie name opponent watching ready away rating experience idle login hostname client email" componentsSeparatedByString:@" "];
@@ -54,7 +52,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 -(void)sendNotificationToSendCommandToSocket:(NSString *)stringToSend 
-/*" Sends a command to the server through the socket "*/
 {
 	NSNotificationCenter *nc;
 	nc = [NSNotificationCenter defaultCenter];
@@ -62,7 +59,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 -(void)removeUserFromList:(NSString *)playerToRemove 
-/*" Removes an entry from the user list datsource. "*/
 {
 	NSEnumerator *enumerator = [userListWindowData objectEnumerator];
 	id aPlayerObject;
@@ -79,21 +75,14 @@ Instances of this class acts as the controller for the NSTableView that pops out
 - (void)setUserInUserOutWithMsg:(NSString *)msg
 {
 	[userInUserOutTextField setStringValue:msg];
-	
 }
 
 - (void)setCountOfLogedInUsers
 {
 	[totalLogedInUsers setStringValue:[NSString stringWithFormat:@"%lu", (unsigned long)[userListWindowData count]]];
-	
 }
 
-
-
-
-
 -(int)findInListByLetter:(NSString *)letter 
-/*"  "*/
 {
 	NSEnumerator *enumerator = [userListWindowData objectEnumerator];
 	id aPlayerObject;
@@ -117,7 +106,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 
 - (void)reverseSort 
 {
-	
 	NSMutableArray *reversedSortDescriptorsArray = [[NSMutableArray alloc] init];
 	NSEnumerator *enumerator = [sortDescriptorsArray objectEnumerator];
 	id aSortDescriptorObject;
@@ -143,7 +131,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 - (IBAction)sort:(id)sender
-/*" Sorts the user list datsource. "*/
 {
 	NSSortDescriptor *userListSortDescriptor;
 	
@@ -222,31 +209,22 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	NSControl *aControl = [[[tableView tableColumns] objectAtIndex:0] dataCellForRow:0];
 	[self selectRowAfterDataSourceUpdate];
 	[aControl setNeedsDisplay:YES];
-	//[userListSortDescriptor release];
-	//[sortDescriptorsArray release];
 }
 
-
-
 - (NSString *)selectedName
-/*" Gets the name of the currently selected user in the user list "*/
 {
     return selectedName;
 }
 
 - (void)setSelectedName:(NSString *)aName
-/*" Sets the name of the currently selected user in the user list "*/
 {
     [aName retain];
     [selectedName release];
     selectedName = aName;
 }
 
-
-
 -(void)selectRow 
-/*" Sets the status of all rows to not selected, then selects the row that was last clicked on. "*/
-{	
+{
 	NSControl *aControl;
 	NSEnumerator *enumerator = [userListWindowData objectEnumerator];
 	id aPlayerObject;
@@ -266,8 +244,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 -(void)selectRowAfterDataSourceUpdate
-/*" Sets the status of all rows to not selected, then selects the row that was last clicked on. "*/
-{	
+{
 	NSEnumerator *enumerator = [userListWindowData objectEnumerator];
 	id aPlayerObject;
 	int i = 0;
@@ -282,7 +259,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 -(BOOL)containsPlayer:(NSString *)playerName 
-/*" "*/
 {
 	NSEnumerator *enumerator = [userListWindowData objectEnumerator];
 	id aPlayerObject;
@@ -325,9 +301,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	[userListWindowData replaceObjectAtIndex:i withObject:aPlayerObject];
 }
 
-
 -(BOOL)containsAnyFriends
-/*" "*/
 {
 	NSEnumerator *enumerator = [userListWindowData objectEnumerator];
 	id aPlayerObject;
@@ -340,7 +314,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 -(BOOL)handleGagAndBlinds
-/*" "*/
 {
 	NSEnumerator *enumerator = [userListWindowData objectEnumerator];
 	id aPlayerObject;
@@ -354,9 +327,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	return NO;
 }
 
-
 -(void)mouseDown:(NSEvent *)theEvent 
-/*" Informs the receiver that the user has pressed the left mouse button specified by theEvent. Selects the row at the mouse X,Y. "*/
 {
 	selectedRow = [tableView rowAtPoint:[tableView convertPoint:[theEvent locationInWindow] fromView:nil]];
 	[self selectRow];
@@ -368,8 +339,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 		[self showUserDetailWindowForUser:name];
 	}
 }
-
-
 
 - (void)keyDown:(NSEvent *)theEvent
 {
@@ -401,7 +370,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	}
 	
 	[self selectRow];
-	
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
@@ -414,9 +382,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
     }
 }
 
-
 -(void)setDynamicMenuItems
-/*" "*/
 {
 	if ([theAppController isFriend:[self selectedName]]) {
 		[[[[myMenu itemWithTitle:@"Relationship"] submenu] itemWithTag:9] setTitle:@"Not Friend"];
@@ -431,9 +397,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	[[myMenu itemWithTag:4] setTitle:personalizedMeniItem];
 }
 
-
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent 
-/*"  Returns a context-sensitive pop-up menu for the mouse-down event theEvent.  "*/
 {
 	selectedRow = [tableView rowAtPoint:[tableView convertPoint:[theEvent locationInWindow] fromView:nil]];
 	[self selectRow];
@@ -442,7 +406,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 - (IBAction)menuItem:(id)sender
-/*" Called when a menu item is selected. "*/
 {
 	NSLog(@"Menu Clicked %@", [[userListWindowData objectAtIndex:selectedRow] objectForKey:@"name"]);
 	NSLog(@"tag %ld", (long)[sender tag]);
@@ -513,7 +476,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	else if ([sender tag] == 12) {
 		[self showUserDetailWindowForUser:[self selectedName]];
 	}
-	
 }
 
 - (NSProgressIndicator *)whoLoadingProgressIndicator {
@@ -524,7 +486,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
     [whoLoadingProgressIndicator stopAnimation:nil];
 	[totalLogedInUsers setHidden:NO];
 }
-
 
 - (void)reset
 {
@@ -549,7 +510,6 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-/*" Enables and disables menu items "*/
 {
 	if ([menuItem tag] == 1) {
 		return YES;
@@ -593,13 +553,11 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 - (NSPopUpButton *)gameChatTypeOfChatPopUpButton 
-/*" Gets a reference to the gameChatTypeOfChatPopUpButton. "*/
 {
     return [[gameChatTypeOfChatPopUpButton retain] autorelease];
 }
 
 - (void)setGameChatTypeOfChatPopUpButton:(NSPopUpButton *)newGameChatTypeOfChatPopUpButton 
-/*" Sets a reference to the gameChatTypeOfChatPopUpButton. "*/
 {
     if (gameChatTypeOfChatPopUpButton != newGameChatTypeOfChatPopUpButton) {
         [gameChatTypeOfChatPopUpButton release];
@@ -607,15 +565,12 @@ Instances of this class acts as the controller for the NSTableView that pops out
     }
 }
 
-
 - (NSMutableArray *)userListWindowData 
-/*" Gets a reference to the userListWindowData. "*/
 {
 	return [[userListWindowData retain] autorelease];
 }
 
 - (void)setUserListWindowData:(NSMutableArray *)newUserListWindowData 
-/*" Sets a reference to the userListWindowData. "*/
 {
     if (userListWindowData != newUserListWindowData) {
         [userListWindowData release];
@@ -624,13 +579,11 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 - (NSTableView *)tableView 
-/*" Gets a reference to the NSTableView used by the user list. "*/
 {
     return [[tableView retain] autorelease];
 }
 
 - (void)setTableView:(NSTableView *)newTableView 
-/*" Sets a reference to the NSTableView used by the user list. "*/
 {
     if (tableView != newTableView) {
         [tableView release];
@@ -639,40 +592,21 @@ Instances of this class acts as the controller for the NSTableView that pops out
 }
 
 - (int)numberOfRowsInTableView:(NSTableView *)tableView
-/*" Returns the number of records managed for tableView by the data source object. The tableView uses this method to determine how many rows it should create and display. "*/
 {
 	return [userListWindowData count];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row
-/*" Sets an attribute value for the record in tableView at rowIndex."*/
 {
     return [userListWindowData objectAtIndex:row];
 }
 
-
-/*
-- (void)tableView:(NSTableView *)tableView setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn row:(int)row
-{
-    [userListWindowData replaceObjectAtIndex:row withObject:object];
-    NSLog(@"taking %@ for %i", object,row);
-}
-
-- (void)windowDidLoad
-{
-	//NSLog(@"Nib file is loaded");	
-}
-
-*/
-
 - (void)awakeFromNib
-/*"  The NIB File is done loading "*/
 {
     AGFIBSUserCell *csc;
     csc = [[AGFIBSUserCell alloc] init];
     [column setDataCell:csc];
     [csc release];
 }
-
 
 @end

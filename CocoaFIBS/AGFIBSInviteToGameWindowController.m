@@ -17,22 +17,20 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import "AGFIBSInviteToGameWindowController.h"
 
 @implementation AGFIBSInviteToGameWindowController
+
 - (id)init
 {
     self = [super initWithWindowNibName:@"InviteToGameWindow"];
-	//[NSApp requestUserAttention: NSInformationalRequest];
 	[NSApp requestUserAttention: NSCriticalRequest];
 	
     return self;
 }
 
 - (void)dealloc
-/*" Clean Up "*/
-{    
+{
 	[super dealloc];
 }
 
@@ -42,7 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 - (void)windowDidLoad
-/*" Nib file is loaded "*/
 {
 	[[self window] setTitle:[NSString stringWithFormat:@"Invite from %@", [self playerWhoInvitedName]]];
 	[[self window] setFrameAutosaveName:@"inviteToGameWindow"];	
@@ -76,7 +73,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 }
 
 -(void)sendNotificationToSendCommandToSocket:(NSString *)stringToSend 
-/*" Send a string to the server "*/
 {
 	NSNotificationCenter *nc;
 	nc = [NSNotificationCenter defaultCenter];
@@ -94,7 +90,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	}
 	[self close];
 }
-
 
 - (NSString *)playerWhoInvitedName {
     return [[playerWhoInvitedName retain] autorelease];
@@ -138,8 +133,5 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         playerExp = [newPlayerExp retain];
     }
 }
-
-
-
 
 @end

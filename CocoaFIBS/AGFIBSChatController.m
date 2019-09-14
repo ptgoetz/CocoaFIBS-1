@@ -16,8 +16,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-//
-
 
 #import "AGFIBSChatController.h"
 #import "URLTextView.h"
@@ -31,7 +29,6 @@ An instance of this controller class acts as the bridge between the socket and t
 "*/
 
 - (IBAction)gameChatSendButton:(id)sender
-/*" Send the contents of the TextField to the server for in-game chat. Appends chat text to the the type of chat as selected from the gameChatTypeOfChatPopUpButton. "*/
 {
 	NSMutableString *gameChatString = [NSMutableString string];
 	if ([[gameChatTypeOfChatPopUpButton titleOfSelectedItem] isEqualToString:@"Tell"]) {
@@ -46,7 +43,6 @@ An instance of this controller class acts as the bridge between the socket and t
 }
 
 - (IBAction)publicChatSendButton:(id)sender
-/*" Send the contents of the TextField to the server for public chat "*/
 {
 	NSMutableString *shoutString = [NSMutableString string];
 	[shoutString appendFormat:@"shout %@\n", [publicChatTextToSendTextField stringValue]];
@@ -54,12 +50,8 @@ An instance of this controller class acts as the bridge between the socket and t
 	[publicChatTextToSendTextField setStringValue:@""];
 }
 
-
-
 - (IBAction)changeTypeOfChat:(id)sender
-/*"  "*/
 {
-	
 	if ([[gameChatTypeOfChatPopUpButton titleOfSelectedItem] isEqualToString:@"Tell"] && [privateChatSendTellToWhomTextField isHidden]) {
 		[privateChatSendTellToWhomTextField setHidden:NO];
 		[gameChatTextToSendTextField setFrameSize:NSMakeSize(([gameChatTextToSendTextField frame].size.width-126),22)];
@@ -76,9 +68,7 @@ An instance of this controller class acts as the bridge between the socket and t
 
 
 - (void)clipKibitzes:(NSString *)aMessage
-/*" Parse and display a Kibitze chat in the game-chat TextView. Scroll the TextView to the bottom"*/
 {
-	
 	NSArray *tokkenizer = [aMessage componentsSeparatedByString:@" "];
 	NSString *userName = [tokkenizer objectAtIndex:1];
 	NSMutableString *whatUserSaid = [NSMutableString string];
@@ -103,13 +93,11 @@ An instance of this controller class acts as the bridge between the socket and t
 	
 	[shoutString detectURLs:[NSColor blueColor]];
 	[[gameChatMainTextView textStorage] appendAttributedString:shoutString];
-
 	
 	[gameChatMainTextView scrollRangeToVisible:NSMakeRange([[gameChatMainTextView string] length], [[gameChatMainTextView string] length])];
 }
 
 - (void)clipYouKibitz:(NSString *)aMessage
-/*" Parse and display a Kibitze chat from the player in the game-chat TextView. Scroll the TextView to the bottom"*/
 {
 	NSArray *tokkenizer = [aMessage componentsSeparatedByString:@" "];
 	NSString *userName = @"You";
@@ -140,9 +128,7 @@ An instance of this controller class acts as the bridge between the socket and t
 }
 
 - (void)clipSay:(NSString *)aMessage
-/*" Parse and display a "say" chat in the game-chat TextView. Scroll the TextView to the bottom"*/
 {
-	
 	NSArray *tokkenizer = [aMessage componentsSeparatedByString:@" "];
 	NSString *userName = [tokkenizer objectAtIndex:1];
 	NSMutableString *whatUserSaid = [NSMutableString string];
@@ -170,12 +156,8 @@ An instance of this controller class acts as the bridge between the socket and t
 	
 	[gameChatMainTextView scrollRangeToVisible:NSMakeRange([[gameChatMainTextView string] length], [[gameChatMainTextView string] length])];
 
-	
-
-	
 	NSString *tellUsernameString = [NSString stringWithFormat:@"tell %@",userName];
 	[privateChatSendTellToWhomTextField setStringValue:userName];
-	
 	
 	NSMenuItem *tempItem = [[[theAppController userListWindow] gameChatTypeOfChatPopUpButton] itemWithTitle:tellUsernameString];
 	
@@ -184,21 +166,17 @@ An instance of this controller class acts as the bridge between the socket and t
 		[[[theAppController userListWindow] gameChatTypeOfChatPopUpButton] selectItemAtIndex:([[[theAppController userListWindow] gameChatTypeOfChatPopUpButton] numberOfItems]-1)];
 	}
 	[self changeTypeOfChat:nil];
-	
 }
 
 - (NSTextField *)privateChatSendTellToWhomTextField {
     return [[privateChatSendTellToWhomTextField retain] autorelease];
 }
 
-
-
 - (NSTextField *)gameChatTextToSendTextField {
     return [[gameChatTextToSendTextField retain] autorelease];
 }
 
 - (void)clipYouSay:(NSString *)aMessage
-/*" Parse and display a "say" chat from the player in the game-chat TextView. Scroll the TextView to the bottom"*/
 {
 	NSArray *tokkenizer = [aMessage componentsSeparatedByString:@" "];
 	NSString *userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
@@ -230,9 +208,7 @@ An instance of this controller class acts as the bridge between the socket and t
 }
 
 - (void)clipShouts:(NSString *)aMessage
-/*" Parse and display a "shout" chat in the public chat TextView. Scroll the TextView to the bottom"*/
 {
-	
 	NSArray *tokkenizer = [aMessage componentsSeparatedByString:@" "];
 	NSString *userName = [tokkenizer objectAtIndex:1];
 	NSMutableString *whatUserSaid = [NSMutableString string];
@@ -264,7 +240,6 @@ An instance of this controller class acts as the bridge between the socket and t
 }
 
 - (void)clipYouShout:(NSString *)aMessage
-/*" Parse and display a "shout" chat in the public chat TextView. Scroll the TextView to the bottom"*/
 {
 	NSArray *tokkenizer = [aMessage componentsSeparatedByString:@" "];
 	NSString *userName = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
@@ -291,15 +266,12 @@ An instance of this controller class acts as the bridge between the socket and t
 	[shoutString detectURLs:[NSColor blueColor]];
 	[[publicChatMainTextView textStorage] appendAttributedString:shoutString];
 	
-	
 	if (NSMaxY([publicChatMainTextView bounds]) == NSMaxY([publicChatMainTextView visibleRect])) {
 		[publicChatMainTextView scrollRangeToVisible:NSMakeRange([[publicChatMainTextView string] length], [[publicChatMainTextView string] length])];
 	}
 }
 
-
 - (void)reset
-/*" "*/
 {
 	[gameChatTextToSendTextField setStringValue:@""];
 	[publicChatTextToSendTextField setStringValue:@""];	
@@ -312,13 +284,11 @@ An instance of this controller class acts as the bridge between the socket and t
 }
 
 - (AGFIBSAppController *)theAppController 
-/*" Returns the AGFIBSAppController "*/
 {
     return [[theAppController retain] autorelease];
 }
 
 - (void)setTheAppController:(AGFIBSAppController *)newTheAppController 
-/*" Sets the AGFIBSAppController "*/
 {
     if (theAppController != newTheAppController) {
         [theAppController release];
@@ -337,13 +307,9 @@ An instance of this controller class acts as the bridge between the socket and t
     }
 }
 
-
 - (void)windowDidLoad
-/*" Nib file is loaded "*/
 {
 	[[self publicChatWindow] setFrameAutosaveName:@"publicChatWindow"];	
 }
-
-
 
 @end

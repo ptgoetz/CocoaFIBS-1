@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import "AGFIBSKeychain.h"
 
 #import <Security/Security.h>
@@ -25,8 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <stdio.h> // for printf()
 
 @implementation AGFIBSKeychain
-
-/* OF: why is this a class emthod? */
 
 + (BOOL)doesAccountExistInKeychain
 {
@@ -39,7 +36,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 	NSString *keychainItemName = @"FIBS Account";
 	NSString *keychainItemKind = @"FIBS Username/Password";
-	
 	
     // create an attribute list with just one attribute specified	
 	attributes[0].tag = kSecAccountItemAttr;
@@ -68,7 +64,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         i++;
     }
 	
-   //printf ("%d items found\n", i);
     CFRelease (search);
 	return i;
 }
@@ -198,7 +193,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	NSString *keychainItemName = @"FIBS Account";
 	NSString *keychainItemKind = @"FIBS Username/Password";
 	
-	
     // create an attribute list with just one attribute specified	
 	attributes[0].tag = kSecAccountItemAttr;
     attributes[0].data = (void*)[username cString];
@@ -223,7 +217,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	
 	NSString *password = @"error";
     if (SecKeychainSearchCopyNext (search, &item) == noErr) {
-		//NSLog(@"Found Password %@", [self getPassword:item]);
 		password = [self getPassword:item];
 		CFRelease(item);
 		CFRelease (search);
@@ -231,7 +224,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	return password;
 }
 
-/* OF: why is this a class method? */
 + (NSString *)getPassword:(SecKeychainItemRef)item
 {
     UInt32 length;
@@ -252,10 +244,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     status = SecKeychainItemCopyContent (item, NULL, &list, &length, 
                                          (void **)&password);
 
-    // use this version if you don't really want the password,
-    // but just want to peek at the attributes
-    //status = SecKeychainItemCopyContent (item, NULL, &list, NULL, NULL);
-    
     // make it clear that this is the beginning of a new
     // keychain item
     if (status == noErr) {
@@ -272,20 +260,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
             strncpy (passwordBuffer, password, length);
 
             passwordBuffer[length] = '\0';
-			//printf ("passwordBuffer = %s\n", passwordBuffer);
 			return [NSString stringWithCString:passwordBuffer];
         } else {
 		    SecKeychainItemFreeContent (&list, password);
 			printf("Error = %d\n", (int)status);
 			return @"";
 		}
-
     } else {
         printf("Error = %d\n", (int)status);
 		return @"";
     }
 }
-
-
 
 @end

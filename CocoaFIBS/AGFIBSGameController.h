@@ -34,11 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	IBOutlet NSTextField *opponentScore;						/*" The field that displays the opponent's score "*/
 	IBOutlet NSTextField *playerName;							/*" The field that displays the player's name "*/
 	IBOutlet NSTextField *opponentName;							/*" The field that displays the opponent's name "*/
-	IBOutlet NSTextField *pipCountDifField;						/*"  "*/
-	IBOutlet NSTextField *matchLengthField;						/*"  "*/
-	IBOutlet NSTextField *desieredMatchLengthTextField;					/*" Field that holds the player's desiered match length "*/
+	IBOutlet NSTextField *pipCountDifField;
+	IBOutlet NSTextField *matchLengthField;
+	IBOutlet NSTextField *desieredMatchLengthTextField;			/*" Field that holds the player's desiered match length "*/
 	IBOutlet NSTextField *systemMsgText;						/*" The field that displays the systems messages from the server "*/
-	IBOutlet NSStepper *matchLengthStepper;						/*"  "*/
+	IBOutlet NSStepper *matchLengthStepper;
 	IBOutlet NSComboBox *matchLengthComboBox;
 	int playerPipCount;											/*" The player's pip count "*/
 	int opponentPipCount;										/*" The opponent's pip count "*/
@@ -46,26 +46,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	IBOutlet NSBox *privateChatBox;
 }
 
-/*" Designated Initializer "*/
 - (id)init;
 
-
-/*" Accessor methods  "*/
-- (AGFIBSAppController *)theAppController; 
+- (AGFIBSAppController *)theAppController;
 - (void)setTheAppController:(AGFIBSAppController *)newTheAppController; 
-//- (AGFIBSGameModel *)theAGFIBSGameModel; 
-//- (void)setTheAGFIBSGameModel:(AGFIBSGameModel *)newTheAGFIBSGameModel;
 - (AGFIBSGameView *)theAGFIBSGameView;
-//- (void)setTheAGFIBSGameView:(AGFIBSGameView *)newTheAGFIBSGameView;
 - (NSString *)opponentNameValue;
 - (void)reset;
-
-
-/*" NSWindowController methods "*/
-//- (void)windowDidLoad;
 - (void)awakeFromNib;
 
-/*" Game window methods "*/
 - (void)updateTheGameView;
 - (void)setGameWindowTitleConnected:(BOOL)connected;
 - (void)displaySystemMsg:(NSString *)aMessage withTime:(BOOL)timeLimit;
@@ -75,7 +64,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (IBAction)toggleUserListDrawer:(id)sender;
 - (IBAction)undoMoveAsRefreshBoard:(id)sender;
 - (void)displayModelForUserChoiceWithMessageText:(NSString *)messageText button1Title:(NSString *)button1Title button2Title:(NSString *)button2Title iconImage:(NSImage *)iconImage didEndSelector:(SEL)didEndSelector;
-//- (void)askedToDoubleAlertDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 - (void)newMatchRequest:(NSString *)aMessage;
 - (void)resumeMatchRequest:(NSString *)aMessage;
 - (AGFIBSGameView *)theAGFIBSGameView;

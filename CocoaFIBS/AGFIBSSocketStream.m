@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import "AGFIBSSocketStream.h"
 #import "AGFIBSAppController.h"
 #import "NetSocket.h"
@@ -30,7 +29,6 @@ An instance of this class creates and returns input and output streams for a soc
 "*/
 
 - (id)init
-/*" Overridden Initializer "*/
 {
 	if (![super init]) {
 		return nil;
@@ -42,7 +40,6 @@ An instance of this class creates and returns input and output streams for a soc
 }
 
 - (id)initWithServer:(NSString *)myServerAddress port:(int)myPort
-/*" Designated Initializer "*/
 {
     [super init];
 	serverAddress = myServerAddress;
@@ -65,21 +62,17 @@ An instance of this class creates and returns input and output streams for a soc
 	NSLog( @"Socket: Disconnected" );
 }
 
-
 - (void)netsocketDataSent:(NetSocket*)inNetSocket
 {
 	NSLog( @"Socket: Data sent" );
 }
 
-
 - (NSInputStream *)inputStream 
-/*" Returns the NSInputStream for the socket "*/
 {
     return [[inputStream retain] autorelease];
 }
 
 - (void)setInputStream:(NSInputStream *)newInputStream 
-/*" Sets the NSInputStream for the socket "*/
 {
     if (inputStream != newInputStream) {
         [inputStream release];
@@ -89,13 +82,11 @@ An instance of this class creates and returns input and output streams for a soc
 }
 
 - (NSOutputStream *)outputStream 
-/*" Returns the NSOutputStream for the socket "*/
 {
     return [[outputStream retain] autorelease];
 }
 
 - (void)setOutputStream:(NSOutputStream *)newOutputStream 
-/*" Sets the NSOutputStream for the socket "*/
 {
     if (outputStream != newOutputStream) {
         [outputStream release];
@@ -104,31 +95,26 @@ An instance of this class creates and returns input and output streams for a soc
 }
 
 - (id)delegate 
-/*" Returns the delegate of the socket "*/
 {
     return [[delegate retain] autorelease];
 }
 
 - (void)setDelegate:(id)newDelegate 
-/*" Sets the delegate of the socket "*/
 {
 	delegate = newDelegate;
 }
 
 - (bool)isConnected
-/*" Returns the connection status of the socket "*/
 {
     return connected;
 }
 
 - (void)setConnected:(bool)isConnected
-/*" Sets the connection status of the socket "*/
 {
     connected = isConnected;
 }
 
 - (void)connect
-/*" Connect to the specified host at the specified port. Set ourself to to the delegate, schedule ourselves in the runloop, and open the streams. Reset the FIBSCookieMonster for parseing"*/
 {
 	
 	// Create a new NetSocket connected to the host. Since NetSocket is asynchronous, the socket is not 
@@ -158,7 +144,6 @@ An instance of this class creates and returns input and output streams for a soc
 }
 
 - (void)disconnect
-/*"  "*/
 {
     NSLog(@"disconnect!!!!!!!!!");
 	[self sendMessageNow:@"exit2"];
@@ -166,7 +151,6 @@ An instance of this class creates and returns input and output streams for a soc
 }
 
 - (void)reset
-/*" reset, close and dealloc the streams, release the FIBSCookieMonster. "*/
 {
 	NSLog(@"Socket Reset!!!!!!!!!");
 	[mSocket release];
@@ -180,7 +164,6 @@ An instance of this class creates and returns input and output streams for a soc
 }
 
 - (void)sendMessageNow:(NSString *)stringToSend
-/*" "*/
 {
     NSString *message = [stringToSend stringByAppendingString:@"\r\n"];
 	[mSocket writeString:message encoding:NSUTF8StringEncoding];
@@ -189,7 +172,6 @@ An instance of this class creates and returns input and output streams for a soc
 }
 
 - (void)sendMessage:(NSString *)stringToSend
-/*" "*/
 {
     NSString *message = [stringToSend stringByAppendingString:@"\r\n"];
 	if (blockSending) {
@@ -201,7 +183,6 @@ An instance of this class creates and returns input and output streams for a soc
 }
 
 - (void)sendMessages
-/*" "*/
 {
 	if ([toBeWrittenQueue count] > 0) {
 		[mSocket writeString:[toBeWrittenQueue objectAtIndex:0] encoding:NSUTF8StringEncoding];
@@ -254,9 +235,7 @@ An instance of this class creates and returns input and output streams for a soc
 	}
 }
 
-
 - (NSString *)findAndReplaceStringInString:(NSString *)string find:(NSString *)findString replace:(NSString *)replaceString
-/*" Redudent, replace with built in Cocoa method "*/
 {
 	NSArray *found = [string componentsSeparatedByString:findString]; 
 	NSString *replaced = [found componentsJoinedByString:replaceString];
@@ -264,8 +243,7 @@ An instance of this class creates and returns input and output streams for a soc
 }
 
 - (void)dealloc
-/*" Clean Up "*/
-{    
+{
 	[mSocket release];
 	[toBeWrittenQueue release];
 	mSocket = nil;

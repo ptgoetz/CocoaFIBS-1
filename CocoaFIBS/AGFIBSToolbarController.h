@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-
 #import <Cocoa/Cocoa.h>
 
 @class AGFIBSAppController;
@@ -33,42 +32,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -(BOOL)isSystemGreaterThen10_3;
 
-/*" NIB file was loaded "*/
 - (void)awakeFromNib;
 
-/*" Toolbar datasource "*/
 - (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag;
 - (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar*)toolbar;
 - (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar*)toolbar;
 - (int)count;
 - (BOOL)toolbarIsVisible;
 
-/*" Menu actions "*/
 - (IBAction)customize:(id)sender;
 - (IBAction)showhide:(id)sender;
 
-/*" Toolbar button actions "*/
 - (void)toggleUserListDrawer;
 - (void)sendToggleReady;
 - (void)sendToggleGreedy;
 - (void)sendToggleDouble;
-//- (void)resignNormal;
 - (void)resignGammon;
 - (void)resignBackgammon;
 - (void)resignWithHow:(NSString *)how;
 - (void)toggleReadyToolbarItem;
-//- (void)refrshBoard;
 
-/*" User actions "*/
-//- (void)toolbaritemclicked:(NSToolbarItem*)item;
-
-/*" Application delegate methods "*/
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification;
 - (void)applicationWillTerminate:(NSNotification *)aNotification;
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification;
 - (void)applicationDidResignActive:(NSNotification *)aNotification;
 - (void)dealloc;
 
-/*" Clean Up "*/
 - (void)dealloc;
 @end

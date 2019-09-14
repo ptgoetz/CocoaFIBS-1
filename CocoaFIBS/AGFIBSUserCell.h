@@ -25,16 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	NSApplication *app;
 }
 
-/*" Designated Initializers "*/
 - (id)init;
 
-/*" NSActionCell Methods "*/
 - (void)setObjectValue:(id)x;
 - (void)setNeedsDisplay:(BOOL)yn;
 - (NSCellType)type;
 - (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView;
 
-/*" AGFIBSUserCell Methods "*/
 - (NSImage*)imageForClientName:(NSString *)clientName;
 
 @end
