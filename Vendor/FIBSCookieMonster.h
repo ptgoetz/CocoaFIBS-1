@@ -43,8 +43,8 @@
 // The public functions exported by FIBSCookieMonster
 
 int  FIBSCookie(const char * nextMessage);
-void ResetFIBSCookieMonster();
-void ReleaseFIBSCookieMonster();
+void ResetFIBSCookieMonster(void);
+void ReleaseFIBSCookieMonster(void);
 
 
 typedef enum

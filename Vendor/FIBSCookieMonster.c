@@ -74,7 +74,7 @@ static CookieDough * NumericBatch	= NULL;
 static CookieDough * StarsBatch	= NULL;
 
 // Private functions
-static void PrepareBatches();
+static void PrepareBatches(void);
 static CookieDough * AddCookieDough(int message, const char * re);
 static CookieDough * ReleaseCookieDough(CookieDough * theDough);
 
