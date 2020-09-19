@@ -66,7 +66,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)displayModelForUserChoiceWithMessageText:(NSString *)messageText button1Title:(NSString *)button1Title button2Title:(NSString *)button2Title iconImage:(NSImage *)iconImage didEndSelector:(SEL)didEndSelector;
 - (void)newMatchRequest:(NSString *)aMessage;
 - (void)resumeMatchRequest:(NSString *)aMessage;
-- (AGFIBSGameView *)theAGFIBSGameView;
 - (IBAction)matchLengthStepperClicked:(id)sender;
 - (IBAction)undoMove:(id)sender;
 - (IBAction)redoMove:(id)sender;

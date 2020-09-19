@@ -54,7 +54,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)connect;
 - (void)disconnect;
 - (void)sendMessage:(NSString *)stringToSend;
-- (void)sendMessage:(NSString *)stringToSend;
 - (void)sendMessages;
 - (void)sendMessageNow:(NSString *)stringToSend;
 - (void)reset;

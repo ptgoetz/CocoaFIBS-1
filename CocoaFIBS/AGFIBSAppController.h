@@ -70,7 +70,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)setLoginString:(NSString *)newLoginString;
 - (NSMenuItem *)connectMenuItem;
 - (NSMenuItem *)disconnectMenuItem;
-- (AGFIBSSocketStream *)theAGFIBSSocket;
 - (void)playSoundFileLocal:(NSString *)fileName;
 - (void)setAsFriend:(NSString *)name;
 - (void)removeAsFriend:(NSString *)name;
@@ -90,7 +89,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)showGameWindow;
 - (IBAction)showTerminalWindow:(id)sender;
 - (IBAction)sendBugReport:(id)sender;
-- (IBAction)showUserListWindow:(id)sender;
 - (IBAction)connectMenuItemSelected:(id)sender;
 - (IBAction)disconnectMenuItemSelected:(id)sender;
 - (IBAction)printBoard:(id)sender;
