@@ -90,7 +90,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)command
 {
-	if ((command == @selector(moveDown:))) {
+    if (command == @selector(moveDown:)) {
 		if (historyPoint < [commandHistory count]-1) {
 			historyPoint++;
 			[control setStringValue:[commandHistory objectAtIndex:historyPoint]];
@@ -102,7 +102,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		
 		return YES;
 	}
-	if ((command == @selector(moveUp:))) {
+    if (command == @selector(moveUp:)) {
 		if (historyPoint > 0) {
 			historyPoint--;
 		}
