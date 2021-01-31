@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="101400" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AGFIBSPrefController">
+            <connections>
+                <outlet property="highlightTargetPipsPrefCheckboxButton" destination="63" id="65"/>
+                <outlet property="leftStartPositionPrefRadioButton" destination="14" id="15"/>
+                <outlet property="offSoundPrefRadioButton" destination="26" id="35"/>
+                <outlet property="onSoundPrefRadioButton" destination="28" id="34"/>
+                <outlet property="rightStartPositionPrefRadioButton" destination="13" id="16"/>
+                <outlet property="window" destination="5" id="17"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="preferences" animationBehavior="default" id="5" userLabel="Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="-745" y="160" width="492" height="234"/>
+            <rect key="screenRect" x="-1280" y="0.0" width="1280" height="1024"/>
+            <value key="minSize" type="size" width="213" height="107"/>
+            <view key="contentView" id="6">
+                <rect key="frame" x="0.0" y="0.0" width="492" height="234"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <tabView allowsTruncatedLabels="NO" id="40">
+                        <rect key="frame" x="13" y="10" width="466" height="218"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="system"/>
+                        <tabViewItems>
+                            <tabViewItem label="Game" identifier="" id="41">
+                                <view key="view" id="43">
+                                    <rect key="frame" x="10" y="33" width="446" height="172"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <box title="Home" id="24">
+                                            <rect key="frame" x="17" y="95" width="149" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <view key="contentView" id="PsC-MR-HjB">
+                                                <rect key="frame" x="3" y="3" width="143" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                        </box>
+                                        <button imageHugsTitle="YES" id="13">
+                                            <rect key="frame" x="92" y="109" width="56" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="radio" title="Right" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="195">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="rightStartPositionPrefRadioButtonClicked:" target="-2" id="19"/>
+                                            </connections>
+                                        </button>
+                                        <button imageHugsTitle="YES" id="14">
+                                            <rect key="frame" x="25" y="98" width="46" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="radio" title="Left" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="196">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="leftStartPositionPrefRadioButtonClicked:" target="-2" id="18"/>
+                                            </connections>
+                                        </button>
+                                        <box title="Sound" id="25">
+                                            <rect key="frame" x="17" y="21" width="149" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <view key="contentView" id="SrR-gr-ne8">
+                                                <rect key="frame" x="3" y="3" width="143" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                        </box>
+                                        <button imageHugsTitle="YES" id="26">
+                                            <rect key="frame" x="92" y="35" width="56" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="radio" title="Off" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="197">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="offSoundPrefRadioButtonClicked:" target="-2" id="31"/>
+                                            </connections>
+                                        </button>
+                                        <button imageHugsTitle="YES" id="28">
+                                            <rect key="frame" x="25" y="25" width="46" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="radio" title="On" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="198">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="onSoundnPrefRadioButtonClicked:" target="-2" id="30"/>
+                                            </connections>
+                                        </button>
+                                        <box title="Drag Help" id="70">
+                                            <rect key="frame" x="168" y="95" width="181" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <view key="contentView" id="ION-QB-yYd">
+                                                <rect key="frame" x="3" y="3" width="175" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button imageHugsTitle="YES" id="63">
+                                                        <rect key="frame" x="11" y="18" width="153" height="18"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <buttonCell key="cell" type="check" title="Highlight target pips" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="216">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="highlightTargetPipsPrefCheckboxButtonClicked:" target="-2" id="64"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                        <box title="Auto Move" id="165">
+                                            <rect key="frame" x="168" y="21" width="181" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <view key="contentView" id="zFS-ES-7Bp">
+                                                <rect key="frame" x="3" y="3" width="175" height="53"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField verticalHuggingPriority="750" id="182">
+                                                        <rect key="frame" x="10" y="10" width="55" height="11"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Single Click" id="217">
+                                                            <font key="font" metaFont="miniSystem"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <slider verticalHuggingPriority="750" id="183">
+                                                        <rect key="frame" x="11" y="20" width="148" height="25"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <sliderCell key="cell" alignment="left" minValue="1" maxValue="2" doubleValue="1" tickMarkPosition="below" numberOfTickMarks="2" allowsTickMarkValuesOnly="YES" sliderType="linear" id="218">
+                                                            <font key="font" size="12" name="Helvetica"/>
+                                                        </sliderCell>
+                                                        <connections>
+                                                            <binding destination="78" name="value" keyPath="values.autoMoveClickCountPref" id="187"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <textField verticalHuggingPriority="750" id="185">
+                                                        <rect key="frame" x="100" y="10" width="60" height="11"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Double Click" id="219">
+                                                            <font key="font" metaFont="miniSystem"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                            </view>
+                                        </box>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Chat" identifier="" id="72">
+                                <view key="view" id="73">
+                                    <rect key="frame" x="10" y="33" width="446" height="172"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button imageHugsTitle="YES" id="76">
+                                            <rect key="frame" x="18" y="136" width="226" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="check" title="At the start of each match kibitz" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="199">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.chatDisplayNewGameDefualtMsg" id="84"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" id="77">
+                                            <rect key="frame" x="20" y="108" width="406" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="200">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.chatNewGameDefualtMsg" id="131">
+                                                    <dictionary key="options">
+                                                        <integer key="NSContinuouslyUpdatesValue" value="1"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </textField>
+                                        <button imageHugsTitle="YES" id="132">
+                                            <rect key="frame" x="18" y="84" width="205" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="check" title="At the end of each match tell" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="201">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.chatDisplayWinMatchDefualtMsg" id="135"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" id="133">
+                                            <rect key="frame" x="20" y="56" width="406" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="202">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.chatWinMatchDefualtMsg" id="138">
+                                                    <dictionary key="options">
+                                                        <integer key="NSContinuouslyUpdatesValue" value="1"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </textField>
+                                        <button imageHugsTitle="YES" id="139">
+                                            <rect key="frame" x="18" y="32" width="205" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="check" title="Reject match invites with tell" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="203">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.chatDisplayDeclineInviteDefualtMsg" id="141"/>
+                                            </connections>
+                                        </button>
+                                        <textField verticalHuggingPriority="750" id="140">
+                                            <rect key="frame" x="20" y="4" width="406" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="204">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.chatDeclineInviteDefualtMsg" id="145">
+                                                    <dictionary key="options">
+                                                        <integer key="NSContinuouslyUpdatesValue" value="1"/>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </textField>
+                                        <button imageHugsTitle="YES" id="148">
+                                            <rect key="frame" x="327" y="156" width="101" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="check" title="Chat sounds" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="205">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.chatSoundOnOff" id="149"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Board" identifier="" id="85">
+                                <view key="view" id="86">
+                                    <rect key="frame" x="10" y="33" width="446" height="172"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <popUpButton verticalHuggingPriority="750" imageHugsTitle="YES" id="93">
+                                            <rect key="frame" x="93" y="129" width="135" height="26"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <popUpButtonCell key="cell" type="push" title="Item1" bezelStyle="rounded" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="91" id="206">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <menu key="menu" title="OtherViews" id="92">
+                                                    <items>
+                                                        <menuItem title="Item1" state="on" id="91"/>
+                                                        <menuItem title="Item2" id="90"/>
+                                                        <menuItem title="Item3" id="89"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <action selector="changeCustomBoard:" target="-2" id="103"/>
+                                                <binding destination="-2" name="content" keyPath="contentsOfBoardsFolder" id="102"/>
+                                                <binding destination="78" name="selectedValue" keyPath="values.customBoard" previousBinding="102" id="193"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <textField verticalHuggingPriority="750" id="115">
+                                            <rect key="frame" x="17" y="120" width="74" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="207">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">Board Style
+</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button imageHugsTitle="YES" id="129">
+                                            <rect key="frame" x="18" y="96" width="130" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="check" title="Highest dice first" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="208">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.highestDiceFirst" id="130"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Server" identifier="" id="109">
+                                <view key="view" id="110">
+                                    <rect key="frame" x="10" y="33" width="446" height="172"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" id="112">
+                                            <rect key="frame" x="121" y="100" width="52" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="209">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.serverPort" id="121"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="113">
+                                            <rect key="frame" x="121" y="70" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="210">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.loginTimeoutDelayTime" id="123"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="114">
+                                            <rect key="frame" x="17" y="135" width="99" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Server Address" id="211">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="116">
+                                            <rect key="frame" x="17" y="90" width="73" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="212">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">Server Port
+</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" id="117">
+                                            <rect key="frame" x="17" y="60" width="96" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="213">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">Login Timeout
+</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <comboBox verticalHuggingPriority="750" textCompletion="NO" id="155">
+                                            <rect key="frame" x="121" y="126" width="165" height="26"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" title="fibs.com" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="214">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <objectValues>
+                                                    <string>fibs.com</string>
+                                                    <string>67.122.198.180</string>
+                                                    <string>198.144.203.150</string>
+                                                </objectValues>
+                                            </comboBoxCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.serverAddress" id="158"/>
+                                            </connections>
+                                        </comboBox>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Users" identifier="" id="124">
+                                <view key="view" id="125">
+                                    <rect key="frame" x="10" y="33" width="446" height="172"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button imageHugsTitle="YES" id="126">
+                                            <rect key="frame" x="18" y="136" width="321" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <buttonCell key="cell" type="check" title="Check with RepBot when receiving an invitation" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="215">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.checkRepBotOnInvite" id="128"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
+                    </tabView>
+                </subviews>
+            </view>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="78" userLabel="Shared Defaults"/>
+    </objects>
+</document>
