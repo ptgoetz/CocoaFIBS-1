@@ -356,7 +356,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		
 		//Do this once, break if we want to
 		for (i = 0; i <= 0; i++) {
-			if([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSAlternateKeyMask) {
+            if([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSEventModifierFlagOption) {
 				if (fromTriangleArrayPos+playerDie1 < NUMBER_OF_TRIANGLES) {
 					toTrianglePossability1 = [[theAGFIBSGameModel gameBoard] objectAtIndex:fromTriangleArrayPos+playerDie1];
 				}
@@ -368,7 +368,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 					}
 				}
 			}
-			else if([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSCommandKeyMask) {
+            else if([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSEventModifierFlagCommand) {
 				if (fromTriangleArrayPos+playerDie2 < NUMBER_OF_TRIANGLES) {
 					toTrianglePossability2 = [[theAGFIBSGameModel gameBoard] objectAtIndex:fromTriangleArrayPos+playerDie2];
 				}
@@ -480,7 +480,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		[alert setMessageText:@"Would you like to double the cube?"];
 		[alert setIcon:[NSImage imageNamed:@"double"]];
 		[alert setInformativeText:@""];
-		[alert setAlertStyle:NSWarningAlertStyle];
+        [alert setAlertStyle:NSAlertStyleWarning];
 		[alert beginSheetModalForWindow:[self parentWindow] modalDelegate:self didEndSelector:@selector(doubleAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];
 	}
 	else {
@@ -488,7 +488,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		[alert setMessageText:@"You are not allowed to double at this time."];
 		[alert setInformativeText:@""];
 		[alert setIcon:[NSImage imageNamed:@"double"]];
-		[alert setAlertStyle:NSWarningAlertStyle];
+        [alert setAlertStyle:NSAlertStyleWarning];
 		[alert beginSheetModalForWindow:[self parentWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];
 	}
 }
@@ -515,7 +515,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		myRectOpponentBar = NSMakeRect(xChordsForBar,(yChordsForOpponentBar-TRIANGLE_HEIGHT+chipSize),TRIANGLE_WIDTH,TRIANGLE_HEIGHT);
 		myRectPlayerHome = NSMakeRect(xChordsForHome,bottomRowY,TRIANGLE_WIDTH,TRIANGLE_HEIGHT);
 
-		if (i <= 11 && NSPointInRect(aPoint,  myRectTop) || NSPointInRect(aPoint, myRectBottom))
+        if ((i <= 11 && NSPointInRect(aPoint,  myRectTop)) || NSPointInRect(aPoint, myRectBottom))
 			return [[theAGFIBSGameModel gameBoard] objectAtIndex:i];
 		else if (NSPointInRect(aPoint,  myRectPlayerBar))
 			return [theAGFIBSGameModel playerBar];
@@ -563,15 +563,15 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	}
 
 	NSRect backgroundImageRect = NSMakeRect(0,0,[backgroundImage size].width,[backgroundImage size].height);
-	[backgroundImage drawInRect:backgroundImageRect fromRect:backgroundImageRect operation:NSCompositeSourceOver fraction:1.0];
+    [backgroundImage drawInRect:backgroundImageRect fromRect:backgroundImageRect operation:NSCompositingOperationSourceOver fraction:1.0];
 	
 	NSRect topPipNumbersImageRect1 = NSMakeRect(xChordsForTopPipNumbers,yChordsForTopPipNumbers,[topPipNumbers size].width,[topPipNumbers size].height);
 	NSRect topPipNumbersImageRect2 = NSMakeRect(0,0,[topPipNumbers size].width,[topPipNumbers size].height);
-	[topPipNumbers drawInRect:topPipNumbersImageRect1 fromRect:topPipNumbersImageRect2 operation:NSCompositeSourceOver fraction:1.0];
+    [topPipNumbers drawInRect:topPipNumbersImageRect1 fromRect:topPipNumbersImageRect2 operation:NSCompositingOperationSourceOver fraction:1.0];
 	
 	NSRect bottomPipNumbersImageRect1 = NSMakeRect(xChordsForBottomPipNumbers,yChordsForBottomPipNumbers,[bottomPipNumbers size].width,[bottomPipNumbers size].height);
 	NSRect bottomPipNumbersImageRect2 = NSMakeRect(0,0,[bottomPipNumbers size].width,[bottomPipNumbers size].height);
-	[bottomPipNumbers drawInRect:bottomPipNumbersImageRect1 fromRect:bottomPipNumbersImageRect2 operation:NSCompositeSourceOver fraction:1.0];
+    [bottomPipNumbers drawInRect:bottomPipNumbersImageRect1 fromRect:bottomPipNumbersImageRect2 operation:NSCompositingOperationSourceOver fraction:1.0];
 }
 
 - (int)windowWidthBoardAttribute
@@ -666,14 +666,14 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 			}
 			
 			chipRect = NSMakeRect(myPoint.x,y,chipSize,chipSize);
-			[chipImages[ownedBy] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositeSourceOver fraction:1.0];
+            [chipImages[ownedBy] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositingOperationSourceOver fraction:1.0];
 		}
 	}
 	
 	if (mouseIsDown) {
 	//MouseDown
 	chipRect = NSMakeRect((mouseLocationWhileDown.x-chipSize/2),(mouseLocationWhileDown.y-chipSize/2),chipSize,chipSize);
-	[chipImages[1] compositeToPoint:chipRect.origin operation:NSCompositeSourceOver];
+        [chipImages[1] compositeToPoint:chipRect.origin operation:NSCompositingOperationSourceOver];
 	}
 	//Playey Bar
 	int numOfChipsOnBar = [[theAGFIBSGameModel playerBar] numberOfChips];
@@ -682,7 +682,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	for (j = 0; j < numOfChipsOnBar; j++) {
 		y =  myPoint.y + (chipSize * j);
 		chipRect = NSMakeRect(myPoint.x,y,chipSize,chipSize);
-		[chipImages[ownedBy] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositeSourceOver fraction:1.0];
+        [chipImages[ownedBy] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositingOperationSourceOver fraction:1.0];
 	}
 	//Opponent Bar
 	numOfChipsOnBar = [[theAGFIBSGameModel opponentBar] numberOfChips];
@@ -691,7 +691,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	for (j = 0; j < numOfChipsOnBar; j++) {
 		y =  myPoint.y - (chipSize * j);
 		chipRect = NSMakeRect(myPoint.x,y,chipSize,chipSize);
-		[chipImages[ownedBy] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositeSourceOver fraction:1.0];
+        [chipImages[ownedBy] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositingOperationSourceOver fraction:1.0];
 	}
 	//Player Home
 	int numOfChipsInHome = [[theAGFIBSGameModel playerHome] numberOfChips];
@@ -700,7 +700,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	for (j = 0; j < numOfChipsInHome; j++) {
 		y =  myPoint.y + (chipHeightInHome * j);
 		chipRect = NSMakeRect(myPoint.x,y,chipSize,chipSize);
-		[chipImages[ownedBy+2] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositeSourceOver fraction:1.0];
+        [chipImages[ownedBy+2] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositingOperationSourceOver fraction:1.0];
 	}
 	//Opponent Home
 	numOfChipsInHome = [theAGFIBSGameModel opponentHome];
@@ -709,7 +709,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	for (j = 0; j < numOfChipsInHome; j++) {
 		y =  myPoint.y - (chipHeightInHome * j+3)+(chipHeightInHome * 2.7);
 		chipRect = NSMakeRect(myPoint.x,y,chipSize,chipSize);
-		[chipImages[ownedBy+2] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositeSourceOver fraction:1.0];
+        [chipImages[ownedBy+2] drawInRect:chipRect fromRect:chipSizeRect operation:NSCompositingOperationSourceOver fraction:1.0];
 	}
 	//Cube
 	NSString *cubeValue = [[theAGFIBSGameModel fibsBoardStateDictionary] objectForKey:@"doubleCube"];
@@ -727,7 +727,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	
 	[lcubeImage drawInRect:NSMakeRect(chordsForCube.x,chordsForCube.y,[lcubeImage size].height,[lcubeImage size].width) 
 					fromRect:NSMakeRect(0,0,[lcubeImage size].height,[lcubeImage size].width) 
-					operation:NSCompositeSourceOver 
+                 operation:NSCompositingOperationSourceOver
 					fraction:1.0];
 	//Dice
 	int playerDie1 = [[theAGFIBSGameModel playerDice] valueOfDie:0];
@@ -751,7 +751,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	
 		[playerDiceImages[playerDie1] drawInRect:NSMakeRect(chordsForPlayerDiceLeft.x,chordsForPlayerDiceLeft.y,[playerDiceImages[playerDie1] size].height,[playerDiceImages[playerDie1] size].width) 
 							  fromRect:NSMakeRect(0,0,[playerDiceImages[playerDie1] size].height,[playerDiceImages[playerDie1] size].width) 
-							 operation:NSCompositeSourceOver 
+                                       operation:NSCompositingOperationSourceOver
 							  fraction:1.0];
 	
 		[playerDiceImages[playerDie2] drawInRect:NSMakeRect(chordsForPlayerDiceRight.x,chordsForPlayerDiceRight.y,[playerDiceImages[playerDie2] size].height,[playerDiceImages[playerDie2] size].width) 
@@ -764,12 +764,12 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		
 		[opponentDiceImages[opponentDie1] drawInRect:NSMakeRect(chordsForOpponentDiceLeft.x,chordsForOpponentDiceLeft.y,[opponentDiceImages[opponentDie1] size].height,[opponentDiceImages[opponentDie1] size].width) 
 								fromRect:NSMakeRect(0,0,[opponentDiceImages[opponentDie1] size].height,[opponentDiceImages[opponentDie1] size].width) 
-							   operation:NSCompositeSourceOver 
+                                           operation:NSCompositingOperationSourceOver 
 								fraction:1.0];
 								
 		[opponentDiceImages[opponentDie2] drawInRect:NSMakeRect(chordsForOpponentDiceRight.x,chordsForOpponentDiceRight.y,[opponentDiceImages[opponentDie2] size].height,[opponentDiceImages[opponentDie2] size].width) 
 							  fromRect:NSMakeRect(0,0,[opponentDiceImages[opponentDie2] size].height,[opponentDiceImages[opponentDie2] size].width) 
-							 operation:NSCompositeSourceOver 
+                                           operation:NSCompositingOperationSourceOver 
 							  fraction:1.0];
 							  
 
@@ -778,7 +778,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 
 		[rollOrDoubleImage				drawInRect:NSMakeRect((chordsForPlayerDiceLeft.x + [playerDiceImages[1] size].width),chordsForPlayerDiceLeft.y,[rollOrDoubleImage size].height,[rollOrDoubleImage size].width) 
 									fromRect:NSMakeRect(0,0,[rollOrDoubleImage size].height,[rollOrDoubleImage size].width) 
-									operation:NSCompositeSourceOver 
+                               operation:NSCompositingOperationSourceOver 
 									fraction:1.0];
 	}
 	
@@ -787,23 +787,23 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 									  
 		[opponentDiceImages[opponentDieFromLastTurn1] drawInRect:NSMakeRect(xChordsForDiceOnSide,yChordsForLeftOpponentDieInHome,[opponentDiceImages[opponentDieFromLastTurn1] size].height,[opponentDiceImages[opponentDieFromLastTurn1] size].width) 
 								fromRect:NSMakeRect(0,0,[opponentDiceImages[opponentDieFromLastTurn1] size].height,[opponentDiceImages[opponentDieFromLastTurn1] size].width) 
-							   operation:NSCompositeSourceOver 
+                                                       operation:NSCompositingOperationSourceOver 
 								fraction:1.0];
 								
 		[opponentDiceImages[opponentDieFromLastTurn2] drawInRect:NSMakeRect(xChordsForDiceOnSide,yChordsForRightOpponentDieInHome,[opponentDiceImages[opponentDieFromLastTurn2] size].height,[opponentDiceImages[opponentDieFromLastTurn2] size].width) 
 							  fromRect:NSMakeRect(0,0,[opponentDiceImages[opponentDieFromLastTurn2] size].height,[opponentDiceImages[opponentDieFromLastTurn2] size].width) 
-							 operation:NSCompositeSourceOver 
+                                                       operation:NSCompositingOperationSourceOver 
 							  fraction:1.0];
 	}
 	else {
 		[playerDiceImages[playerDieFromLastTurn1] drawInRect:NSMakeRect(xChordsForDiceOnSide,yChordsForLeftPlayerDieInHome,[playerDiceImages[playerDieFromLastTurn1] size].height,[playerDiceImages[playerDieFromLastTurn1] size].width) 
 							  fromRect:NSMakeRect(0,0,[playerDiceImages[playerDieFromLastTurn1] size].height,[playerDiceImages[playerDieFromLastTurn1] size].width) 
-							 operation:NSCompositeSourceOver 
+                                                   operation:NSCompositingOperationSourceOver 
 							  fraction:1.0];
 	
 		[playerDiceImages[playerDieFromLastTurn2] drawInRect:NSMakeRect(xChordsForDiceOnSide,yChordsForRightPlayerDieInHome,[playerDiceImages[playerDieFromLastTurn2] size].height,[playerDiceImages[playerDieFromLastTurn2] size].width) 
 							  fromRect:NSMakeRect(0,0,[playerDiceImages[playerDieFromLastTurn2] size].height,[playerDiceImages[playerDieFromLastTurn2] size].width) 
-							 operation:NSCompositeSourceOver 
+                                                   operation:NSCompositingOperationSourceOver 
 							  fraction:1.0];
 	}
 }
@@ -940,8 +940,8 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 				int firstOwnedBy = [[[theAGFIBSGameModel gameBoard] objectAtIndex:firstInbetweenTriangleArrayPos] ownedBy];
 				int secondOwnedBy = [[[theAGFIBSGameModel gameBoard] objectAtIndex:secondInbetweenTriangleArrayPos] ownedBy];
 				
-				if (firstOwnedBy == OWNEDBY_PLAYER || firstOwnedBy == OWNEDBY_NOONE || firstOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:firstInbetweenTriangleArrayPos] numberOfChips] == 1){
-					if (secondOwnedBy == OWNEDBY_PLAYER || secondOwnedBy == OWNEDBY_NOONE || secondOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:secondInbetweenTriangleArrayPos] numberOfChips] == 1){
+            if (firstOwnedBy == OWNEDBY_PLAYER || firstOwnedBy == OWNEDBY_NOONE || (firstOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:firstInbetweenTriangleArrayPos] numberOfChips] == 1)){
+                if (secondOwnedBy == OWNEDBY_PLAYER || secondOwnedBy == OWNEDBY_NOONE || (secondOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:secondInbetweenTriangleArrayPos] numberOfChips] == 1)){
 						moveString = [NSString stringWithFormat:@" %d - %d %d - %d %d - %d ", [draggedFromTriangle pipNumber], firstInbetweenTrianglePipNum, firstInbetweenTrianglePipNum, secondInbetweenTrianglePipNum, secondInbetweenTrianglePipNum, [selectedTriangle pipNumber]];
 					}
 				}
@@ -984,9 +984,9 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 				int secondOwnedBy = [[[theAGFIBSGameModel gameBoard] objectAtIndex:secondInbetweenTriangleArrayPos] ownedBy];
 				int thirdOwnedBy = [[[theAGFIBSGameModel gameBoard] objectAtIndex:secondInbetweenTriangleArrayPos] ownedBy];
 				
-				if (firstOwnedBy == OWNEDBY_PLAYER || firstOwnedBy == OWNEDBY_NOONE || firstOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:firstInbetweenTriangleArrayPos] numberOfChips] == 1){
-					if (secondOwnedBy == OWNEDBY_PLAYER || secondOwnedBy == OWNEDBY_NOONE || secondOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:secondInbetweenTriangleArrayPos] numberOfChips] == 1){
-						if (thirdOwnedBy == OWNEDBY_PLAYER || thirdOwnedBy == OWNEDBY_NOONE || thirdOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:thirdInbetweenTriangleArrayPos] numberOfChips] == 1){
+            if (firstOwnedBy == OWNEDBY_PLAYER || firstOwnedBy == OWNEDBY_NOONE || (firstOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:firstInbetweenTriangleArrayPos] numberOfChips] == 1)){
+                if (secondOwnedBy == OWNEDBY_PLAYER || secondOwnedBy == OWNEDBY_NOONE || (secondOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:secondInbetweenTriangleArrayPos] numberOfChips] == 1)){
+                    if (thirdOwnedBy == OWNEDBY_PLAYER || thirdOwnedBy == OWNEDBY_NOONE || (thirdOwnedBy == OWNEDBY_OPPONENT && [[[theAGFIBSGameModel gameBoard] objectAtIndex:thirdInbetweenTriangleArrayPos] numberOfChips] == 1)){
 							moveString = [NSString stringWithFormat:@" %d - %d %d - %d %d - %d %d - %d ", [draggedFromTriangle pipNumber], firstInbetweenTrianglePipNum, firstInbetweenTrianglePipNum, secondInbetweenTrianglePipNum, secondInbetweenTrianglePipNum, thirdInbetweenTrianglePipNum, thirdInbetweenTrianglePipNum, [selectedTriangle pipNumber]];
 						}
 					}

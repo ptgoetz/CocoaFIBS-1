@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		[alert addButtonWithTitle:@"Ok"];
 		[alert setMessageText:emptyFieldMsg];
 		[alert setInformativeText:@""];
-		[alert setAlertStyle:NSWarningAlertStyle];
+        [alert setAlertStyle:NSAlertStyleWarning];
 		[alert beginSheetModalForWindow:[self loginWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];   
 	}
 	return fieldsWereEmprty;
@@ -154,6 +154,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (IBAction)newUserRegistration:(id)sender
 {
+    // TODO telnet is not installed by default in OSX
+    // This can be done with network sockets
 	NSString *command = @"telnet fibs.com 4321";
 	NSString *script= [NSString stringWithFormat:@"tell application \"Terminal\"\nactivate\ndo script \"%@\"\nend tell\n",command];
     NSAppleScript *as = [[NSAppleScript alloc] initWithSource:script];

@@ -66,7 +66,7 @@ NSLog(@"sssssssssssssss");
 
 	// Setup tracking info and state
 	distantFuture = [NSDate distantFuture];
-	eventMask = NSLeftMouseUpMask | NSRightMouseUpMask | NSLeftMouseDraggedMask | NSRightMouseDraggedMask;
+    eventMask = NSEventMaskLeftMouseUp | NSEventMaskRightMouseUp | NSEventMaskLeftMouseDragged | NSEventMaskRightMouseDragged;
 	done = NO;
 	inRects = NO;
 	
@@ -92,8 +92,8 @@ NSLog(@"sssssssssssssss");
 		switch( [inEvent type] )
 		{
 			// Case Done Tracking Click
-			case NSRightMouseUp:
-			case NSLeftMouseUp:
+            case NSEventTypeRightMouseUp:
+            case NSEventTypeLeftMouseUp:
 			
 				// If we were still inside the link, draw unclicked and open link
 				if( NSMouseInRects( mouseLoc, linkRects, linkCount, NO ) )
@@ -104,8 +104,8 @@ NSLog(@"sssssssssssssss");
 				break;
 			
 			// Case Mouse Moved
-			case NSLeftMouseDragged:
-			case NSRightMouseDragged:
+            case NSEventTypeLeftMouseDragged:
+            case NSEventTypeRightMouseDragged:
 				
 				// Check if we moved into the link
 				if( NSMouseInRects( mouseLoc, linkRects, linkCount, NO ) && inRects == NO )
