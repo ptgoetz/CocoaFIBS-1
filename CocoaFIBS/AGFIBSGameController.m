@@ -77,7 +77,7 @@ An instance of this controller class acts as the bridge between the game model a
 {
 	[self setGameWindowTitleConnected:NO];
 	[[[self theAGFIBSGameView] theAGFIBSGameModel] newGame];
-	[[self window] close];	
+	//[[self window] close];	
 }
 
 - (void)setGameWindowTitleConnected:(BOOL)connected

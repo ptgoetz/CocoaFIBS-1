@@ -253,7 +253,7 @@ AGFIBSSPrefsHaveChanged
 	int dontDisplayMsgInTerminal[20] = {FIBS_Empty,CLIP_WHO_END,CLIP_YOU_SAY,CLIP_SAYS,FIBS_Unknown,FIBS_YouRoll,FIBS_PlayerRolls,AGFIBS_PipCount,CLIP_SHOUTS,CLIP_YOU_SHOUT,CLIP_KIBITZES,CLIP_YOU_KIBITZ,CLIP_WHO_INFO,FIBS_Board,FIBS_BAD_Board};
 	int i;
 	BOOL displayInTerminal = YES;
-	
+    //CFLog(@"RECEIVED: %d - %@", cookie, aMessage);
 	for (i=0; i <= 20; i++) {
 		if (cookie == dontDisplayMsgInTerminal[i]) {
 			displayInTerminal = NO;
