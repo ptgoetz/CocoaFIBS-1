@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "AGFIBSGameModel.h"
 #import "AGFIBSTriangle.h"
 #include "AGFIBSDice.h"
+#include "CFLog.h"
 
 #define NUMBER_OF_TRIANGLES 24
 #define TRIANGLE_WIDTH 32
@@ -69,7 +70,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		
 		imageType =  @"png";
 		
-		NSLog(@"%@", [NSString stringWithFormat:@"%@",pathToBoardImages]);
+//        CFLog(@"%@", [NSString stringWithFormat:@"%@",pathToBoardImages]);
 		
 		boardAttributes = [[NSDictionary alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@boardAttributes.plist", pathToBoardImages]];
 		
@@ -231,7 +232,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -(void)chipFollowsMouseWhileDragging 
 {
 	chipRect = NSMakeRect((mouseLocationWhileDragging.x-chipSize/2),(mouseLocationWhileDragging.y-chipSize/2),chipSize,chipSize);
-	[chipImages[draggedChipOwnedBy] compositeToPoint:chipRect.origin operation:NSCompositeSourceOver];
+    [chipImages[draggedChipOwnedBy] compositeToPoint:chipRect.origin operation:NSCompositingOperationSourceOver];
 }
 
 
@@ -275,7 +276,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 {
 	mouseIsDown = NO;
 	NSPoint aPoint = [self convertPoint:[theEvent locationInWindow] fromView:nil];
-	//NSLog(@"%f",aPoint.y);
+	//CFLog(@"%f",aPoint.y);
 	NSRect myRectPlayerDiceLeft;
 	NSRect myRectPlayerDiceRight;
 	myRectPlayerDiceLeft = NSMakeRect(chordsForPlayerDiceLeft.x,chordsForPlayerDiceLeft.y,[playerDiceImages[1] size].height,[playerDiceImages[1] size].width);
@@ -287,7 +288,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		
 	//Clicks on dice
 	if (NSPointInRect(aPoint,  myRectPlayerDiceLeft) || NSPointInRect(aPoint,  myRectPlayerDiceRight)) {
-		if([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSAlternateKeyMask) {
+        if([[[NSApplication sharedApplication] currentEvent] modifierFlags] & NSEventModifierFlagOption) {
 			[[theAGFIBSGameModel playerDice] swapDice];
 			[self setNeedsDisplay:YES];
 		}
@@ -304,7 +305,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 			[nc postNotificationName:@"AGFIBSSPlaySoundFile" object:@"pickup0"];
 			[self setNeedsDisplay:YES];
 			firstTimeDiceRoll = YES;
-			[nc postNotificationName:@"AGFIBSDisplaySystemMsg" object:@""];
+//            [nc postNotificationName:@"AGFIBSDisplaySystemMsg" object:@""];
 			[self clearUndoStack];
 		}
 	}
@@ -589,7 +590,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	int i;
 	for (i = 0; i < NUMBER_OF_TRIANGLES; i++) {
 		AGFIBSTriangle *potentialMoveToTriangle = [[theAGFIBSGameModel gameBoard] objectAtIndex:i];
-		//NSLog([potentialMoveToTriangle description]);
+		//CFLog([potentialMoveToTriangle description]);
 		if ([self canMoveToTriangle:potentialMoveToTriangle]) {
 			[potentialMoveToTriangle setHighlighted:YES];
 		}
@@ -756,7 +757,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	
 		[playerDiceImages[playerDie2] drawInRect:NSMakeRect(chordsForPlayerDiceRight.x,chordsForPlayerDiceRight.y,[playerDiceImages[playerDie2] size].height,[playerDiceImages[playerDie2] size].width) 
 							  fromRect:NSMakeRect(0,0,[playerDiceImages[playerDie2] size].height,[playerDiceImages[playerDie2] size].width) 
-							 operation:NSCompositeSourceOver 
+                                       operation:NSCompositingOperationSourceOver
 							  fraction:1.0];
 	}
 	else if (opponentDie1 != 0)
@@ -847,14 +848,14 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		}	
 		
 		int moveType = [[theAGFIBSGameModel playerDice] legalMoveType:distanceBetweenTriangles withGameModel:theAGFIBSGameModel];
-		//NSLog(@"moveType %d",moveType);
+		//CFLog(@"moveType %d",moveType);
 		int die1 = [[theAGFIBSGameModel playerDice] valueOfDie:0];
 		int die2 = [[theAGFIBSGameModel playerDice] valueOfDie:1];
 		
 		
 		if (moveType == 1) {
 			moveString = [NSString stringWithFormat:@" %d - %d ", [draggedFromTriangle pipNumber], [selectedTriangle pipNumber]];
-			//NSLog(@"[selectedTriangle pipNumber] %d",[selectedTriangle pipNumber]);
+			//CFLog(@"[selectedTriangle pipNumber] %d",[selectedTriangle pipNumber]);
 		}
 
 		if (moveType == 2) {
@@ -1134,19 +1135,19 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 -(BOOL)canMoveFromTriangle:(AGFIBSTriangle *)fromTriangle 
 {
 	if ([fromTriangle pipNumber] == HOME_PIP_NUMBER) {
-		NSLog(@"Failed: can take chips out of home");
+		CFLog(@"Failed: can take chips out of home");
 		return NO;
 	}
 	if (draggedChipOwnedBy != OWNEDBY_PLAYER) {
-		NSLog(@"Failed: not owned by you");
+		CFLog(@"Failed: not owned by you");
 		return NO;
 	}
 	else if ([[theAGFIBSGameModel playerBar] numberOfChips] > 0 && ![fromTriangle isEqual:[theAGFIBSGameModel playerBar]]) {
-		NSLog(@"Failed: on bar");
+		CFLog(@"Failed: on bar");
 		return NO;
 	}
 	else if ([[theAGFIBSGameModel playerDice] numberOfUnusedRolls] == 0) {
-		NSLog(@"Failed: numberOfUnusedRolls");
+		CFLog(@"Failed: numberOfUnusedRolls");
 		return NO;
 	}
 	else {
@@ -1172,13 +1173,13 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	
 	BOOL canMove = NO;
 	if (![self canMoveFromTriangle:draggedFromTriangle]) {
-		NSLog(@"Failed: canMoveFromTriangle");
+		CFLog(@"Failed: canMoveFromTriangle");
 		canMove = NO;
 	}
 	
 	
 	else if (color == 1 &&  [toTriangle pipNumber] >= [draggedFromTriangle pipNumber] && [toTriangle pipNumber] != HOME_PIP_NUMBER && [draggedFromTriangle pipNumber] != BAR_PIP_NUMBER) {
-	NSLog(@"Backwards move");
+	CFLog(@"Backwards move");
 		canMove =  NO;
 	}
 	else if (distanceBetweenTriangles > 6 && [[theAGFIBSGameModel playerBar] numberOfChips] >= 1 && isDragging) {
@@ -1188,15 +1189,15 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		canMove =  NO;
 	}
 	else if (color == -1 &&  [toTriangle pipNumber] <= [draggedFromTriangle pipNumber]) {
-		NSLog(@"Backwards move");
+		CFLog(@"Backwards move");
 		canMove =  NO;
 	}
 	else if (![theAGFIBSGameModel isPlayerHome] &&  [toTriangle pipNumber] == HOME_PIP_NUMBER) {
-		NSLog(@"Failed: not home yet");
+		CFLog(@"Failed: not home yet");
 		canMove =  NO;
 	}
 	else if ([toTriangle ownedBy] == OWNEDBY_OPPONENT && [toTriangle numberOfChips] > 1) {
-		NSLog(@"Failed: [toTriangle ownedBy] == OWNEDBY_OPPONENT && [toTriangle numberOfChips] > 1");
+		CFLog(@"Failed: [toTriangle ownedBy] == OWNEDBY_OPPONENT && [toTriangle numberOfChips] > 1");
 		canMove =  NO;
 	}
 	else if ([draggedFromTriangle pipNumber] == 0 && color == 1 && ![[theAGFIBSGameModel playerDice] legalMoveType:distanceBetweenTriangles withGameModel:theAGFIBSGameModel]) {
@@ -1232,7 +1233,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		AGFIBSTriangle *inbetweenStepTriangle2 = [[theAGFIBSGameModel gameBoard] objectAtIndex:[self pipNumToArrayPos:inbetweenJump2PipNum]];
 		if ([inbetweenStepTriangle1 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle1 numberOfChips] > 1 && [inbetweenStepTriangle2 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle2 numberOfChips] > 1) {
 			canMove =  NO;
-			NSLog(@"Both owned by 2");
+			CFLog(@"Both owned by 2");
 		}
 
 		else if ([inbetweenStepTriangle1 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle1 numberOfChips] == 1 && [inbetweenStepTriangle2 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle2 numberOfChips] == 1) {
@@ -1242,7 +1243,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		else {
 			distanceToUseUpDice = distanceBetweenTriangles;
 			canMove =  YES;
-			NSLog(@"yes2");
+			CFLog(@"yes2");
 		}
 	}
 	else if ([[theAGFIBSGameModel playerDice] isDoubleRoll] && moveType > 1) {
@@ -1263,17 +1264,17 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 			if ([inbetweenStepTriangle ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle numberOfChips] > 1) {
 				canMove =  NO;
 				break;
-				NSLog(@"[inbetweenStepTriangle ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle numberOfChips] > 1");
+				CFLog(@"[inbetweenStepTriangle ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle numberOfChips] > 1");
 			}
 			else if (i > 0 && [[theAGFIBSGameModel playerBar] numberOfChips] >= 1 && isDragging) {
 				canMove =  NO;
 				break;
-				NSLog(@"Still have a chip on the bar");
+				CFLog(@"Still have a chip on the bar");
 			}
 			else if (i > 0 && [[theAGFIBSGameModel playerBar] numberOfChips] >= 2 && isDragging == NO) {
 				canMove =  NO;
 				break;
-				NSLog(@"Still have a chip on the bar");
+				CFLog(@"Still have a chip on the bar");
 			}
 			else {
 				distanceToUseUpDice = distanceBetweenTriangles;
@@ -1299,7 +1300,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		canMove =  YES;
 	}
 
-	NSLog(@"can move %d", canMove);
+	CFLog(@"can move %d", canMove);
 	return canMove;
 }
 

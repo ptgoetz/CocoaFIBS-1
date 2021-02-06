@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "AGFIBSUserDetailWindowController.h"
 #include "AGFIBSAppController.h"
 #include "AGFIBSChatController.h"
+#include "CFLog.h"
 
 #define KEY_UP_ARROW 126
 #define KEY_DOWN_ARROW 125
@@ -90,12 +91,12 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	NSString *aPlayersName;
 	while (aPlayerObject = [enumerator nextObject]) {
 		aPlayersName = [aPlayerObject objectForKey:@"name"];
-		NSLog(@"letter %@",letter);
-		NSLog(@"[aPlayersName] %@",aPlayersName);
-		NSLog(@"[aPlayersName substringToIndex:1] %@",[aPlayersName substringToIndex:1]);
+		CFLog(@"letter %@",letter);
+		CFLog(@"[aPlayersName] %@",aPlayersName);
+		CFLog(@"[aPlayersName substringToIndex:1] %@",[aPlayersName substringToIndex:1]);
 		
 		if ([letter isEqualToString:[aPlayersName substringToIndex:1]]) {
-			NSLog(@"goto %d",i);
+			CFLog(@"goto %d",i);
 			return i;
 		}
 		i++;
@@ -205,7 +206,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 		[userListWindowData sortUsingDescriptors:sortDescriptorsArray];
 	}
 	
-        NSLog(@"%@", [sortDescriptorsArray description]);
+        CFLog(@"%@", [sortDescriptorsArray description]);
 	NSControl *aControl = [[[tableView tableColumns] objectAtIndex:0] dataCellForRow:0];
 	[self selectRowAfterDataSourceUpdate];
 	[aControl setNeedsDisplay:YES];
@@ -277,7 +278,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	NSDictionary *aPlayerObject;
 	while (aPlayerObject = [enumerator nextObject]) {
 		if ([playerName isEqualToString:[aPlayerObject objectForKey:@"name"]]) {
-			NSLog(@"found for get%@", [aPlayerObject objectForKey:@"name"]);
+			CFLog(@"found for get%@", [aPlayerObject objectForKey:@"name"]);
 			return aPlayerObject;
 		}
 	}
@@ -293,7 +294,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	while (aPlayerObject = [enumerator nextObject]) {
 		i++;
 		if ([playerName isEqualToString:[aPlayerObject objectForKey:@"name"]]) {
-			NSLog(@"found for set%@", [aPlayerObject objectForKey:@"name"]);
+			CFLog(@"found for set%@", [aPlayerObject objectForKey:@"name"]);
 			break;
 		}
 	}
@@ -342,7 +343,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 
 - (void)keyDown:(NSEvent *)theEvent
 {
-	NSLog(@"key %d",[theEvent keyCode]);
+	CFLog(@"key %d",[theEvent keyCode]);
 	
 	if ([theEvent keyCode] == KEY_UP_ARROW && selectedRow > 0) {
 		selectedRow -=1;
@@ -407,8 +408,8 @@ Instances of this class acts as the controller for the NSTableView that pops out
 
 - (IBAction)menuItem:(id)sender
 {
-	NSLog(@"Menu Clicked %@", [[userListWindowData objectAtIndex:selectedRow] objectForKey:@"name"]);
-	NSLog(@"tag %ld", (long)[sender tag]);
+	CFLog(@"Menu Clicked %@", [[userListWindowData objectAtIndex:selectedRow] objectForKey:@"name"]);
+	CFLog(@"tag %ld", (long)[sender tag]);
 	NSString *stringToSend;
 	
 	if ([sender tag] == 0) {
@@ -456,7 +457,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 		stringToSend = [NSString stringWithFormat:@"tell repbot %@", [sender title]];
 		[self sendNotificationToSendCommandToSocket:stringToSend];
 	}
-	else if ([sender title] == @"Friend" || [sender tag] == 9) {
+    else if ([[sender title]  isEqual: @"Friend"] || [sender tag] == 9) {
 		[theAppController setAsFriend:[self selectedName]];
 		stringToSend = [NSString stringWithFormat:@"who %@", [self selectedName]];
 		[self sendNotificationToSendCommandToSocket:stringToSend];

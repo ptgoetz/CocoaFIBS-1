@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "AGFIBSLoginWindowController.h"
 #include "AGFIBSChatController.h"
 #include "AGFIBSGameModel.h"
+#include "CFLog.h"
 
 @implementation AGFIBSAppController
 /*" 
@@ -172,7 +173,7 @@ AGFIBSSPrefsHaveChanged
 	[[theGameController theAGFIBSGameView] setUpImagesAndChords];
 	[theGameController updateTheGameView];
 	
-	NSLog(@"Prefs have changed");
+	CFLog(@"Prefs have changed");
 }
 
 - (IBAction)rollFromMenu:(id)sender;
@@ -207,7 +208,7 @@ AGFIBSSPrefsHaveChanged
 		NSString *soundPath;
 		NSSound *thisSound;
 		NSBundle *thisBundle = [NSBundle bundleForClass:[self class]];
-		if (soundPath = [thisBundle pathForResource:fileName ofType:@"aif"]) {
+        if ((soundPath = [thisBundle pathForResource:fileName ofType:@"aif"])) {
 			thisSound = [[[NSSound alloc] initWithContentsOfFile:soundPath byReference:NO] autorelease];
 			[thisSound play];
 		}
@@ -606,7 +607,7 @@ AGFIBSSPrefsHaveChanged
 			
 			//Convert Experience to NSNumber
 		NSNumber *experience = [NSNumber numberWithInt:[[clipWhoInfoDictionary objectForKey:@"experience"] intValue]];
-			NSLog(@"%@", [clipWhoInfoDictionary objectForKey:@"experience"]);
+			//(@"%@", [clipWhoInfoDictionary objectForKey:@"experience"]);
 		[clipWhoInfoDictionary setObject:experience forKey:@"experience"];
 			
 			//Clean up the list
@@ -662,7 +663,7 @@ AGFIBSSPrefsHaveChanged
 			[theAGFIBSSocket sendMessage:@"pip"];
 			NSArray *fibsBoardStateKeys2 = [@"board player opponent matchLength playerScore opponentScore playerBar tri1 tri2 tri3 tri4 tri5 tri6 tri7 tri8 tri9 tri10 tri11 tri12 tri13 tri14 tri15 tri16 tri17 tri18 tri19 tri20 tri21 tri22 tri23 tri24 opponentBar turn playerDie1 playerDie2 opponentDie1 opponentDie2 doubleCube playerMayDouble opponentMayDouble wasDoubled color direction home bar playerHomeNum opponentHomeNum playerBarNum opponentBarNum canMove forcedMove didCrawford redoubles" componentsSeparatedByString:@" "];
 			NSArray *fibsBoardStateMessage2 = [aMessage componentsSeparatedByString:@":"];
-			//NSLog(aMessage);
+			//CFLog(aMessage);
 			NSDictionary *fibsBoardStateDictionary2 = [[NSDictionary alloc] initWithObjects:fibsBoardStateMessage2 forKeys:fibsBoardStateKeys2];
 			[[[theGameController theAGFIBSGameView] theAGFIBSGameModel] setFibsBoardStateDictionary:fibsBoardStateDictionary2];
 			[[[theGameController theAGFIBSGameView] theAGFIBSGameModel] updateModelFromFIBS_Board];

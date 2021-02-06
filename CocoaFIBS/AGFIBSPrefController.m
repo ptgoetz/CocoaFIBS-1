@@ -18,6 +18,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 #import "AGFIBSPrefController.h"
+#include "CFLog.h"
 
 @implementation AGFIBSPrefController
 
@@ -32,26 +33,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 {
 	//Start Position
 	if ([[NSUserDefaults standardUserDefaults] integerForKey:@"startPosition"] == 2) {
-		[rightStartPositionPrefRadioButton setState:NSOnState];
+        [rightStartPositionPrefRadioButton setState:NSControlStateValueOn];
 	}
 	else {
-		[leftStartPositionPrefRadioButton setState:NSOnState];
+        [leftStartPositionPrefRadioButton setState:NSControlStateValueOn];
 	}
 	
 	//Sound
 	if ([[NSUserDefaults standardUserDefaults] integerForKey:@"soundOnOff"] == 1) {
-		[onSoundPrefRadioButton setState:NSOnState];
+        [onSoundPrefRadioButton setState:NSControlStateValueOn];
 	}
 	else {
-		[offSoundPrefRadioButton setState:NSOnState];
+        [offSoundPrefRadioButton setState:NSControlStateValueOn];
 	}
 	
 	//highlightTargetPips
 	if ([[NSUserDefaults standardUserDefaults] integerForKey:@"highlightTargetPips"] == 1) {
-		[highlightTargetPipsPrefCheckboxButton setState:NSOnState];
+        [highlightTargetPipsPrefCheckboxButton setState:NSControlStateValueOn];
 	}
 	else {
-		[highlightTargetPipsPrefCheckboxButton setState:NSOnState];
+        [highlightTargetPipsPrefCheckboxButton setState:NSControlStateValueOn];
 	}
 }
 
@@ -74,36 +75,36 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (IBAction)leftStartPositionPrefRadioButtonClicked:(id)sender
 {
-	[rightStartPositionPrefRadioButton setState:NSOffState];
+    [rightStartPositionPrefRadioButton setState:NSControlStateValueOff];
 	[[NSUserDefaults standardUserDefaults] setInteger:1  forKey:@"startPosition"];
 	[self prefsHaveChanged];
 }
 
 - (IBAction)rightStartPositionPrefRadioButtonClicked:(id)sender
 {
-	[leftStartPositionPrefRadioButton setState:NSOffState];
+    [leftStartPositionPrefRadioButton setState:NSControlStateValueOff];
 	[[NSUserDefaults standardUserDefaults] setInteger:2  forKey:@"startPosition"];
 	[self prefsHaveChanged];
 }
 
 - (IBAction)onSoundnPrefRadioButtonClicked:(id)sender
 {
-	[offSoundPrefRadioButton setState:NSOffState];
+    [offSoundPrefRadioButton setState:NSControlStateValueOff];
 	[[NSUserDefaults standardUserDefaults] setInteger:1  forKey:@"soundOnOff"];
 
 }
 - (IBAction)offSoundPrefRadioButtonClicked:(id)sender
 {
-	[onSoundPrefRadioButton setState:NSOffState];
+    [onSoundPrefRadioButton setState:NSControlStateValueOff];
 	[[NSUserDefaults standardUserDefaults] setInteger:0  forKey:@"soundOnOff"];
 }
 
 - (IBAction)highlightTargetPipsPrefCheckboxButtonClicked:(id)sender
 {
-	if ([highlightTargetPipsPrefCheckboxButton state] == NSOnState) {
+    if ([highlightTargetPipsPrefCheckboxButton state] == NSControlStateValueOn) {
 		[[NSUserDefaults standardUserDefaults] setBool:YES  forKey:@"highlightTargetPips"];
 	}
-	else if ([highlightTargetPipsPrefCheckboxButton state] == NSOffState) {
+    else if ([highlightTargetPipsPrefCheckboxButton state] == NSControlStateValueOff) {
 		[[NSUserDefaults standardUserDefaults] setBool:NO  forKey:@"highlightTargetPips"];
 	}
 }

@@ -111,6 +111,7 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		EADEB53625CB952F0062DCB4 /* CFLog.h in Headers */ = {isa = PBXBuildFile; fileRef = EADEB53525CB952F0062DCB4 /* CFLog.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -222,6 +223,7 @@
 		66FED31607C5904B00E7EDED /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CocoaFIBS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaFIBS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EADEB53525CB952F0062DCB4 /* CFLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFLog.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -432,42 +434,43 @@
 		D8646673232CD5C600ECB4D9 /* CocoaFIBS */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* CocoaFIBS_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-				66A8C00E07CBC2610019FC59 /* AGFIBSTerminalWindowController.h */,
-				66A8C00F07CBC2610019FC59 /* AGFIBSTerminalWindowController.m */,
 				3FF65A840677EFD3008720B2 /* AGFIBSAppController.h */,
 				3FF65A850677EFD3008720B2 /* AGFIBSAppController.m */,
-				66EFC7F007A9CAC3009C2367 /* AGFIBSPrefController.h */,
-				66EFC7F107A9CAC3009C2367 /* AGFIBSPrefController.m */,
-				66212BE906E2A9E200D83A30 /* AGFIBSToolbarController.h */,
-				66212BE806E2A9E200D83A30 /* AGFIBSToolbarController.m */,
-				667C61B30665AB04007D7484 /* AGFIBSSocketStream.h */,
-				667C61B20665AB04007D7484 /* AGFIBSSocketStream.m */,
-				66B9E8760652F6470000A2F2 /* AGFIBSGameController.h */,
-				66B9E8770652F6470000A2F2 /* AGFIBSGameController.m */,
 				6611F1C9069A073A004C9789 /* AGFIBSChatController.h */,
 				6611F1C8069A073A004C9789 /* AGFIBSChatController.m */,
+				66559ABE065EB56800313A36 /* AGFIBSDice.h */,
+				66559ABF065EB56800313A36 /* AGFIBSDice.m */,
+				66B9E8760652F6470000A2F2 /* AGFIBSGameController.h */,
+				66B9E8770652F6470000A2F2 /* AGFIBSGameController.m */,
 				660E82520651C28A0001D3B2 /* AGFIBSGameModel.h */,
 				660E82530651C28A0001D3B2 /* AGFIBSGameModel.m */,
 				66B9E8830652FE8B0000A2F2 /* AGFIBSGameView.h */,
 				664035400683CDF100140E13 /* AGFIBSGameView.m */,
-				660E82600651C7620001D3B2 /* AGFIBSTriangle.h */,
-				660E82610651C7620001D3B2 /* AGFIBSTriangle.m */,
-				66559ABE065EB56800313A36 /* AGFIBSDice.h */,
-				66559ABF065EB56800313A36 /* AGFIBSDice.m */,
-				3FF65ABE0677F3FB008720B2 /* AGFIBSUserListWindowController.h */,
-				3FF65ABF0677F3FB008720B2 /* AGFIBSUserListWindowController.m */,
-				3FEB21C20678BF0C00603174 /* AGFIBSUserListTableView.h */,
-				3FEB21C30678BF0C00603174 /* AGFIBSUserListTableView.m */,
-				660C66C406A21DF7009AA00A /* AGFIBSLoginWindowController.h */,
-				660C66C506A21DF7009AA00A /* AGFIBSLoginWindowController.m */,
-				3FF034D1067807ED0050A548 /* AGFIBSUserCell.h */,
-				3FF034D2067807ED0050A548 /* AGFIBSUserCell.m */,
 				66F649D20721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.h */,
 				66F649D30721D91000CDBDE7 /* AGFIBSInviteToGameWindowController.m */,
+				660C66C406A21DF7009AA00A /* AGFIBSLoginWindowController.h */,
+				660C66C506A21DF7009AA00A /* AGFIBSLoginWindowController.m */,
+				66EFC7F007A9CAC3009C2367 /* AGFIBSPrefController.h */,
+				66EFC7F107A9CAC3009C2367 /* AGFIBSPrefController.m */,
+				667C61B30665AB04007D7484 /* AGFIBSSocketStream.h */,
+				667C61B20665AB04007D7484 /* AGFIBSSocketStream.m */,
+				66A8C00E07CBC2610019FC59 /* AGFIBSTerminalWindowController.h */,
+				66A8C00F07CBC2610019FC59 /* AGFIBSTerminalWindowController.m */,
+				66212BE906E2A9E200D83A30 /* AGFIBSToolbarController.h */,
+				66212BE806E2A9E200D83A30 /* AGFIBSToolbarController.m */,
+				660E82600651C7620001D3B2 /* AGFIBSTriangle.h */,
+				660E82610651C7620001D3B2 /* AGFIBSTriangle.m */,
+				3FF034D1067807ED0050A548 /* AGFIBSUserCell.h */,
+				3FF034D2067807ED0050A548 /* AGFIBSUserCell.m */,
 				66BCC78D07FCDA4B00FEC743 /* AGFIBSUserDetailWindowController.h */,
 				66BCC78E07FCDA4B00FEC743 /* AGFIBSUserDetailWindowController.m */,
+				3FEB21C20678BF0C00603174 /* AGFIBSUserListTableView.h */,
+				3FEB21C30678BF0C00603174 /* AGFIBSUserListTableView.m */,
+				3FF65ABE0677F3FB008720B2 /* AGFIBSUserListWindowController.h */,
+				3FF65ABF0677F3FB008720B2 /* AGFIBSUserListWindowController.m */,
+				EADEB53525CB952F0062DCB4 /* CFLog.h */,
+				32CA4F630368D1EE00C91783 /* CocoaFIBS_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			path = CocoaFIBS;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EADEB53625CB952F0062DCB4 /* CFLog.h in Headers */,
 				8D1107280486CEB800E47090 /* CocoaFIBS_Prefix.pch in Headers */,
 				660E82540651C28A0001D3B2 /* AGFIBSGameModel.h in Headers */,
 				660E82620651C7620001D3B2 /* AGFIBSTriangle.h in Headers */,

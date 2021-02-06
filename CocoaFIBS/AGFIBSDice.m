@@ -20,6 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "AGFIBSDice.h"
 #import "AGFIBSTriangle.h"
 #import "AGFIBSGameModel.h"
+#include "CFLog.h"
 
 #define HOME_PIP_NUMBER 25		/*" Pip number assigned to the players OFFHOME "*/
 
@@ -120,7 +121,7 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 			return j;
 		}
 		else if (barringOff && (playersDice[0] * j) >= distanceMoved  && [self isDoubleRoll] && distanceMoved >= clearTrianglesInHomeForBareoff && distanceMoved <= 6) {
-			if ([[theAGFIBSGameModel draggedToTriangle] pipNumber] != HOME_PIP_NUMBER || clearTrianglesInHomeForBareoff == distanceMoved && playersDice[0] < distanceMoved && playersDice[0] < clearTrianglesInHomeForBareoff)
+            if ([[theAGFIBSGameModel draggedToTriangle] pipNumber] != HOME_PIP_NUMBER || (clearTrianglesInHomeForBareoff == distanceMoved && playersDice[0] < distanceMoved && playersDice[0] < clearTrianglesInHomeForBareoff))
 				return 0;
 			else
 				return j;
@@ -141,7 +142,7 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 		
 			if (playersDice[i] == distanceMovied && !hasThisRollBeenUsed[i] || barringOff &&  distanceMovied >=  clearTrianglesInHomeForBareoff && playersDice[i] >= distanceMovied && !hasThisRollBeenUsed[i] ) {
 			hasThisRollBeenUsed[i] = YES;
-			NSLog(@"roll used %d  Dice left %d", playersDice[i], [self numberOfUnusedRolls]);
+			CFLog(@"roll used %d  Dice left %d", playersDice[i], [self numberOfUnusedRolls]);
 			return;
 		}
 	}
@@ -162,7 +163,7 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 	else if ((playersDice[0] * 4) == distanceMovied && [self isDoubleRoll] || barringOff && clearTrianglesInHomeForBareoff >= distanceMovied && (playersDice[0] * 4) >= distanceMovied) {
 		[self useThisNumberOfDice:4];
 	}
-	NSLog(@"dDice left %d", [self numberOfUnusedRolls]);
+	CFLog(@"dDice left %d", [self numberOfUnusedRolls]);
 	//[theGameController displaySystemMsg:aMessage withTime:YES];
 }
 
@@ -179,7 +180,7 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 		}
 		num--;
 	}
-	NSLog(@"Dice left %d", [self numberOfUnusedRolls]);
+	CFLog(@"Dice left %d", [self numberOfUnusedRolls]);
 }
 
 - (int)numberOfUnusedRolls
@@ -200,7 +201,7 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 				countRemainingRolls--;
 			}
 		}
-		//NSLog(@"Remaining rolls - %d", countRemainingRolls);
+		//CFLog(@"Remaining rolls - %d", countRemainingRolls);
 		return countRemainingRolls;
 }
 

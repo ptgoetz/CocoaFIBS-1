@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "AGFIBSLoginWindowController.h"
 #include "AGFIBSSocketStream.h"
 #include "AGFIBSGameController.h"
+#include "CFLog.h"
 
 @implementation AGFIBSToolbarController
 /*" 
@@ -328,7 +329,7 @@ return temp;
 	[alert setMessageText:@"Would you like to resign?"];
 	[alert setIcon:[NSImage imageNamed:@"toolbarResign"]];
 	[alert setInformativeText:@""];
-	[alert setAlertStyle:NSWarningAlertStyle];
+    [alert setAlertStyle:NSAlertStyleWarning];
 	[alert beginSheetModalForWindow:window modalDelegate:self didEndSelector:@selector(resignAlertDidEnd:returnCode:contextInfo:) contextInfo:nil];  
 }
 
@@ -380,9 +381,9 @@ return temp;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	NSDate *today = [NSDate date];
-	NSLog(@"%@", [today description]);
+	//CFLog(@"%@", [today description]);
 	NSDate *expiresOnDate = [NSDate dateWithString:@"3018-10-01 16:08:13 -0400"]; //1000 years should do @"%@", it
-	NSLog(@"%@", [[today laterDate:expiresOnDate] description]);
+	//CFLog(@"%@", [[today laterDate:expiresOnDate] description]);
 	int choice;
 	if ([[today laterDate:expiresOnDate] isEqual:today]) {
 		choice = NSRunAlertPanel(@"Beta has expired", @"The beta copy of this software has expired", @"Quit", @"", nil);
@@ -395,19 +396,19 @@ return temp;
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-	NSLog(@"applicationWillTerminate!!!!!!!!!");
+	CFLog(@"applicationWillTerminate!!!!!!!!!");
 	[[theAppController theAGFIBSSocket] sendMessage:@"exit1"];
 	[[theAppController theAGFIBSSocket] disconnect];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification
 {
-	NSLog(@"active!!!!!!!!!");
+	CFLog(@"applicationDidBecomeActive");
 }
 
 - (void)applicationDidResignActive:(NSNotification *)aNotification
 {
-	NSLog(@"resign!!!!!!!!!");
+	CFLog(@"applicationDidResignActive()");
 }
 
 - (void)dealloc 

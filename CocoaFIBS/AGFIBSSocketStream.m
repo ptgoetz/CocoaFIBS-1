@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "NetSocket.h"
 #include "AGFIBSSocketStream.h"
 #include "FIBSCookieMonster.h"
+#include "CFLog.h"
 
 @implementation AGFIBSSocketStream
 /*" 
@@ -52,19 +53,19 @@ An instance of this class creates and returns input and output streams for a soc
 
 - (void)netsocketConnected:(NetSocket*)inNetSocket
 {
-	NSLog( @"Socket: Connected" );
+	CFLog( @"Socket: Connected" );
 	[self setConnected:YES];
 }
 
 - (void)netsocketDisconnected:(NetSocket*)inNetSocket
 {
 	
-	NSLog( @"Socket: Disconnected" );
+	CFLog( @"Socket: Disconnected" );
 }
 
 - (void)netsocketDataSent:(NetSocket*)inNetSocket
 {
-	NSLog( @"Socket: Data sent" );
+	//CFLog( @"Socket: Data sent" );
 }
 
 - (NSInputStream *)inputStream 
@@ -145,14 +146,14 @@ An instance of this class creates and returns input and output streams for a soc
 
 - (void)disconnect
 {
-    NSLog(@"disconnect!!!!!!!!!");
+    CFLog(@"disconnect!!!!!!!!!");
 	[self sendMessageNow:@"exit2"];
 	[self reset];
 }
 
 - (void)reset
 {
-	NSLog(@"Socket Reset!!!!!!!!!");
+	CFLog(@"Socket Reset!!!!!!!!!");
 	[mSocket release];
 	mSocket = nil;
 	[toBeWrittenQueue release];
@@ -167,7 +168,7 @@ An instance of this class creates and returns input and output streams for a soc
 {
     NSString *message = [stringToSend stringByAppendingString:@"\r\n"];
 	[mSocket writeString:message encoding:NSUTF8StringEncoding];
-	NSLog(@"SENT %@",message);
+	CFLog(@"SENT %@",message);
 	[self setBlockSendingYes];
 }
 
@@ -186,7 +187,7 @@ An instance of this class creates and returns input and output streams for a soc
 {
 	if ([toBeWrittenQueue count] > 0) {
 		[mSocket writeString:[toBeWrittenQueue objectAtIndex:0] encoding:NSUTF8StringEncoding];
-		NSLog(@"SENT %@",[toBeWrittenQueue objectAtIndex:0]);
+		CFLog(@"SENT ASYNC %@",[toBeWrittenQueue objectAtIndex:0]);
 		[toBeWrittenQueue removeObjectAtIndex:0];
 	}
 }
@@ -230,7 +231,7 @@ An instance of this class creates and returns input and output streams for a soc
 		//Format a nice string to print to the terminal
 		cookieString = [[NSString alloc] initWithFormat:@"(%d)", cookie];
 		[oneStringFromArray setString:[cookieString stringByAppendingString:oneStringFromArray]];
-		NSLog(@"%@", oneStringFromArray);
+        //CFLog(@"%@", oneStringFromArray);
 		[cookieString release];
 	}
 }

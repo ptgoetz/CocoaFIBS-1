@@ -131,13 +131,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	NSRect chipRect2 = NSMakeRect(0,0,10,12);
 	
 	[[self imageForClientName:client] setFlipped:YES];
-	[[self imageForClientName:client] drawInRect:chipRect fromRect:chipRect2 operation:NSCompositeSourceOver fraction:1.0];
+    [[self imageForClientName:client] drawInRect:chipRect fromRect:chipRect2 operation:NSCompositingOperationSourceOver fraction:1.0];
 	
 	chipRect = NSMakeRect(cellFrame.origin.x+8,cellFrame.origin.y+3,10,11);
 	chipRect2 = NSMakeRect(0,0,10,11);
 	
 	[statusImage setFlipped:YES];
-	[statusImage drawInRect:chipRect fromRect:chipRect2 operation:NSCompositeSourceOver fraction:1.0];
+    [statusImage drawInRect:chipRect fromRect:chipRect2 operation:NSCompositingOperationSourceOver fraction:1.0];
 	
 	[userNameString drawAtPoint:NSMakePoint(cellFrame.origin.x+30,cellFrame.origin.y)];
 	

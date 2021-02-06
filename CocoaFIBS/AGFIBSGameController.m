@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #import "AGFIBSUserListWindowController.h"
 #import "AGFIBSSocketStream.h"
 #import "AGFIBSAppController.h"
+#include "CFLog.h"
 
 @implementation AGFIBSGameController
 /*" 
@@ -101,7 +102,7 @@ An instance of this controller class acts as the bridge between the game model a
 	[inviteToGameWindow setPlayerWhoInvitedName:playerWhoInvitedName];
 	[inviteToGameWindow setProposedMatchLength:proposedMatchLength];
 	
-	NSLog(@"userListWindow %@",[[userListWindow getDataForPlayer:@"RepBot"] objectForKey:@"rating"]);
+	CFLog(@"userListWindow %@",[[userListWindow getDataForPlayer:@"RepBot"] objectForKey:@"rating"]);
 	
 	[inviteToGameWindow setPlayerRating:[[userListWindow getDataForPlayer:playerWhoInvitedName] objectForKey:@"rating"]];
 	[inviteToGameWindow setPlayerExp:[[userListWindow getDataForPlayer:playerWhoInvitedName] objectForKey:@"experience"]];
@@ -121,10 +122,10 @@ An instance of this controller class acts as the bridge between the game model a
 	NSRect aFrame;
     NSWindow *mainWindow = [self window];
 	NSSize newSize = NSMakeSize(0,0);
-	if ([sender state] == NSOnState) {
+    if ([sender state] == NSControlStateValueOn) {
 		newSize = NSMakeSize([mainWindow frame].size.width,[mainWindow frame].size.height+100);
 	}
-	else if ([sender state] == NSOffState) {
+    else if ([sender state] == NSControlStateValueOff) {
 		newSize = NSMakeSize([mainWindow frame].size.width,[mainWindow frame].size.height-100);
 	}
     
@@ -195,7 +196,7 @@ An instance of this controller class acts as the bridge between the game model a
 {
 	if (timeLimit) {
 		NSTimer *timer;
-		double systemMsgClearDelayTime = 5.0;
+		double systemMsgClearDelayTime = 60.0;
 		timer = [NSTimer scheduledTimerWithTimeInterval:systemMsgClearDelayTime 
 			target:self 
 			selector:@selector(clearSystemMsg) 
@@ -207,7 +208,8 @@ An instance of this controller class acts as the bridge between the game model a
 
 - (void)clearSystemMsg
 {
-	[systemMsgText setStringValue:@""];
+    CFLog(@"clearSystemMsg");
+    [systemMsgText setStringValue:@""];
 }
 
 - (void)setPipCounts:(NSString *)aMessage
@@ -224,9 +226,9 @@ An instance of this controller class acts as the bridge between the game model a
 	[[userListWindow tableView] reloadData];
 	[userListDrawer toggle:nil];
 	NSRect aFrame = [NSWindow contentRectForFrameRect:[[self window] frame] styleMask:[[self window] styleMask]];
-	NSLog(@"content, %f", aFrame.size.height);
+	//CFLog(@"content, %f", aFrame.size.height);
 aFrame = [NSWindow frameRectForContentRect:aFrame styleMask:[[self window] styleMask]];
-	NSLog(@"frame, %f", aFrame.size.height);
+	CFLog(@"frame, %f", aFrame.size.height);
 }
 
 - (IBAction)clickedOnPlayerUsername:(id)sender 
@@ -270,7 +272,7 @@ aFrame = [NSWindow frameRectForContentRect:aFrame styleMask:[[self window] style
 	[alert setMessageText:messageText];
 	[alert setIcon:iconImage];
 	[alert setInformativeText:@""];
-	[alert setAlertStyle:NSWarningAlertStyle];
+    [alert setAlertStyle:NSAlertStyleWarning];
 	//[alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:didEndSelector contextInfo:nil]; 
 	NSNumber *returnCode = [NSNumber numberWithInt:[alert runModal]];
 	[self performSelector: didEndSelector withObject: returnCode];

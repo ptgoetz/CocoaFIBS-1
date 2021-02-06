@@ -134,7 +134,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	[alert addButtonWithTitle:@"Ok"];
 	[alert setMessageText:@"Your attempt to login to FIBS has failed."];
 	[alert setInformativeText:@"Please try again."];
-	[alert setAlertStyle:NSWarningAlertStyle];
+    [alert setAlertStyle:NSAlertStyleWarning];
 	[alert beginSheetModalForWindow:[self loginWindow] modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
@@ -147,7 +147,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)controlTextDidEndEditing:(NSNotification *)aNotification
 {
 	[[NSUserDefaults standardUserDefaults] setObject:[userNameTextField stringValue] forKey:@"username"];
-	if ([addToKeychainButton state] == NSOnState) {
+    if ([addToKeychainButton state] == NSControlStateValueOn) {
 		[self setUsernameAndPasswordFields];
 	}
 }

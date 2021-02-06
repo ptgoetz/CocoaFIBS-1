@@ -265,10 +265,10 @@ Instances of this class encapsulate the game board. This is a model class that r
 	int i;
 	int clearTrianglesInHomeForBareoff = 6;
 	for (i = 18; i < 23; i++) {
-		if ([[[self gameBoard] objectAtIndex:i] numberOfChips] == 0 && draggedFromTriangleArrayPos != i || [[[self gameBoard] objectAtIndex:i] ownedBy] == OWNEDBY_OPPONENT) {
+        if (([[[self gameBoard] objectAtIndex:i] numberOfChips] == 0 && draggedFromTriangleArrayPos != i) || [[[self gameBoard] objectAtIndex:i] ownedBy] == OWNEDBY_OPPONENT) {
 			clearTrianglesInHomeForBareoff--;
 		}
-		else if ([[[self gameBoard] objectAtIndex:i] numberOfChips] > 0 && [[[self gameBoard] objectAtIndex:i] ownedBy] == OWNEDBY_PLAYER || draggedFromTriangleArrayPos == i)
+        else if (([[[self gameBoard] objectAtIndex:i] numberOfChips] > 0 && [[[self gameBoard] objectAtIndex:i] ownedBy] == OWNEDBY_PLAYER) || draggedFromTriangleArrayPos == i)
 		{
 			return clearTrianglesInHomeForBareoff;
 		}

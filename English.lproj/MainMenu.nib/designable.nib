@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1020" identifier="macosx"/>
+        <deployment version="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -280,6 +280,7 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="520" y="562"/>
         </menu>
         <window title="FIBS Login" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="loginWindow" animationBehavior="default" id="362" userLabel="LoginWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -394,6 +395,7 @@ DQ
                 <outlet property="delegate" destination="375" id="510"/>
                 <outlet property="initialFirstResponder" destination="368" id="917"/>
             </connections>
+            <point key="canvasLocation" x="373" y="96"/>
         </window>
         <customObject id="375" userLabel="AGFIBSLoginWindowController" customClass="AGFIBSLoginWindowController">
             <connections>
@@ -694,6 +696,7 @@ DQ
                 <outlet property="delegate" destination="469" id="509"/>
                 <outlet property="initialFirstResponder" destination="368" id="950"/>
             </connections>
+            <point key="canvasLocation" x="-233" y="137"/>
         </window>
         <menu title="Menu" id="502">
             <items>
@@ -1021,6 +1024,7 @@ DQ
             <connections>
                 <outlet property="menu" destination="502" id="531"/>
             </connections>
+            <point key="canvasLocation" x="747" y="208"/>
         </customView>
         <customObject id="608" userLabel="AGFIBSToolbarController" customClass="AGFIBSToolbarController">
             <connections>
@@ -1089,6 +1093,7 @@ DQ
             <connections>
                 <outlet property="initialFirstResponder" destination="986" id="989"/>
             </connections>
+            <point key="canvasLocation" x="1115" y="52"/>
         </window>
     </objects>
     <resources>

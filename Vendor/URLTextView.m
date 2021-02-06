@@ -27,12 +27,12 @@ static BOOL				NSMouseInRects( NSPoint inPoint, NSRectArray inSomeRects, int inA
 
 - (void)mouseEntered:(NSEvent *)theEvent
 {
-NSLog(@"sssssssssssssss");
+//NSLog(@"sssssssssssssss");
 }
 
 - (void)mouseExited:(NSEvent *)theEvent
 {
-NSLog(@"sssssssssssssss");
+//NSLog(@"sssssssssssssss");
 }
 - (void)mouseDown:(NSEvent*)inEvent
 {
