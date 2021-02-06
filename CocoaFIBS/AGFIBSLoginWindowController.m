@@ -113,7 +113,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (void)loginFailed
 {
-	NSLog(@"loginFailed at login window!!!!!!!!!");
+	CFLog(@"loginFailed at login window!!!!!!!!!");
 	 if ([[NSUserDefaults standardUserDefaults] integerForKey:@"soundOnOff"] == 1) {
 		NSBeep();
 	}
@@ -140,7 +140,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {
-	NSLog(@"login windowDidBecomeKey!!!!!!!");
+	CFLog(@"login windowDidBecomeKey!!!!!!!");
 	[self setUsernameAndPasswordFields];
 }
 

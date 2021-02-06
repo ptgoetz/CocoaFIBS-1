@@ -175,7 +175,8 @@ An instance of this class creates and returns input and output streams for a soc
 - (void)sendMessage:(NSString *)stringToSend
 {
     NSString *message = [stringToSend stringByAppendingString:@"\r\n"];
-	if (blockSending) {
+    //if (blockSending) {
+    if (false) {
 		[toBeWrittenQueue addObject:message];
 	}
 	else {
@@ -185,6 +186,9 @@ An instance of this class creates and returns input and output streams for a soc
 
 - (void)sendMessages
 {
+    // GAAAHHH!!! Is this the pip/game state bug???!!!
+    // TODO async was a bad idea, refactor this
+    //CFLog(@"Message count: %u", [toBeWrittenQueue count]);
 	if ([toBeWrittenQueue count] > 0) {
 		[mSocket writeString:[toBeWrittenQueue objectAtIndex:0] encoding:NSUTF8StringEncoding];
 		CFLog(@"SENT ASYNC %@",[toBeWrittenQueue objectAtIndex:0]);
