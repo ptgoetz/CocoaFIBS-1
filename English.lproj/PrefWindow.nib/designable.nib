@@ -414,7 +414,6 @@
                 </subviews>
             </view>
         </window>
-        <viewController id="ZUV-6B-0Tn" customClass="NSTabViewController"/>
         <userDefaultsController representsSharedInstance="YES" id="78" userLabel="Shared Defaults"/>
     </objects>
 </document>
