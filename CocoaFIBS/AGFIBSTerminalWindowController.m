@@ -72,20 +72,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (IBAction)sendCommandToTerminal:(id)sender
 {
-	NSNotificationCenter *nc;
-	nc = [NSNotificationCenter defaultCenter];
-	NSMutableString *stringToSend = nil;
-	if ([sender tag] == 0) {
-		[[stringToSend initWithCapacity:[[sender stringValue] length]] setString:[sender stringValue]] ;
-		[sender setStringValue:@""];
-	}
-	else if ([sender tag] == 1) {
-		[[stringToSend initWithCapacity:[[sender titleOfSelectedItem] length]] setString:[sender titleOfSelectedItem]] ;
-		
-	}
-	[commandHistory addObject:stringToSend];
-	historyPoint = [commandHistory count];
-	[nc postNotificationName:@"AGFIBSSendCommandToSocket" object:stringToSend];
+    CFLog(@"sendCommandToTerminal()");
+    NSNotificationCenter *nc;
+    nc = [NSNotificationCenter defaultCenter];
+//    NSMutableString *stringToSend = nil;
+//    if ([sender tag] == 0) {
+//        [[stringToSend initWithCapacity:[[sender stringValue] length]] setString:[sender stringValue]] ;
+//        [sender setStringValue:@""];
+//    }
+//    else if ([sender tag] == 1) {
+//        [[stringToSend initWithCapacity:[[sender titleOfSelectedItem] length]] setString:[sender titleOfSelectedItem]] ;
+//
+//    }
+//    CFLog(@"sending: %@", stringToSend);
+//    [commandHistory addObject:stringToSend];
+//    historyPoint = [commandHistory count];
+	[nc postNotificationName:@"AGFIBSSendCommandToSocket" object:@"help"];
 	
 }
 
