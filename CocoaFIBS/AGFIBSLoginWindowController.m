@@ -167,7 +167,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 {
 	[userNameTextField setStringValue:[[NSUserDefaults standardUserDefaults] stringForKey:@"username"]];
 
-    [passwordTextField setStringValue:@""];
+    //[passwordTextField setStringValue:@""];
 }
 
 - (NSWindow *)loginWindow {

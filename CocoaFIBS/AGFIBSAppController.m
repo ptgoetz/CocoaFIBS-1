@@ -850,6 +850,17 @@ AGFIBSSPrefsHaveChanged
 	[theAGFIBSSocket connect];
 }
 
+- (void)netsocketDisconnected:(NetSocket*)inNetSocket
+{
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"Client disconnected."];
+    [alert setInformativeText:@"The FIBS server closed the connection."];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert addButtonWithTitle:@"Reconnect"];
+    [alert runModal];
+    CFLog( @"Socket: Disconnected" );
+}
+
 - (void)clipWhoEnd
 {
 	if (!loginDone) {
