@@ -83,10 +83,10 @@ An instance of this controller class acts as the bridge between the game model a
 - (void)setGameWindowTitleConnected:(BOOL)connected
 {
 	if (connected) {
-		[[self window] setTitle:@"FIBS Game Window (connected)"];
+		[[self window] setTitle:@"Game Board (connected)"];
 	}
 	else {
-		[[self window] setTitle:@"FIBS Game Window (disconnected)"];
+		[[self window] setTitle:@"Game Board (disconnected)"];
 	}
 }
 

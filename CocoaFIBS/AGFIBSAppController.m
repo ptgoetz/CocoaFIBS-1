@@ -51,6 +51,8 @@ AGFIBSSPrefsHaveChanged
 	self = [super init];
 	[self setDefaultPrefs];
 	theAGFIBSSocket = [[AGFIBSSocketStream alloc] init];
+    [theAGFIBSSocket setAppController: self];
+
 	NSNotificationCenter *nc;
 	nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self selector:@selector(sendCommandToSocket:) name:@"AGFIBSSendCommandToSocket" object:nil];
@@ -850,15 +852,19 @@ AGFIBSSPrefsHaveChanged
 	[theAGFIBSSocket connect];
 }
 
-- (void)netsocketDisconnected:(NetSocket*)inNetSocket
+- (void)fibsDisconnected
 {
+    CFLog(@"fibsDisconnect()");
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:@"Client disconnected."];
     [alert setInformativeText:@"The FIBS server closed the connection."];
-    [alert addButtonWithTitle:@"Cancel"];
-    [alert addButtonWithTitle:@"Reconnect"];
+    [alert addButtonWithTitle:@"OK"];
     [alert runModal];
-    CFLog( @"Socket: Disconnected" );
+//    [theAGFIBSSocket disconnect];
+    [self reset];
+    [theChatController reset];
+    [theGameController reset];
+    [userListWindow reset];
 }
 
 - (void)clipWhoEnd

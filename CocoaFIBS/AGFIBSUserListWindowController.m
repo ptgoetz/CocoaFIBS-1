@@ -147,7 +147,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 		}
 	}
 	if ([[sender title] isEqualToString:@"Rating"]) {
-		userListSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"rating" ascending:sortDirection selector:@selector(caseInsensitiveCompare:)];
+		userListSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"rating" ascending:sortDirection selector:@selector(localizedStandardCompare:)];
 		if ([sortDescriptorsArray containsObject:userListSortDescriptor]) {
 			if (![sender state]) {
 				[sortDescriptorsArray removeObject:userListSortDescriptor];
@@ -206,7 +206,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 		[userListWindowData sortUsingDescriptors:sortDescriptorsArray];
 	}
 	
-        CFLog(@"%@", [sortDescriptorsArray description]);
+    CFLog(@"%@", [sortDescriptorsArray description]);
 	NSControl *aControl = [[[tableView tableColumns] objectAtIndex:0] dataCellForRow:0];
 	[self selectRowAfterDataSourceUpdate];
 	[aControl setNeedsDisplay:YES];

@@ -81,7 +81,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)loginFailed;
 - (void)setAsGagAndBlind:(NSString *)name;
 - (void)removeAsGagAndBlind:(NSString *)name;
-
+- (void)fibsDisconnected;
 - (void)clipWhoEnd;
 - (void)setDefaultPrefs;
 - (IBAction)showUserListWindow:(id)sender;

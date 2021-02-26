@@ -72,7 +72,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 		
 		[errorMsgTextField setStringValue:@"Connecting..."];
 		[connectionProgressIndicator startAnimation:sender];
-		NSMutableString *loginString = [NSString stringWithFormat:@"login CocoaFIBSBeta0.5 1008 %@ %@",[userNameTextField stringValue], [passwordTextField stringValue]];
+		NSMutableString *loginString = [NSString stringWithFormat:@"login MacGammon1.0alpha 1008 %@ %@",[userNameTextField stringValue], [passwordTextField stringValue]];
 		[userNameTextField setEnabled:NO];
 		[passwordTextField setEnabled:NO];
 		[connectButton setEnabled:NO];

@@ -49,18 +49,24 @@ An instance of this class creates and returns input and output streams for a soc
     return self;
 }
 
+- (void)setAppController:(AGFIBSAppController *)controller
+{
+    theAppController = controller;
+}
+
 #pragma mark -
 
 - (void)netsocketConnected:(NetSocket*)inNetSocket
 {
 	CFLog( @"Socket: Connected" );
+    CFLog(@"%p", theAppController);
 	[self setConnected:YES];
 }
 
 - (void)netsocketDisconnected:(NetSocket*)inNetSocket
 {
-	
-	CFLog( @"Socket: Disconnected" );
+    CFLog( @"Socket: Disconnected" );
+    [theAppController fibsDisconnected];
 }
 
 - (void)netsocketDataSent:(NetSocket*)inNetSocket

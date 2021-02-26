@@ -50,6 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)setDelegate:(id)newDelegate;
 - (bool)isConnected;
 - (void)setConnected:(bool)isConnected;
+- (void)setAppController:(AGFIBSAppController *)controller;
 
 - (void)connect;
 - (void)disconnect;
