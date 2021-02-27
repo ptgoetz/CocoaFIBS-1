@@ -15,10 +15,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
-                <menuItem title="CocoaFIBS" id="56">
-                    <menu key="submenu" title="CocoaFIBS" systemMenu="apple" id="57">
+                <menuItem title="MacGammon" id="56">
+                    <menu key="submenu" title="MacGammon" systemMenu="apple" id="57">
                         <items>
-                            <menuItem title="About CocoaFIBS" id="58">
+                            <menuItem title="About MacGammon" id="58">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
@@ -41,7 +41,7 @@
                             <menuItem isSeparatorItem="YES" id="144">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Hide CocoaFIBS" keyEquivalent="h" id="134">
+                            <menuItem title="Hide MacGammon" keyEquivalent="h" id="134">
                                 <connections>
                                     <action selector="hide:" target="-2" id="152"/>
                                 </connections>
@@ -60,7 +60,7 @@
                             <menuItem isSeparatorItem="YES" id="149">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Quit CocoaFIBS" keyEquivalent="q" id="136">
+                            <menuItem title="Quit MacGammon" keyEquivalent="q" id="136">
                                 <connections>
                                     <action selector="terminate:" target="-2" id="139"/>
                                 </connections>
@@ -532,7 +532,7 @@ DQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" ambiguous="YES" id="vPL-qM-mlR">
                                         <rect key="frame" x="1" y="1" width="463" height="102"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" smartInsertDelete="YES" id="896" customClass="URLTextView">
                                                 <rect key="frame" x="0.0" y="0.0" width="469" height="102"/>
@@ -974,7 +974,7 @@ DQ
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="tPC-Wd-Fo3">
                         <rect key="frame" x="1" y="0.0" width="271" height="517"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="36" headerView="1060" id="515" customClass="AGFIBSUserListTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="271" height="492"/>
@@ -1065,7 +1065,7 @@ DQ
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="RpX-5j-tCf">
                             <rect key="frame" x="1" y="1" width="358" height="185"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" smartInsertDelete="YES" id="987">
                                     <rect key="frame" x="0.0" y="0.0" width="358" height="185"/>

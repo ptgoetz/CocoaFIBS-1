@@ -50,7 +50,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (IBAction)reset
 {
-	[errorMsgTextField setStringValue:@"CocoaFIBS"];
+	[errorMsgTextField setStringValue:@"MacGammon"];
 	[userNameTextField setEnabled:YES];
 	[passwordTextField setEnabled:YES];
 	[connectButton setEnabled:YES];
