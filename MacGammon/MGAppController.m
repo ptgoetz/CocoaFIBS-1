@@ -596,9 +596,9 @@ AGFIBSSPrefsHaveChanged
 				[clipWhoInfoDictionary setObject:@"LogoWindows" forKey:@"clientIcon"];
 			else if ([clientName rangeOfString:@"Java"].length != 0 || [clientName rangeOfString:@"java"].length != 0 || [clientName rangeOfString:@"_!"].length != 0)
 				[clipWhoInfoDictionary setObject:@"LogoJava" forKey:@"clientIcon"];
-			else if ([clientName rangeOfString:@"Mac"].length != 0)
+			else if ([clientName rangeOfString:@"MacF"].length != 0)
 				[clipWhoInfoDictionary setObject:@"LogoAppleClassic" forKey:@"clientIcon"];
-			else if ([clientName rangeOfString:@"Cocoa"].length != 0)
+			else if ([clientName rangeOfString:@"Cocoa"].length != 0 || [clientName rangeOfString:@"MacGammon"].length != 0)
 				[clipWhoInfoDictionary setObject:@"LogoAppleAqua" forKey:@"clientIcon"];
 			else if ([clientName rangeOfString:@"Bot"].length != 0 || [clientName rangeOfString:@"bot"].length != 0 || [playerName rangeOfString:@"Bot"].length != 0)
 				[clipWhoInfoDictionary setObject:@"LogoBot" forKey:@"clientIcon"];
