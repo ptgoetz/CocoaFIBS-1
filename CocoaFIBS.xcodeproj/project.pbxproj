@@ -36,7 +36,6 @@
 		664035410683CDF100140E13 /* AGFIBSGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 664035400683CDF100140E13 /* AGFIBSGameView.m */; };
 		66428EAA0735FFFA00E871EE /* ApplicationIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 66428EA90735FFFA00E871EE /* ApplicationIcon.icns */; };
 		6650E3A80800EA9E00A135DB /* toolbarAutoMove.png in Resources */ = {isa = PBXBuildFile; fileRef = 6650E3A70800EA9E00A135DB /* toolbarAutoMove.png */; };
-		665279FD07ADC27E003A2578 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 6652798B07ADC27E003A2578 /* Credits.html */; };
 		66527A2007ADC27E003A2578 /* LogoAppleAqua.png in Resources */ = {isa = PBXBuildFile; fileRef = 665279B207ADC27E003A2578 /* LogoAppleAqua.png */; };
 		66527A2107ADC27E003A2578 /* LogoAppleClassic.png in Resources */ = {isa = PBXBuildFile; fileRef = 665279B307ADC27E003A2578 /* LogoAppleClassic.png */; };
 		66527A2207ADC27E003A2578 /* LogoBot.png in Resources */ = {isa = PBXBuildFile; fileRef = 665279B407ADC27E003A2578 /* LogoBot.png */; };
@@ -111,6 +110,7 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		EAD1D58D25E9C0A000F9B162 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = EAD1D58C25E9C0A000F9B162 /* Credits.rtf */; };
 		EADEB53625CB952F0062DCB4 /* CFLog.h in Headers */ = {isa = PBXBuildFile; fileRef = EADEB53525CB952F0062DCB4 /* CFLog.h */; };
 /* End PBXBuildFile section */
 
@@ -151,7 +151,6 @@
 		664035400683CDF100140E13 /* AGFIBSGameView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AGFIBSGameView.m; sourceTree = "<group>"; };
 		66428EA90735FFFA00E871EE /* ApplicationIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ApplicationIcon.icns; sourceTree = "<group>"; };
 		6650E3A70800EA9E00A135DB /* toolbarAutoMove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbarAutoMove.png; sourceTree = "<group>"; };
-		6652798B07ADC27E003A2578 /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html.documentation; path = Credits.html; sourceTree = "<group>"; };
 		665279B207ADC27E003A2578 /* LogoAppleAqua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoAppleAqua.png; sourceTree = "<group>"; };
 		665279B307ADC27E003A2578 /* LogoAppleClassic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoAppleClassic.png; sourceTree = "<group>"; };
 		665279B407ADC27E003A2578 /* LogoBot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogoBot.png; sourceTree = "<group>"; };
@@ -223,6 +222,7 @@
 		66FED31607C5904B00E7EDED /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* CocoaFIBS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocoaFIBS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAD1D58C25E9C0A000F9B162 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		EADEB53525CB952F0062DCB4 /* CFLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CFLog.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -405,10 +405,10 @@
 		D81B42E0232CC9B30030F882 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
+				EAD1D58C25E9C0A000F9B162 /* Credits.rtf */,
 				66358C330654624D004EC2BA /* notes */,
 				669019DD065DB2940010F95B /* FCM CLIP Key */,
 				66AD59D507EE90F9002FDCDE /* Code for plist */,
-				6652798B07ADC27E003A2578 /* Credits.html */,
 			);
 			path = Documentation;
 			sourceTree = "<group>";
@@ -569,7 +569,6 @@
 				66FB55F50720E1A4000C296D /* InviteToGameWindow.nib in Resources */,
 				66428EAA0735FFFA00E871EE /* ApplicationIcon.icns in Resources */,
 				66C274A407A8A74E00636C85 /* PrefWindow.nib in Resources */,
-				665279FD07ADC27E003A2578 /* Credits.html in Resources */,
 				66527A2007ADC27E003A2578 /* LogoAppleAqua.png in Resources */,
 				66527A2107ADC27E003A2578 /* LogoAppleClassic.png in Resources */,
 				66527A2207ADC27E003A2578 /* LogoBot.png in Resources */,
@@ -581,6 +580,7 @@
 				66527A2807ADC27E003A2578 /* statusReady.tiff in Resources */,
 				66527A2907ADC27E003A2578 /* statusYellow.tiff in Resources */,
 				66527A2A07ADC27E003A2578 /* 11. Hide Player List.png in Resources */,
+				EAD1D58D25E9C0A000F9B162 /* Credits.rtf in Resources */,
 				66527A3107ADC27E003A2578 /* toggleDrawer.tif in Resources */,
 				66527A3207ADC27E003A2578 /* toolbarAutoOff.png in Resources */,
 				66527A3307ADC27E003A2578 /* toolbarDouble.png in Resources */,
