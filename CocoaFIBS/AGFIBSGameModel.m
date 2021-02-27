@@ -167,7 +167,7 @@ Instances of this class encapsulate the game board. This is a model class that r
 	int j = NUMBER_OF_TRIANGLES;
 	color = [[fibsBoardStateDictionary objectForKey:@"color"] intValue];
 	
-	CFLog(@"color %d",color);
+	NSLog(@"color %d",color);
 	while (triangleKey = [e nextObject]) 
 	{
 		if ([[fibsBoardStateDictionary objectForKey:triangleKey] intValue] < 0) 

@@ -91,12 +91,12 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	NSString *aPlayersName;
 	while (aPlayerObject = [enumerator nextObject]) {
 		aPlayersName = [aPlayerObject objectForKey:@"name"];
-		CFLog(@"letter %@",letter);
-		CFLog(@"[aPlayersName] %@",aPlayersName);
-		CFLog(@"[aPlayersName substringToIndex:1] %@",[aPlayersName substringToIndex:1]);
+		NSLog(@"letter %@",letter);
+		NSLog(@"[aPlayersName] %@",aPlayersName);
+		NSLog(@"[aPlayersName substringToIndex:1] %@",[aPlayersName substringToIndex:1]);
 		
 		if ([letter isEqualToString:[aPlayersName substringToIndex:1]]) {
-			CFLog(@"goto %d",i);
+			NSLog(@"goto %d",i);
 			return i;
 		}
 		i++;
@@ -206,7 +206,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 		[userListWindowData sortUsingDescriptors:sortDescriptorsArray];
 	}
 	
-    CFLog(@"%@", [sortDescriptorsArray description]);
+    NSLog(@"%@", [sortDescriptorsArray description]);
 	NSControl *aControl = [[[tableView tableColumns] objectAtIndex:0] dataCellForRow:0];
 	[self selectRowAfterDataSourceUpdate];
 	[aControl setNeedsDisplay:YES];
@@ -278,7 +278,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	NSDictionary *aPlayerObject;
 	while (aPlayerObject = [enumerator nextObject]) {
 		if ([playerName isEqualToString:[aPlayerObject objectForKey:@"name"]]) {
-			CFLog(@"found for get%@", [aPlayerObject objectForKey:@"name"]);
+			NSLog(@"found for get%@", [aPlayerObject objectForKey:@"name"]);
 			return aPlayerObject;
 		}
 	}
@@ -294,7 +294,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 	while (aPlayerObject = [enumerator nextObject]) {
 		i++;
 		if ([playerName isEqualToString:[aPlayerObject objectForKey:@"name"]]) {
-			CFLog(@"found for set%@", [aPlayerObject objectForKey:@"name"]);
+			NSLog(@"found for set%@", [aPlayerObject objectForKey:@"name"]);
 			break;
 		}
 	}
@@ -343,7 +343,7 @@ Instances of this class acts as the controller for the NSTableView that pops out
 
 - (void)keyDown:(NSEvent *)theEvent
 {
-	CFLog(@"key %d",[theEvent keyCode]);
+	NSLog(@"key %d",[theEvent keyCode]);
 	
 	if ([theEvent keyCode] == KEY_UP_ARROW && selectedRow > 0) {
 		selectedRow -=1;
@@ -408,8 +408,8 @@ Instances of this class acts as the controller for the NSTableView that pops out
 
 - (IBAction)menuItem:(id)sender
 {
-	CFLog(@"Menu Clicked %@", [[userListWindowData objectAtIndex:selectedRow] objectForKey:@"name"]);
-	CFLog(@"tag %ld", (long)[sender tag]);
+	NSLog(@"Menu Clicked %@", [[userListWindowData objectAtIndex:selectedRow] objectForKey:@"name"]);
+	NSLog(@"tag %ld", (long)[sender tag]);
 	NSString *stringToSend;
 	
 	if ([sender tag] == 0) {

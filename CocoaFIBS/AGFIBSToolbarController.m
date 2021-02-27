@@ -214,7 +214,7 @@ applicationDidResignActive
     
     [window setToolbar:toolbar];
     
-    //[window makeKeyAndOrderFront:nil]; // TODO: This causes issues.
+    [window makeKeyAndOrderFront:nil]; // TODO: This causes issues.
 	[[[theAppController theLoginWindowController] loginWindow] makeKeyAndOrderFront:nil];
 }
 
@@ -381,9 +381,9 @@ return temp;
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	NSDate *today = [NSDate date];
-	//CFLog(@"%@", [today description]);
+	//NSLog(@"%@", [today description]);
 	NSDate *expiresOnDate = [NSDate dateWithString:@"3018-10-01 16:08:13 -0400"]; //1000 years should do @"%@", it
-	//CFLog(@"%@", [[today laterDate:expiresOnDate] description]);
+	//NSLog(@"%@", [[today laterDate:expiresOnDate] description]);
 	int choice;
 	if ([[today laterDate:expiresOnDate] isEqual:today]) {
 		choice = NSRunAlertPanel(@"Beta has expired", @"The beta copy of this software has expired", @"Quit", @"", nil);
@@ -396,19 +396,19 @@ return temp;
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-	CFLog(@"applicationWillTerminate!!!!!!!!!");
+	NSLog(@"applicationWillTerminate!!!!!!!!!");
 	[[theAppController theAGFIBSSocket] sendMessage:@"exit1"];
 	[[theAppController theAGFIBSSocket] disconnect];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification
 {
-	CFLog(@"applicationDidBecomeActive");
+	NSLog(@"applicationDidBecomeActive");
 }
 
 - (void)applicationDidResignActive:(NSNotification *)aNotification
 {
-	CFLog(@"applicationDidResignActive()");
+	NSLog(@"applicationDidResignActive()");
 }
 
 - (void)dealloc 

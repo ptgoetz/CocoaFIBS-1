@@ -142,7 +142,7 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 		
 			if (playersDice[i] == distanceMovied && !hasThisRollBeenUsed[i] || barringOff &&  distanceMovied >=  clearTrianglesInHomeForBareoff && playersDice[i] >= distanceMovied && !hasThisRollBeenUsed[i] ) {
 			hasThisRollBeenUsed[i] = YES;
-			CFLog(@"roll used %d  Dice left %d", playersDice[i], [self numberOfUnusedRolls]);
+			NSLog(@"roll used %d  Dice left %d", playersDice[i], [self numberOfUnusedRolls]);
 			return;
 		}
 	}
@@ -163,7 +163,7 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 	else if ((playersDice[0] * 4) == distanceMovied && [self isDoubleRoll] || barringOff && clearTrianglesInHomeForBareoff >= distanceMovied && (playersDice[0] * 4) >= distanceMovied) {
 		[self useThisNumberOfDice:4];
 	}
-	CFLog(@"dDice left %d", [self numberOfUnusedRolls]);
+	NSLog(@"dDice left %d", [self numberOfUnusedRolls]);
 	//[theGameController displaySystemMsg:aMessage withTime:YES];
 }
 
@@ -180,7 +180,7 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 		}
 		num--;
 	}
-	CFLog(@"Dice left %d", [self numberOfUnusedRolls]);
+	NSLog(@"Dice left %d", [self numberOfUnusedRolls]);
 }
 
 - (int)numberOfUnusedRolls
@@ -201,7 +201,7 @@ Instances of this class encapsulate the dice and moves of a player for a specifi
 				countRemainingRolls--;
 			}
 		}
-		//CFLog(@"Remaining rolls - %d", countRemainingRolls);
+		//NSLog(@"Remaining rolls - %d", countRemainingRolls);
 		return countRemainingRolls;
 }
 

@@ -102,7 +102,7 @@ An instance of this controller class acts as the bridge between the game model a
 	[inviteToGameWindow setPlayerWhoInvitedName:playerWhoInvitedName];
 	[inviteToGameWindow setProposedMatchLength:proposedMatchLength];
 	
-	CFLog(@"userListWindow %@",[[userListWindow getDataForPlayer:@"RepBot"] objectForKey:@"rating"]);
+	NSLog(@"userListWindow %@",[[userListWindow getDataForPlayer:@"RepBot"] objectForKey:@"rating"]);
 	
 	[inviteToGameWindow setPlayerRating:[[userListWindow getDataForPlayer:playerWhoInvitedName] objectForKey:@"rating"]];
 	[inviteToGameWindow setPlayerExp:[[userListWindow getDataForPlayer:playerWhoInvitedName] objectForKey:@"experience"]];
@@ -208,7 +208,7 @@ An instance of this controller class acts as the bridge between the game model a
 
 - (void)clearSystemMsg
 {
-    CFLog(@"clearSystemMsg");
+    NSLog(@"clearSystemMsg");
     [systemMsgText setStringValue:@""];
 }
 
@@ -226,9 +226,9 @@ An instance of this controller class acts as the bridge between the game model a
 	[[userListWindow tableView] reloadData];
 	[userListDrawer toggle:nil];
 	NSRect aFrame = [NSWindow contentRectForFrameRect:[[self window] frame] styleMask:[[self window] styleMask]];
-	//CFLog(@"content, %f", aFrame.size.height);
+	//NSLog(@"content, %f", aFrame.size.height);
 aFrame = [NSWindow frameRectForContentRect:aFrame styleMask:[[self window] styleMask]];
-	CFLog(@"frame, %f", aFrame.size.height);
+	NSLog(@"frame, %f", aFrame.size.height);
 }
 
 - (IBAction)clickedOnPlayerUsername:(id)sender 

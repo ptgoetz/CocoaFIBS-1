@@ -175,7 +175,7 @@ AGFIBSSPrefsHaveChanged
 	[[theGameController theAGFIBSGameView] setUpImagesAndChords];
 	[theGameController updateTheGameView];
 	
-	CFLog(@"Prefs have changed");
+	NSLog(@"Prefs have changed");
 }
 
 - (IBAction)rollFromMenu:(id)sender;
@@ -255,7 +255,7 @@ AGFIBSSPrefsHaveChanged
 	int dontDisplayMsgInTerminal[20] = {FIBS_Empty,CLIP_WHO_END,CLIP_YOU_SAY,CLIP_SAYS,FIBS_Unknown,FIBS_YouRoll,FIBS_PlayerRolls,AGFIBS_PipCount,CLIP_SHOUTS,CLIP_YOU_SHOUT,CLIP_KIBITZES,CLIP_YOU_KIBITZ,CLIP_WHO_INFO,FIBS_Board,FIBS_BAD_Board};
 	int i;
 	BOOL displayInTerminal = YES;
-    //CFLog(@"RECEIVED: %d - %@", cookie, aMessage);
+    //NSLog(@"RECEIVED: %d - %@", cookie, aMessage);
 	for (i=0; i <= 20; i++) {
 		if (cookie == dontDisplayMsgInTerminal[i]) {
 			displayInTerminal = NO;
@@ -665,7 +665,7 @@ AGFIBSSPrefsHaveChanged
 			[theAGFIBSSocket sendMessage:@"pip"];
 			NSArray *fibsBoardStateKeys2 = [@"board player opponent matchLength playerScore opponentScore playerBar tri1 tri2 tri3 tri4 tri5 tri6 tri7 tri8 tri9 tri10 tri11 tri12 tri13 tri14 tri15 tri16 tri17 tri18 tri19 tri20 tri21 tri22 tri23 tri24 opponentBar turn playerDie1 playerDie2 opponentDie1 opponentDie2 doubleCube playerMayDouble opponentMayDouble wasDoubled color direction home bar playerHomeNum opponentHomeNum playerBarNum opponentBarNum canMove forcedMove didCrawford redoubles" componentsSeparatedByString:@" "];
 			NSArray *fibsBoardStateMessage2 = [aMessage componentsSeparatedByString:@":"];
-			//CFLog(aMessage);
+			//NSLog(aMessage);
 			NSDictionary *fibsBoardStateDictionary2 = [[NSDictionary alloc] initWithObjects:fibsBoardStateMessage2 forKeys:fibsBoardStateKeys2];
 			[[[theGameController theAGFIBSGameView] theAGFIBSGameModel] setFibsBoardStateDictionary:fibsBoardStateDictionary2];
 			[[[theGameController theAGFIBSGameView] theAGFIBSGameModel] updateModelFromFIBS_Board];
@@ -854,7 +854,7 @@ AGFIBSSPrefsHaveChanged
 
 - (void)fibsDisconnected
 {
-    CFLog(@"fibsDisconnect()");
+    NSLog(@"fibsDisconnect()");
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:@"Client disconnected."];
     [alert setInformativeText:@"The FIBS server closed the connection."];

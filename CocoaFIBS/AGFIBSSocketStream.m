@@ -58,20 +58,20 @@ An instance of this class creates and returns input and output streams for a soc
 
 - (void)netsocketConnected:(NetSocket*)inNetSocket
 {
-	CFLog( @"Socket: Connected" );
-    CFLog(@"%p", theAppController);
+	NSLog( @"Socket: Connected" );
+    NSLog(@"%p", theAppController);
 	[self setConnected:YES];
 }
 
 - (void)netsocketDisconnected:(NetSocket*)inNetSocket
 {
-    CFLog( @"Socket: Disconnected" );
+    NSLog( @"Socket: Disconnected" );
     [theAppController fibsDisconnected];
 }
 
 - (void)netsocketDataSent:(NetSocket*)inNetSocket
 {
-	//CFLog( @"Socket: Data sent" );
+	//NSLog( @"Socket: Data sent" );
 }
 
 - (NSInputStream *)inputStream 
@@ -152,14 +152,14 @@ An instance of this class creates and returns input and output streams for a soc
 
 - (void)disconnect
 {
-    CFLog(@"disconnect!!!!!!!!!");
+    NSLog(@"disconnect!!!!!!!!!");
 	[self sendMessageNow:@"exit2"];
 	[self reset];
 }
 
 - (void)reset
 {
-	CFLog(@"Socket Reset!!!!!!!!!");
+	NSLog(@"Socket Reset!!!!!!!!!");
 	[mSocket release];
 	mSocket = nil;
 	[toBeWrittenQueue release];
@@ -174,7 +174,7 @@ An instance of this class creates and returns input and output streams for a soc
 {
     NSString *message = [stringToSend stringByAppendingString:@"\r\n"];
 	[mSocket writeString:message encoding:NSUTF8StringEncoding];
-	CFLog(@"SENT %@",message);
+	NSLog(@"SENT %@",message);
 	[self setBlockSendingYes];
 }
 
@@ -194,10 +194,10 @@ An instance of this class creates and returns input and output streams for a soc
 {
     // GAAAHHH!!! Is this the pip/game state bug???!!!
     // TODO async was a bad idea, refactor this
-    //CFLog(@"Message count: %u", [toBeWrittenQueue count]);
+    //NSLog(@"Message count: %u", [toBeWrittenQueue count]);
 	if ([toBeWrittenQueue count] > 0) {
 		[mSocket writeString:[toBeWrittenQueue objectAtIndex:0] encoding:NSUTF8StringEncoding];
-		CFLog(@"SENT ASYNC %@",[toBeWrittenQueue objectAtIndex:0]);
+		NSLog(@"SENT ASYNC %@",[toBeWrittenQueue objectAtIndex:0]);
 		[toBeWrittenQueue removeObjectAtIndex:0];
 	}
 }
@@ -241,7 +241,7 @@ An instance of this class creates and returns input and output streams for a soc
 		//Format a nice string to print to the terminal
 		cookieString = [[NSString alloc] initWithFormat:@"(%d)", cookie];
 		[oneStringFromArray setString:[cookieString stringByAppendingString:oneStringFromArray]];
-        //CFLog(@"%@", oneStringFromArray);
+        //NSLog(@"%@", oneStringFromArray);
 		[cookieString release];
 	}
 }
