@@ -356,7 +356,7 @@ DQ
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="654">
                         <rect key="frame" x="17" y="154" width="204" height="11"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="CocoaFIBS" id="1023">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="MacGammon" id="1023">
                             <font key="font" metaFont="miniSystem"/>
                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
