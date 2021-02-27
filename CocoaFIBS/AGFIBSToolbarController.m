@@ -140,15 +140,15 @@ applicationDidResignActive
 	//****************************
 	
 	//************** bug **************
-	item=[[NSToolbarItem alloc] initWithItemIdentifier:@"Bug"];
-	[item setPaletteLabel:@"Bug"];
-	[item setLabel:@"Report Bug"];
-	[item setImage:[NSImage imageNamed:@"terminal"]];
-	[item setToolTip:[NSString stringWithFormat:@"Bug"]];
-	[item setTarget:self]; // what should happen when it's clicked
-	[item setAction:@selector(markBug)];
-	[items setObject:item forKey:@"Bug"];
-	[item release];
+//	item=[[NSToolbarItem alloc] initWithItemIdentifier:@"Bug"];
+//	[item setPaletteLabel:@"Bug"];
+//	[item setLabel:@"Report Bug"];
+//	[item setImage:[NSImage imageNamed:@"terminal"]];
+//	[item setToolTip:[NSString stringWithFormat:@"Bug"]];
+//	[item setTarget:self]; // what should happen when it's clicked
+//	[item setAction:@selector(markBug)];
+//	[items setObject:item forKey:@"Bug"];
+//	[item release];
 	//****************************
 	
 	//************** public chat **************
@@ -214,7 +214,7 @@ applicationDidResignActive
     
     [window setToolbar:toolbar];
     
-    [window makeKeyAndOrderFront:nil];
+    //[window makeKeyAndOrderFront:nil]; // TODO: This causes issues.
 	[[[theAppController theLoginWindowController] loginWindow] makeKeyAndOrderFront:nil];
 }
 
