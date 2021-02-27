@@ -397,7 +397,7 @@ DQ
             </connections>
             <point key="canvasLocation" x="373" y="96"/>
         </window>
-        <customObject id="375" userLabel="AGFIBSLoginWindowController" customClass="AGFIBSLoginWindowController">
+        <customObject id="375" userLabel="AGFIBSLoginWindowController" customClass="MGLoginWindowController">
             <connections>
                 <outlet property="cancelButton" destination="959" id="961"/>
                 <outlet property="connectButton" destination="373" id="573"/>
@@ -410,7 +410,7 @@ DQ
                 <outlet property="userNameTextField" destination="368" id="379"/>
             </connections>
         </customObject>
-        <customObject id="467" userLabel="AGFIBSUserListWindowController" customClass="AGFIBSUserListWindowController">
+        <customObject id="467" userLabel="AGFIBSUserListWindowController" customClass="MGUserListWindowController">
             <connections>
                 <outlet property="clientSortButton" destination="782" id="788"/>
                 <outlet property="column" destination="516" id="518"/>
@@ -428,7 +428,7 @@ DQ
                 <outlet property="whoLoadingProgressIndicator" destination="981" id="982"/>
             </connections>
         </customObject>
-        <customObject id="468" userLabel="AGFIBSChatController" customClass="AGFIBSChatController">
+        <customObject id="468" userLabel="AGFIBSChatController" customClass="MGChatController">
             <connections>
                 <outlet property="gameChatMainTextView" destination="896" id="906"/>
                 <outlet property="gameChatTextToSendTextField" destination="895" id="909"/>
@@ -441,7 +441,7 @@ DQ
                 <outlet property="theAppController" destination="503" id="558"/>
             </connections>
         </customObject>
-        <customObject id="469" userLabel="AGFIBSGameController" customClass="AGFIBSGameController">
+        <customObject id="469" userLabel="AGFIBSGameController" customClass="MGGameController">
             <connections>
                 <outlet property="desieredMatchLengthTextField" destination="775" id="801"/>
                 <outlet property="matchLengthField" destination="929" id="935"/>
@@ -479,7 +479,7 @@ DQ
                 <rect key="frame" x="0.0" y="0.0" width="539" height="629"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="499" customClass="AGFIBSGameView">
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="499" customClass="MGGameView">
                         <rect key="frame" x="22" y="254" width="497" height="355"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     </customView>
@@ -816,7 +816,7 @@ DQ
                 </menuItem>
             </items>
         </menu>
-        <customObject id="503" userLabel="AGFIBSAppController" customClass="AGFIBSAppController">
+        <customObject id="503" userLabel="AGFIBSAppController" customClass="MGAppController">
             <connections>
                 <outlet property="loginWindow" destination="362" id="548"/>
                 <outlet property="prefMenuItem" destination="129" id="922"/>
@@ -976,7 +976,7 @@ DQ
                         <rect key="frame" x="1" y="0.0" width="271" height="517"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="36" headerView="1060" id="515" customClass="AGFIBSUserListTableView">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" rowHeight="36" headerView="1060" id="515" customClass="MGUserListTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="271" height="492"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -1026,13 +1026,13 @@ DQ
             </connections>
             <point key="canvasLocation" x="747" y="208"/>
         </customView>
-        <customObject id="608" userLabel="AGFIBSToolbarController" customClass="AGFIBSToolbarController">
+        <customObject id="608" userLabel="AGFIBSToolbarController" customClass="MGToolbarController">
             <connections>
                 <outlet property="theAppController" destination="503" id="642"/>
                 <outlet property="window" destination="483" id="611"/>
             </connections>
         </customObject>
-        <customObject id="656" userLabel="AGFIBSSocketStream" customClass="AGFIBSSocketStream">
+        <customObject id="656" userLabel="AGFIBSSocketStream" customClass="MGSocketStream">
             <connections>
                 <outlet property="theAppController" destination="503" id="657"/>
             </connections>
