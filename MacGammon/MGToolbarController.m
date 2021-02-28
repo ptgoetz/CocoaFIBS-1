@@ -128,15 +128,15 @@ applicationDidResignActive
 	//****************************
 	
 	//************** Terminal **************
-	item=[[NSToolbarItem alloc] initWithItemIdentifier:@"Terminal"];
-	[item setPaletteLabel:@"Show Terminal"];
-	[item setLabel:@"Terminal"];
-	[item setImage:[NSImage imageNamed:@"terminal"]];
-	[item setToolTip:[NSString stringWithFormat:@"Show Terminal"]];
-	[item setTarget:self]; // what should happen when it's clicked
-	[item setAction:@selector(showTerminalWindow)];
-	[items setObject:item forKey:@"Terminal"];
-	[item release];
+//	item=[[NSToolbarItem alloc] initWithItemIdentifier:@"Terminal"];
+//	[item setPaletteLabel:@"Show Terminal"];
+//	[item setLabel:@"Terminal"];
+//	[item setImage:[NSImage imageNamed:@"terminal"]];
+//	[item setToolTip:[NSString stringWithFormat:@"Show Terminal"]];
+//	[item setTarget:self]; // what should happen when it's clicked
+//	[item setAction:@selector(showTerminalWindow)];
+//	[items setObject:item forKey:@"Terminal"];
+//	[item release];
 	//****************************
 	
 	//************** bug **************
@@ -320,6 +320,7 @@ return temp;
 
 - (void)resign 
 {
+    //TODO Only alert if we are in a game
 	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	[[alert window] setAlphaValue:0.9];
 	[alert addButtonWithTitle:@"Normal"];
@@ -380,18 +381,18 @@ return temp;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	NSDate *today = [NSDate date];
-	//NSLog(@"%@", [today description]);
-	NSDate *expiresOnDate = [NSDate dateWithString:@"3018-10-01 16:08:13 -0400"]; //1000 years should do @"%@", it
-	//NSLog(@"%@", [[today laterDate:expiresOnDate] description]);
-	int choice;
-	if ([[today laterDate:expiresOnDate] isEqual:today]) {
-		choice = NSRunAlertPanel(@"Beta has expired", @"The beta copy of this software has expired", @"Quit", @"", nil);
-		if (choice) {
-			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/projects/cocoafibs/"]];
-			[NSApp terminate:self];
-		}
-	}
+//	NSDate *today = [NSDate date];
+//	//NSLog(@"%@", [today description]);
+//	NSDate *expiresOnDate = [NSDate dateWithString:@"3018-10-01 16:08:13 -0400"]; //1000 years should do @"%@", it
+//	//NSLog(@"%@", [[today laterDate:expiresOnDate] description]);
+//	int choice;
+//	if ([[today laterDate:expiresOnDate] isEqual:today]) {
+//		choice = NSRunAlertPanel(@"Beta has expired", @"The beta copy of this software has expired", @"Quit", @"", nil);
+//		if (choice) {
+//			[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://sourceforge.net/projects/cocoafibs/"]];
+//			[NSApp terminate:self];
+//		}
+//	}
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
