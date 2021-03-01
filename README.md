@@ -1,4 +1,4 @@
-#. MacGammon - FIBS Client for MacOS
+# MacGammon - FIBS Client for MacOS
 
 MacGammon is an attempt to revive the now-abandoned CocoaFIBS open source project originally authored by Adam Gerson. For users of more recent versions of MacOS, 
 the only viable option has been JavaFIBS, which is not open source, and seems to have suffered from lack of development for many years. 
