@@ -249,22 +249,11 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="116">
-                                            <rect key="frame" x="17" y="90" width="73" height="32"/>
+                                            <rect key="frame" x="17" y="100" width="73" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="212">
                                                 <font key="font" metaFont="system"/>
                                                 <string key="title">Server Port
-</string>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="117">
-                                            <rect key="frame" x="17" y="60" width="96" height="32"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="213">
-                                                <font key="font" metaFont="system"/>
-                                                <string key="title">Login Timeout
 </string>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -279,14 +268,24 @@
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <objectValues>
                                                     <string>fibs.com</string>
-                                                    <string>67.122.198.180</string>
-                                                    <string>198.144.203.150</string>
+                                                    <string>localhost</string>
                                                 </objectValues>
                                             </comboBoxCell>
                                             <connections>
                                                 <binding destination="78" name="value" keyPath="values.serverAddress" id="158"/>
                                             </connections>
                                         </comboBox>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="117">
+                                            <rect key="frame" x="17" y="70" width="96" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="213">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">Login Timeout
+</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -413,6 +412,7 @@
                     </tabView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="139" y="147"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="78" userLabel="Shared Defaults"/>
     </objects>

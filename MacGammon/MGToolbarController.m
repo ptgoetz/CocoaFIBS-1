@@ -397,19 +397,19 @@ return temp;
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-	NSLog(@"applicationWillTerminate!!!!!!!!!");
+	NSLog(@"applicationWillTerminate()");
 	[[theAppController theAGFIBSSocket] sendMessage:@"exit1"];
 	[[theAppController theAGFIBSSocket] disconnect];
 }
 
 - (void)applicationDidBecomeActive:(NSNotification *)aNotification
 {
-	NSLog(@"applicationDidBecomeActive");
+//	NSLog(@"applicationDidBecomeActive");
 }
 
 - (void)applicationDidResignActive:(NSNotification *)aNotification
 {
-	NSLog(@"applicationDidResignActive()");
+//	NSLog(@"applicationDidResignActive()");
 }
 
 - (void)dealloc 

@@ -1135,19 +1135,19 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 -(BOOL)canMoveFromTriangle:(MGTriangle *)fromTriangle 
 {
 	if ([fromTriangle pipNumber] == HOME_PIP_NUMBER) {
-		NSLog(@"Failed: can take chips out of home");
+//		NSLog(@"Failed: can take chips out of home");
 		return NO;
 	}
 	if (draggedChipOwnedBy != OWNEDBY_PLAYER) {
-		NSLog(@"Failed: not owned by you");
+//		NSLog(@"Failed: not owned by you");
 		return NO;
 	}
 	else if ([[theAGFIBSGameModel playerBar] numberOfChips] > 0 && ![fromTriangle isEqual:[theAGFIBSGameModel playerBar]]) {
-		NSLog(@"Failed: on bar");
+//		NSLog(@"Failed: on bar");
 		return NO;
 	}
 	else if ([[theAGFIBSGameModel playerDice] numberOfUnusedRolls] == 0) {
-		NSLog(@"Failed: numberOfUnusedRolls");
+//		NSLog(@"Failed: numberOfUnusedRolls");
 		return NO;
 	}
 	else {
@@ -1173,13 +1173,13 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 	
 	BOOL canMove = NO;
 	if (![self canMoveFromTriangle:draggedFromTriangle]) {
-		NSLog(@"Failed: canMoveFromTriangle");
+//		NSLog(@"Failed: canMoveFromTriangle");
 		canMove = NO;
 	}
 	
 	
 	else if (color == 1 &&  [toTriangle pipNumber] >= [draggedFromTriangle pipNumber] && [toTriangle pipNumber] != HOME_PIP_NUMBER && [draggedFromTriangle pipNumber] != BAR_PIP_NUMBER) {
-	NSLog(@"Backwards move");
+//	NSLog(@"Backwards move");
 		canMove =  NO;
 	}
 	else if (distanceBetweenTriangles > 6 && [[theAGFIBSGameModel playerBar] numberOfChips] >= 1 && isDragging) {
@@ -1189,11 +1189,11 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		canMove =  NO;
 	}
 	else if (color == -1 &&  [toTriangle pipNumber] <= [draggedFromTriangle pipNumber]) {
-		NSLog(@"Backwards move");
+//		NSLog(@"Backwards move");
 		canMove =  NO;
 	}
 	else if (![theAGFIBSGameModel isPlayerHome] &&  [toTriangle pipNumber] == HOME_PIP_NUMBER) {
-		NSLog(@"Failed: not home yet");
+//		NSLog(@"Failed: not home yet");
 		canMove =  NO;
 	}
 	else if ([toTriangle ownedBy] == OWNEDBY_OPPONENT && [toTriangle numberOfChips] > 1) {
@@ -1233,7 +1233,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		MGTriangle *inbetweenStepTriangle2 = [[theAGFIBSGameModel gameBoard] objectAtIndex:[self pipNumToArrayPos:inbetweenJump2PipNum]];
 		if ([inbetweenStepTriangle1 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle1 numberOfChips] > 1 && [inbetweenStepTriangle2 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle2 numberOfChips] > 1) {
 			canMove =  NO;
-			NSLog(@"Both owned by 2");
+//			NSLog(@"Both owned by 2");
 		}
 
 		else if ([inbetweenStepTriangle1 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle1 numberOfChips] == 1 && [inbetweenStepTriangle2 ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle2 numberOfChips] == 1) {
@@ -1243,7 +1243,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		else {
 			distanceToUseUpDice = distanceBetweenTriangles;
 			canMove =  YES;
-			NSLog(@"yes2");
+//			NSLog(@"yes2");
 		}
 	}
 	else if ([[theAGFIBSGameModel playerDice] isDoubleRoll] && moveType > 1) {
@@ -1264,17 +1264,17 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 			if ([inbetweenStepTriangle ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle numberOfChips] > 1) {
 				canMove =  NO;
 				break;
-				NSLog(@"[inbetweenStepTriangle ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle numberOfChips] > 1");
+//				NSLog(@"[inbetweenStepTriangle ownedBy] == OWNEDBY_OPPONENT && [inbetweenStepTriangle numberOfChips] > 1");
 			}
 			else if (i > 0 && [[theAGFIBSGameModel playerBar] numberOfChips] >= 1 && isDragging) {
 				canMove =  NO;
 				break;
-				NSLog(@"Still have a chip on the bar");
+//				NSLog(@"Still have a chip on the bar");
 			}
 			else if (i > 0 && [[theAGFIBSGameModel playerBar] numberOfChips] >= 2 && isDragging == NO) {
 				canMove =  NO;
 				break;
-				NSLog(@"Still have a chip on the bar");
+//				NSLog(@"Still have a chip on the bar");
 			}
 			else {
 				distanceToUseUpDice = distanceBetweenTriangles;
@@ -1300,7 +1300,7 @@ NSAlert *alert = [[[NSAlert alloc] init] autorelease];
 		canMove =  YES;
 	}
 
-	NSLog(@"can move %d", canMove);
+//	NSLog(@"can move %d", canMove);
 	return canMove;
 }
 

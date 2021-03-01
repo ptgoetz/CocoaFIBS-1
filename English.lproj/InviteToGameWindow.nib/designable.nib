@@ -118,7 +118,7 @@
             </connections>
             <point key="canvasLocation" x="139" y="147.5"/>
         </window>
-        <viewController id="cuB-7F-UAR" customClass="AGFIBSInviteToGameController"/>
+        <viewController id="cuB-7F-UAR" customClass="MGInviteToGameController"/>
     </objects>
     <resources>
         <image name="invite" width="128" height="128"/>
