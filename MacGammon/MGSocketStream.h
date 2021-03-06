@@ -33,9 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     bool connected;										/* YES or NO based on connectiion status "*/
 	id delegate;										/* A reference to the delegate of the AGFIBSSocketStream "*/
 	NetSocket*	mSocket;
-	NSMutableArray *toBeWrittenQueue;
-	NSTimer *sendMessageFromQueueTimer;
-	BOOL blockSending;
 }
 
 - (id)init;
@@ -55,10 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 - (void)connect;
 - (void)disconnect;
 - (void)sendMessage:(NSString *)stringToSend;
-- (void)sendMessages;
-- (void)sendMessageNow:(NSString *)stringToSend;
 - (void)reset;
-- (void)setBlockSendingYes;
 - (NSString *)findAndReplaceStringInString:(NSString *)string find:(NSString *)findString replace:(NSString *)replaceString;
 
 - (void)dealloc;

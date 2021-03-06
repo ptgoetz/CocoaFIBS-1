@@ -35,8 +35,6 @@ An instance of this class creates and returns input and output streams for a soc
 		return nil;
 	}
 	mSocket = nil;
-	toBeWrittenQueue = [[NSMutableArray alloc] init];
-	blockSending = NO;
 	return self;
 }
 
@@ -132,15 +130,6 @@ An instance of this class creates and returns input and output streams for a soc
     NSLog(@"Connecting to server: %@", lserverAddress);
 	
 	mSocket = [[NetSocket netsocketConnectedToHost:lserverAddress port:lserverPort] retain];
-	
-	toBeWrittenQueue = [[NSMutableArray alloc] init];
-	
-	sendMessageFromQueueTimer = [NSTimer scheduledTimerWithTimeInterval:1
-			target:self 
-			selector:@selector(sendMessages) 
-			userInfo:nil 
-			repeats:YES];
-	[self sendMessages];
 			
 	// Schedule the NetSocket on the current runloop
 	[mSocket scheduleOnCurrentRunLoop];
@@ -154,7 +143,7 @@ An instance of this class creates and returns input and output streams for a soc
 - (void)disconnect
 {
     NSLog(@"disconnect!!!!!!!!!");
-	[self sendMessageNow:@"exit2"];
+	[self sendMessage:@"exit2"];
 	[self reset];
 }
 
@@ -163,55 +152,15 @@ An instance of this class creates and returns input and output streams for a soc
 	NSLog(@"Socket Reset!!!!!!!!!");
 	[mSocket release];
 	mSocket = nil;
-	[toBeWrittenQueue release];
-	toBeWrittenQueue = nil;
-	[sendMessageFromQueueTimer invalidate];
-	sendMessageFromQueueTimer = nil;
 	[self setConnected:NO];
 	ReleaseFIBSCookieMonster();
-}
-
-- (void)sendMessageNow:(NSString *)stringToSend
-{
-    NSString *message = [stringToSend stringByAppendingString:@"\r\n"];
-	[mSocket writeString:message encoding:NSUTF8StringEncoding];
-	NSLog(@"SENT %@",message);
-	[self setBlockSendingYes];
 }
 
 - (void)sendMessage:(NSString *)stringToSend
 {
     NSString *message = [stringToSend stringByAppendingString:@"\r\n"];
-    //if (blockSending) {
-    if (false) {
-		[toBeWrittenQueue addObject:message];
-	}
-	else {
-		[self sendMessageNow:stringToSend];
-	}
-}
-
-- (void)sendMessages
-{
-    // GAAAHHH!!! Is this the pip/game state bug???!!!
-    // TODO async was a bad idea, refactor this
-    //NSLog(@"Message count: %u", [toBeWrittenQueue count]);
-	if ([toBeWrittenQueue count] > 0) {
-		[mSocket writeString:[toBeWrittenQueue objectAtIndex:0] encoding:NSUTF8StringEncoding];
-		NSLog(@"SENT ASYNC %@",[toBeWrittenQueue objectAtIndex:0]);
-		[toBeWrittenQueue removeObjectAtIndex:0];
-	}
-}
-
-
-- (void)setBlockSendingYes
-{
-        blockSending = YES;
-}
-
-- (void)setBlockSendingNo
-{
-        blockSending = NO;
+    [mSocket writeString:message encoding:NSUTF8StringEncoding];
+    NSLog(@"SENT %@",message);
 }
 
 - (void)netsocket:(NetSocket*)inNetSocket dataAvailable:(unsigned)inAmount
@@ -257,7 +206,6 @@ An instance of this class creates and returns input and output streams for a soc
 - (void)dealloc
 {
 	[mSocket release];
-	[toBeWrittenQueue release];
 	mSocket = nil;
 	[super dealloc];
 }
