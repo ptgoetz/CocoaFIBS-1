@@ -129,6 +129,7 @@ An instance of this class creates and returns input and output streams for a soc
 	
 	int lserverPort = [[[NSUserDefaults standardUserDefaults] stringForKey:@"serverPort"]intValue];
 	NSString *lserverAddress = [[NSUserDefaults standardUserDefaults] stringForKey:@"serverAddress"];
+    NSLog(@"Connecting to server: %@", lserverAddress);
 	
 	mSocket = [[NetSocket netsocketConnectedToHost:lserverAddress port:lserverPort] retain];
 	
