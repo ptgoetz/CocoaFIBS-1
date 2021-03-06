@@ -248,15 +248,18 @@ AGFIBSSPrefsHaveChanged
     [printOp runOperation];
 }
 
-- (void)handleFIBSResponseEvent:(int)cookie message:(NSString *)aMessage
+- (void)handleFIBSResponseEvent:(int)cookie message:(NSString *)theMessage
 {
+    NSString *aMessage = [theMessage stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
 	NSString *playerName;
 	NSArray *tokkenizer;
-	int dontDisplayMsgInTerminal[20] = {FIBS_Empty,CLIP_WHO_END,CLIP_YOU_SAY,CLIP_SAYS,FIBS_Unknown,FIBS_YouRoll,FIBS_PlayerRolls,AGFIBS_PipCount,CLIP_SHOUTS,CLIP_YOU_SHOUT,CLIP_KIBITZES,CLIP_YOU_KIBITZ,CLIP_WHO_INFO,FIBS_Board,FIBS_BAD_Board};
+	int dontDisplayMsgInTerminal[] = {FIBS_Empty,CLIP_WHO_END,CLIP_YOU_SAY,CLIP_SAYS,FIBS_Unknown,FIBS_YouRoll,FIBS_PlayerRolls,CLIP_SHOUTS,CLIP_YOU_SHOUT,CLIP_KIBITZES,CLIP_YOU_KIBITZ,CLIP_WHO_INFO,FIBS_Board,FIBS_BAD_Board};
 	int i;
 	BOOL displayInTerminal = YES;
     //NSLog(@"RECEIVED: %d - %@", cookie, aMessage);
-	for (i=0; i <= 20; i++) {
+    int len = (sizeof dontDisplayMsgInTerminal) / (sizeof dontDisplayMsgInTerminal[0]);
+	for (i=0; i <= len; i++) {
 		if (cookie == dontDisplayMsgInTerminal[i]) {
 			displayInTerminal = NO;
 			break;
@@ -544,6 +547,9 @@ AGFIBSSPrefsHaveChanged
 		case CLIP_WHO_INFO:{
 			NSArray *clipWhoInfoKeys = [@"cookie name opponent watching ready away rating experience idle login hostname client email" componentsSeparatedByString:@" "];
 			NSArray *clipWhoInfoMessage = [aMessage componentsSeparatedByString:@" "];
+            NSLog(@"Received who info: %@", aMessage);
+//            NSLog(@"Info message count: %lu", (unsigned long)[clipWhoInfoMessage count]);
+//            NSLog(@"Key  count: %lu", (unsigned long)[clipWhoInfoKeys count]);
 			if ([clipWhoInfoMessage count] != [clipWhoInfoKeys count]) {
 				break;
 			}
