@@ -434,6 +434,9 @@
 		D8646673232CD5C600ECB4D9 /* MacGammon */ = {
 			isa = PBXGroup;
 			children = (
+				EADEB53525CB952F0062DCB4 /* CFLog.h */,
+				32CA4F630368D1EE00C91783 /* MacGammon_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
 				3FF65A840677EFD3008720B2 /* MGAppController.h */,
 				3FF65A850677EFD3008720B2 /* MGAppController.m */,
 				6611F1C9069A073A004C9789 /* MGChatController.h */,
@@ -468,9 +471,6 @@
 				3FEB21C30678BF0C00603174 /* MGUserListTableView.m */,
 				3FF65ABE0677F3FB008720B2 /* MGUserListWindowController.h */,
 				3FF65ABF0677F3FB008720B2 /* MGUserListWindowController.m */,
-				EADEB53525CB952F0062DCB4 /* CFLog.h */,
-				32CA4F630368D1EE00C91783 /* MacGammon_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			path = MacGammon;
 			sourceTree = "<group>";

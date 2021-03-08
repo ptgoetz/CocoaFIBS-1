@@ -35,7 +35,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 - (void)windowDidLoad
 {
-	[[self window] setFrameAutosaveName:@"TerminalWindow"];	
+	[[self window] setFrameAutosaveName:@"TerminalWindow"];
+    NSLog(@"window did load, setting font..");
+    NSLog(@"view: %@", terminalInputTextField);
+    [terminalDisplayTextView setFont:[NSFont fontWithName:@"Menlo" size:12]];
 }
 
 - (IBAction)addToSavedCommands:(id)sender
@@ -87,7 +90,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //    NSLog(@"sending: %@", stringToSend);
 //    [commandHistory addObject:stringToSend];
 //    historyPoint = [commandHistory count];
-	[nc postNotificationName:@"AGFIBSSendCommandToSocket" object:@"help"];
+    NSLog(@"Terminal Command: %@", [sender stringValue]);
+    NSMutableString *consoleString = [NSMutableString string];
+    [consoleString appendFormat:@"> %@", [sender stringValue]];
+    [self displayInTerminal: consoleString];
+    
+//    [[terminalInputTextField delegate] set
+	[nc postNotificationName:@"AGFIBSSendCommandToSocket" object:[sender stringValue]];
+    terminalInputTextField.stringValue = @"";
+    
 	
 }
 

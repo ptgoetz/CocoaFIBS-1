@@ -33,6 +33,85 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
+                            <tabViewItem label="Server" identifier="" id="109">
+                                <view key="view" id="110">
+                                    <rect key="frame" x="10" y="33" width="446" height="172"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="112">
+                                            <rect key="frame" x="121" y="100" width="52" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="209">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.serverPort" id="121"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="113">
+                                            <rect key="frame" x="121" y="70" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="210">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.loginTimeoutDelayTime" id="123"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="114">
+                                            <rect key="frame" x="17" y="135" width="99" height="17"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Server Address" id="211">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="116">
+                                            <rect key="frame" x="17" y="100" width="73" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="212">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">Server Port
+</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="155">
+                                            <rect key="frame" x="121" y="126" width="165" height="26"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" title="fibs.com" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="214">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <objectValues>
+                                                    <string>fibs.com</string>
+                                                    <string>localhost</string>
+                                                </objectValues>
+                                            </comboBoxCell>
+                                            <connections>
+                                                <binding destination="78" name="value" keyPath="values.serverAddress" id="158"/>
+                                            </connections>
+                                        </comboBox>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="117">
+                                            <rect key="frame" x="17" y="70" width="96" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="213">
+                                                <font key="font" metaFont="system"/>
+                                                <string key="title">Login Timeout
+</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
                             <tabViewItem label="Board" identifier="" id="41">
                                 <view key="view" id="43">
                                     <rect key="frame" x="10" y="33" width="446" height="172"/>
@@ -210,82 +289,22 @@
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="Server" identifier="" id="109">
-                                <view key="view" ambiguous="YES" id="110">
+                            <tabViewItem label="Users" identifier="" id="124">
+                                <view key="view" ambiguous="YES" id="125">
                                     <rect key="frame" x="10" y="33" width="446" height="172"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="112">
-                                            <rect key="frame" x="121" y="100" width="52" height="22"/>
+                                        <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="126">
+                                            <rect key="frame" x="18" y="136" width="321" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="209">
+                                            <buttonCell key="cell" type="check" title="Check with RepBot when receiving an invitation" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="215">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
+                                            </buttonCell>
                                             <connections>
-                                                <binding destination="78" name="value" keyPath="values.serverPort" id="121"/>
+                                                <binding destination="78" name="value" keyPath="values.checkRepBotOnInvite" id="128"/>
                                             </connections>
-                                        </textField>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="113">
-                                            <rect key="frame" x="121" y="70" width="34" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="210">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="78" name="value" keyPath="values.loginTimeoutDelayTime" id="123"/>
-                                            </connections>
-                                        </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="114">
-                                            <rect key="frame" x="17" y="135" width="99" height="17"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Server Address" id="211">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="116">
-                                            <rect key="frame" x="17" y="100" width="73" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="212">
-                                                <font key="font" metaFont="system"/>
-                                                <string key="title">Server Port
-</string>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <comboBox verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="155">
-                                            <rect key="frame" x="121" y="126" width="165" height="26"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" title="fibs.com" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="214">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                <objectValues>
-                                                    <string>fibs.com</string>
-                                                    <string>localhost</string>
-                                                </objectValues>
-                                            </comboBoxCell>
-                                            <connections>
-                                                <binding destination="78" name="value" keyPath="values.serverAddress" id="158"/>
-                                            </connections>
-                                        </comboBox>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="117">
-                                            <rect key="frame" x="17" y="70" width="96" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="213">
-                                                <font key="font" metaFont="system"/>
-                                                <string key="title">Login Timeout
-</string>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
+                                        </button>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -389,20 +408,20 @@
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="Users" identifier="" id="124">
-                                <view key="view" id="125">
+                            <tabViewItem label="Terminal" identifier="" id="8K9-ab-mJa">
+                                <view key="view" id="j4i-iT-4yN">
                                     <rect key="frame" x="10" y="33" width="446" height="172"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="126">
+                                        <button fixedFrame="YES" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JtL-st-jLa">
                                             <rect key="frame" x="18" y="136" width="321" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <buttonCell key="cell" type="check" title="Check with RepBot when receiving an invitation" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="215">
+                                            <buttonCell key="cell" type="check" title="Display all FIBS server messages" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="rc3-U0-Izn">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="78" name="value" keyPath="values.checkRepBotOnInvite" id="128"/>
+                                                <binding destination="78" name="value" keyPath="values.showAllFIBSMessagesInTerminal" id="fkK-lw-mNa"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -415,5 +434,84 @@
             <point key="canvasLocation" x="139" y="147"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="78" userLabel="Shared Defaults"/>
+        <tabViewItem label="Server" identifier="" id="xQF-Qi-RDR">
+            <view key="view" id="Ekf-2C-yhB">
+                <rect key="frame" x="10" y="33" width="446" height="172"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3uC-GV-Bss">
+                        <rect key="frame" x="121" y="100" width="52" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="RI1-8C-RyY">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="78" name="value" keyPath="values.serverPort" id="Hgo-D3-iew"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rZL-Uq-vZn">
+                        <rect key="frame" x="121" y="70" width="34" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="2NT-GY-vbO">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="78" name="value" keyPath="values.loginTimeoutDelayTime" id="B8R-kd-APp"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yG-h8-dkd">
+                        <rect key="frame" x="17" y="135" width="99" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Server Address" id="Xm7-Bo-DJA">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0GM-Tf-gaE">
+                        <rect key="frame" x="17" y="100" width="73" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="002-8x-wpH">
+                            <font key="font" metaFont="system"/>
+                            <string key="title">Server Port
+</string>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <comboBox verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRn-mO-lHQ">
+                        <rect key="frame" x="121" y="126" width="165" height="26"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="left" title="fibs.com" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Oxl-Ir-6Oo">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <objectValues>
+                                <string>fibs.com</string>
+                                <string>localhost</string>
+                            </objectValues>
+                        </comboBoxCell>
+                        <connections>
+                            <binding destination="78" name="value" keyPath="values.serverAddress" id="xVI-gR-5vV"/>
+                        </connections>
+                    </comboBox>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHr-Sx-4yM">
+                        <rect key="frame" x="17" y="70" width="96" height="22"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="5Kk-fg-Pph">
+                            <font key="font" metaFont="system"/>
+                            <string key="title">Login Timeout
+</string>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+        </tabViewItem>
     </objects>
 </document>

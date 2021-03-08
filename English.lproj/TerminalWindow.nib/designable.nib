@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MGTerminalWindowController">
             <connections>
-                <outlet property="terminalDisplayTextView" destination="95" id="100"/>
+                <outlet property="terminalDisplayTextView" destination="95" id="HB6-Xb-TVh"/>
                 <outlet property="terminalInputTextField" destination="94" id="99"/>
                 <outlet property="window" destination="82" id="102"/>
             </connections>
@@ -30,16 +30,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="T0C-oq-qKe">
                             <rect key="frame" x="1" y="1" width="509" height="518"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView ambiguous="YES" editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="95">
+                                <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" allowsCharacterPickerTouchBarItem="NO" textCompletion="NO" id="95">
                                     <rect key="frame" x="0.0" y="0.0" width="515" height="518"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="selectedMenuItemTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="509" height="518"/>
                                     <size key="maxSize" width="625" height="10000000"/>
-                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="insertionPointColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

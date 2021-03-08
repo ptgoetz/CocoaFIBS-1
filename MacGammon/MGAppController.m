@@ -265,6 +265,9 @@ AGFIBSSPrefsHaveChanged
 			break;
 		}
 	}
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"showAllFIBSMessagesInTerminal"]) {
+        displayInTerminal = YES;
+    }
 	if (displayInTerminal) {
 		[self displayMsgInTerminaleWindow:aMessage];
 	}
