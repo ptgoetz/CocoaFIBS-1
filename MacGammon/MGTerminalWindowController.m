@@ -38,7 +38,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	[[self window] setFrameAutosaveName:@"TerminalWindow"];
     NSLog(@"window did load, setting font..");
     NSLog(@"view: %@", terminalInputTextField);
-    [terminalDisplayTextView setFont:[NSFont fontWithName:@"Menlo" size:12]];
+    [terminalDisplayTextView setFont:[NSFont fontWithName:@"Courier" size:12]];
 }
 
 - (IBAction)addToSavedCommands:(id)sender
@@ -78,28 +78,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     NSLog(@"sendCommandToTerminal()");
     NSNotificationCenter *nc;
     nc = [NSNotificationCenter defaultCenter];
-//    NSMutableString *stringToSend = nil;
-//    if ([sender tag] == 0) {
-//        [[stringToSend initWithCapacity:[[sender stringValue] length]] setString:[sender stringValue]] ;
-//        [sender setStringValue:@""];
-//    }
-//    else if ([sender tag] == 1) {
-//        [[stringToSend initWithCapacity:[[sender titleOfSelectedItem] length]] setString:[sender titleOfSelectedItem]] ;
-//
-//    }
-//    NSLog(@"sending: %@", stringToSend);
-//    [commandHistory addObject:stringToSend];
-//    historyPoint = [commandHistory count];
     NSLog(@"Terminal Command: %@", [sender stringValue]);
     NSMutableString *consoleString = [NSMutableString string];
     [consoleString appendFormat:@"> %@", [sender stringValue]];
     [self displayInTerminal: consoleString];
     
-//    [[terminalInputTextField delegate] set
 	[nc postNotificationName:@"AGFIBSSendCommandToSocket" object:[sender stringValue]];
     terminalInputTextField.stringValue = @"";
-    
-	
 }
 
 - (BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)command
